@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Login Page</title>
+        
+        <link rel="stylesheet" href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'>
+        <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js'></script>
+        <link rel="stylesheet" href='https://use.fontawesome.com/releases/v5.8.1/css/all.css'>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+        <link rel="stylesheet" href="/static/login.css">
+        
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <form class="box" method="POST" action="/login/">
+                            <h1>Login</h1>
+                            <!--below class need link to password retrieve page and personal page-->
+                            <p> Please enter your email address and password!</p> 
+                            <input type="text" name="email" placeholder="*@link.cuhk.edu.hk">
+                            <input type="password" name="pwd" placeholder="Password">
+                            <a class="forgot" href="#">Forgot password?</a> 
+                            <input type="submit" name="" value="Login" href="#">
+                            <div class="col-md-12">
+                                <ul class="social-network social-circle">
+                                    <li><a href="#" class="icoFacebook" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#" class="icoTwitter" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#" class="icoGoogle" title="Google +"><i class="fab fa-google-plus"></i></a></li>
+                                </ul>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+		<ul class="colorlib-bubbles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+
+    </body>
+</html>
