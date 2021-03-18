@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Register Page</title>
+        <link rel="stylesheet" href="/static/css/register.css">
+        <link href="/static/css/mdi/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+        <link href="/static/css/fas/font-awesome.min.css" rel="stylesheet" media="all">
+        <link href="/static/css/googlefont.css" rel="stylesheet">
+        <link href="/static/css/select2.min.css" rel="stylesheet" media="all">
+        <link href="/static/css/daterangepicker.css" rel="stylesheet" media="all">
+    </head>
+    <body>
+        <div class="bg-green p-t-40 p-b-40 font-poppins">
+            <div class="wrapper wrapper--w680">
+                <div class="card card-4">
+                    <div class="card-body">
+                        <h2 class="title">Registration Form</h2>
+                        <form method="POST" action="/regi/">
+                            <div class="row row-space">
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <label class="label">first name</label>
+                                        <!--input first name here-->
+                                        <input class="input--style" type="text" name="firstname">
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <label class="label">last name</label>
+                                        <!--input last name here-->
+                                        <input class="input--style" type="text" name="lastname">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row-space">
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <label class="label">Birthday</label>
+                                        <div class="input-group-icon">
+                                            <!--input birthday here-->
+                                            <input class="input--style js-datepicker" type="text" name="birthday">
+                                            <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <label class="label">Gender</label>
+                                        <div class="p-t-10">
+                                            <label class="radio-container m-r-45">Male&nbsp&nbsp&nbsp&nbsp
+                                                <!--input gendery here-->
+                                                <input type="radio" value="male" checked="checked" name="gender">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                            <label class="radio-container">Female
+                                                <!--or input gendery here, given that it's a choice between two button-->
+                                                <input type="radio" value="female" name="gender">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row-space">
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <label class="label">Email</label>
+                                        <!--input email here-->
+                                        <input class="input--style" type="email" name="email">
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <label class="label">Phone Number</label>
+                                        <!--input phone number here-->
+                                        <input class="input--style" type="text" name="phonenumber">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row-space">
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <label class="label">Username</label>
+                                        <!--input username here-->
+                                        <input class="input--style" type="text" name="username">
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <label class="label">Password</label>
+                                        <!--input password here-->
+                                        <input class="input--style" type="password" name="password">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label class="label">University</label>
+                                <div class="rs-select2 js-select-simple select--no-search">
+                                    <select name="subject">
+                                        <option disabled="disabled" selected="selected">Choose option</option>
+                                        <option>University 1</option>
+                                        <option>University 2</option>
+                                        <option>University 3</option>
+                                    </select>
+                                    <div class="select-dropdown"></div>
+                                </div>
+                            </div>
+                            <div class="p-t-0 inputbtn">
+                                <!--input click on submit button here-->
+                                <input type="submit" value="Submit" href="#">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ul class="colorlib-bubbles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+        <script src="/static/js/jquery.min.js"></script>
+        <script src="/static/js/select2.min.js"></script>
+        <script src="/static/js/moment.min.js"></script>
+        <script src="/static/js/daterangepicker.js"></script>
+        <script src="/static/js/global.js"></script>
+    </body>
+</html>

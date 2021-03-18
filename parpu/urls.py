@@ -27,21 +27,40 @@ def login(request):
         #用户 post 时提交的数据，读取
         email = request.POST.get('email')
         pwd = request.POST.get('pwd')
-        if email == "duanzj" and pwd == "123" :
+        if email == "root" and pwd == "123" :
             # login successed
             return redirect('/personalpage/')
         else:
             # login failed
-            return render(request, "login.html", {'msg': "Invalid username or password"})
+            return render(request, "login.html", {'msg': "Invalid username or password!"})
 
 def personalpage(request):
     """
     进入用户中心
     """
-    return render(request, "personalpage.html")
+    return render(request, "PersonalPage.html")
+
+def register(request):
+    """
+    用户注册界面
+    """
+    if request.method == "GET":
+        return render(request, "register.html")
+    elif request.method == "POST":
+        firstname = request.POST.get('firstname')
+        lastname = request.POST.get('lastname')
+        birthday = request.POST.get('birthday')
+        gender = request.POST.get('gender')
+        email = request.POST.get('email')
+        phonenumber = request.POST.get('phonenumber')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        print(firstname, lastname, birthday, gender, email, phonenumber, username, password)
+        return HttpResponse("received your information!")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', login),
     path('personalpage/', personalpage),
+    path('regi/', register)
 ]

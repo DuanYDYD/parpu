@@ -3,13 +3,11 @@
     <head>
         <meta charset="UTF-8">
         <title>Login Page</title>
-        
-        <link rel="stylesheet" href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'>
-        <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js'></script>
-        <link rel="stylesheet" href='https://use.fontawesome.com/releases/v5.8.1/css/all.css'>
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-        <link rel="stylesheet" href="/static/login.css">
-        
+        <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+        <script src="/static/js/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet" href= "/static/css/all.css">
+        <script src="/static/js/jquery.min.js"></script>
+        <link rel="stylesheet" href="/static/css/login.css">
     </head>
     <body>
         <div class="container">
@@ -18,11 +16,13 @@
                     <div class="card">
                         <form class="box" method="POST" action="/login/">
                             <h1>Login</h1>
-                            <!--below class need link to password retrieve page and personal page-->
-                            <p> Please enter your email address and password!</p> 
+                            <p> Please enter your email address and password!</p>
+                            <p>{{msg}}</p>
+                            <!--input username and password via keyboard-->                            
                             <input type="text" name="email" placeholder="*@link.cuhk.edu.hk">
                             <input type="password" name="pwd" placeholder="Password">
                             <a class="forgot" href="#">Forgot password?</a> 
+                            <!--input should be click on the button-->
                             <input type="submit" name="" value="Login" href="#">
                             <div class="col-md-12">
                                 <ul class="social-network social-circle">
@@ -36,7 +36,6 @@
                 </div>
             </div>
         </div>
-
 		<ul class="colorlib-bubbles">
 			<li></li>
 			<li></li>
