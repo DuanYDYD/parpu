@@ -56,11 +56,18 @@ def register(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
         print(firstname, lastname, birthday, gender, email, phonenumber, username, password)
-        return HttpResponse("received your information!")
+        return redirect('/login/')
+
+def index(request):
+    """
+    进入用户中心
+    """
+    return render(request, "index.html")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', login),
     path('personalpage/', personalpage),
-    path('regi/', register)
+    path('regi/', register),
+    path('index/', index),
 ]
