@@ -79,9 +79,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'csci3100',        #数据库名字
-        'USER': 'root',          #账号
-        'PASSWORD': '123456',      #密码
-        'HOST': '127.0.0.1',    #IP
+        'USER': 'xutianliang',          #账号
+        'PASSWORD': 'xutianliang128!',      #密码
+        'HOST': 'rm-j6c2l1s6488tmniikco.mysql.rds.aliyuncs.com',    #dizhi
         'PORT': '3306',                   #端口
         'TEST': {
             'CHARSET': 'utf8',
