@@ -8,16 +8,17 @@ from django.shortcuts import render, redirect
 from django.views.generic import View, TemplateView, ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView
 from forum.form import  PostForm # ,MessageForm, PostForm,
-from user.form import UserForm
+from user.form import UserForm, ForgetForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse_lazy
 
 from user.models import User, Friend
-from forum.models import Column, Comment, Friend, Post
-from contest.models import Contest
+from forum.models import Contest,  Column, Comment, Friend, Post
 from django.shortcuts import get_object_or_404, render
 import logging
+
+from user.utils import random_str
 
 logger = logging.getLogger(__name__)
 
@@ -103,6 +104,47 @@ def userregister(request):
         #next = reverse_lazy('index')
         return render(request, 'user/register.html', {"form" : form})
 
+def findPassword(request):
+    errors = []
+    if request.method == 'POST':
+        email = request.POST.get("email", "")
+        form = ForgetForm(request.POST)
+        if form.is_valid():
+            code = random_str(16)
+            title = 'Please enter the verification code to find your password.'
+            message = "Here is your verification code ！\n\n" + code
+            from_email = None
+            try:
+                send_mail(title, message, from_email, [email])
+            except Exception as e:
+                logger.error(
+                    '[UserControl]Cannot reach the registration email:[%s]' % email)
+                return HttpResponse("Error in sending email.\nPassword finding fails!", status=500)
+        else:
+            # 如果表单不正确,保存错误到errors列表中
+            for k, v in form.errors.items():
+                # v.as_text() 详见django.forms.util.ErrorList 中
+                errors.append(v.as_text())
+            if errors:
+                return render(request, 'user/user_fail.html', {"errors": errors})
+        ##########################
+        backcode=request.POST.get("backcode", "")
+        if backcode == code:
+            thisuser = get_object_or_404(User,email=email)
+            password = thisuser.password
+            title = 'Successfully find your password.'
+            message = str(password)
+            try:
+                send_mail(title, message, from_email, [email])
+            except Exception as e:
+                logger.error(
+                    '[UserControl]Cannot reach the registration email:[%s]' % email)
+                return HttpResponse("Error in sending email.\nPassword finding fails!", status=500)
+        return redirect('index')
+    else:
+        form = ForgetForm()
+        return render(request, 'user/form.html', {"form": form})
+
 def user_ok(request):
     time.sleep(5)
     return redirect('index')
@@ -117,7 +159,7 @@ def IndexView(request):
         'column_list' : Column.objects.all()[0:5],
         'last_comments' : Comment.objects.all().order_by("-created_at")[0:10],
         'contest_list' : Contest.objects.all(),
-        'hot_contests': Contest.objects.all().order_by("con_id")[0:5],
+        'hot_contests': Contest.objects.all().order_by("interested_num")[0:5],
     }
 
     paginate_by = PAGE_NUM  #分页--每页的数目  #渲染页面
@@ -141,7 +183,7 @@ def userDetail(request, user_ID):
 
 @login_required
 def makefriends(request, friend_id):
-    if Friend.objects.filter(user=request.user, to=User.objects.get(friend_id)):
+    if Friend.objects.filter(user=request.user,to=User.objects.get(friend_id)):
         return HttpResponse("You have added the friend")
     else:
         newFriend=Friend.objects.create(user=request.user,to=User.objects.get(friend_id))
@@ -150,9 +192,11 @@ def makefriends(request, friend_id):
 
 @login_required
 def deletefriends(request, friend_id):
-    if Friend.objects.filter(user=request.user, to=User.objects.get(friend_id)):
+    if Friend.objects.filter(user=request.user,to=User.objects.get(friend_id)):
         obj = Friend.objects.get(id=friend_id)
         obj.delete()
         return HttpResponse("You delete the friend！<a href='/'>return</a>")
     else:
         return HttpResponse("You don't have the friend！<a href='/'>return</a>")
+
+

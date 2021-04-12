@@ -71,3 +71,8 @@ class UserForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
+
+class ForgetForm(forms.Form):
+    email = forms.EmailField()
+    captcha = CaptchaField(error_messages={'invalid': '验证码错误'})

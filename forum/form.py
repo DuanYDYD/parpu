@@ -4,7 +4,7 @@ from functools import reduce
 from django import forms
 from django.conf import settings
 from captcha.fields import CaptchaField
-from forum.models import Post #,Message,
+from forum.models import Post, Comment
 from user.models import User, Friend, Team
 
 DJANGO_FORUM_APP_FILTER_PROFANE_WORDS = getattr(settings, 'DJANGO_FORUM_APP_FILTER_PROFANE_WORDS', False)
@@ -35,3 +35,8 @@ class PostForm(forms.ModelForm):
     #
     #     return body
 
+class CommentForm(forms.ModelForm):
+    captcha = CaptchaField(error_messages={'invalid': 'wrong validation code'})
+    class Meta:
+        model = Comment
+        fields = ('content', )

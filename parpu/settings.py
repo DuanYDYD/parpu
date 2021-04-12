@@ -32,9 +32,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'contest',
-    'forum',
-    'user',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,10 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'parpu',
     'captcha',
+    'contest',
+    'forum',
+    'user',
 ]# 这里进行了修改
 
-AUTH_USER_MODEL = "user.User"
-AUTHENTICATION_BACKENDS = ['utils.custom_authentication.CustomBackend', ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -130,6 +129,14 @@ USE_L10N = True
 
 USE_TZ = True
 
+AUTH_USER_MODEL = "user.User"
+
+EMAIL_USE_SSL = True
+EMAIL_HOST = 'smtp.126.com'  # 如果是 163 改成 smtp.163.com
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'xutianliang128@126.com' # 帐号
+EMAIL_HOST_PASSWORD = 'XOANGODDYSVUFLNI'  # 密码
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/

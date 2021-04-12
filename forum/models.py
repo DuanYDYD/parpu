@@ -109,3 +109,4 @@ class Comment(models.Model):  #评论
     def description(self):
         return u'%s 回复了您的帖子(%s) R:《%s》' % (self.author, self.post,
                                            self.content)
+
