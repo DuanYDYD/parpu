@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="UTF-8">
+    <title>Post Contest</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/tether.min.css">
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <link rel="stylesheet" type="text/css" href="css/fontstyles_1.css">
+    <link rel="stylesheet" type="text/css" href="css/fontstyles_2.css">
+    <link rel="stylesheet" type="text/css" href="css/iconstyles.css">
+    <!-- END GLOBAL MANDATORY STYLES -->
+
+    <link rel="stylesheet" type="text/css" href="css/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="css/select2_1.min.css">
+
+    <!-- BEGIN THEME STYLES -->
+    <link rel="stylesheet" type="text/css" href="css/style.min.css">
+    <!-- END THEME STYLES -->
+</head>
+<!-- BEGIN HEAD -->
+<body class="">
+    <div class="header-master">
+        <div class="header-default">
+            <div class="header-topbar">
+                <div class="container">
+                    <div class="header-topbar__contact-info">
+                        <div class="header-topbar__contact-info-item">
+                            <span class="value">Welcome to Post Contest Page!</span>
+                        </div>
+                    </div>
+                    <ul class="nav header-topbar__nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Back to Main</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ContestSearch.html">Go to Contest</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Forum.html">Go to Forum</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">My Team</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../Login/login.html">Sign In/Personal Page</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<form action="#" class="post-job">
+    <div class="container">
+        <h3 class="post-job__heading">Get your Contest Published!</h3>
+
+        <div class="row">
+            <div class="col-lg-9">
+                <p class="post-job__description">Post a Conteset for Free - Start receiving proposals within minutes</p>
+
+                <div class="row">
+                    <div class="col-xl-7">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="post-job__email">Email Address</label>
+                                    <!--input here-->
+                                    <input type="email" id="post-job__email" class="form-control" placeholder="*@link.cuhk.edu.hk">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="post-job__first-name">Authenticated Code</label>
+                                    <!--input here-->
+                                    <input type="password" id="post-job__first-name" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-1">
+                        <div class="post-job__auth-separator"><span>or</span></div>
+                    </div>
+                    <div class="col-xl-4">
+                        <div class="post-job__auth">
+                            <div>
+                                <a href="#" class="btn btn-primary btn-block btn-icon btn-icon-left post-job__facebook-btn">
+                                    <span class="icon iconfont-facebook-solid"></span>
+                                    <span class="separator"></span>
+                                    <span class="text">Sign in with Facebook</span>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="#" class="btn btn-primary btn-block btn-icon btn-icon-left post-job__linkedin-btn">
+                                    <span class="icon iconfont-linkedin-solid"></span>
+                                    <span class="separator"></span>
+                                    <span class="text">Sign in with LinkedIn</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="post-job__task-title" class="d-flex justify-content-between">What do you need to get done? <span class="icon iconfont-help-outline"></span></label>
+                            <!--input here-->
+                            <input type="text" id="post-job__task-title" class="form-control" placeholder="e.g. I need a professional website design">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="post-job__pick-category">Pick Category</label>
+                            <!--selection here-->
+                            <select id="post-job__pick-category" class="form-control selectable">
+                                <!--option value should ba a list of general category?-->
+                                <option value="">Select</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="post-job__description" class="d-flex justify-content-between">What do you need to get done? <span class="icon iconfont-help-outline"></span></label>
+                            <!--input here-->
+                            <textarea id="post-job__description" class="form-control" placeholder="Provide a more detailed description to help you get better proposals" rows="5"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="post-job__work-type">Contest Type</label>
+                            <!--selection here-->
+                            <select id="post-job__work-type" class="form-control selectable">
+                                <option value="">Free Join</option>
+                                <option value="">Limited Join</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="post-job__work-type" class="d-flex justify-content-between">Award <span class="icon iconfont-help-outline"></span></label>
+                            <!--input here-->
+                            <textarea id="post-job__description" class="form-control" placeholder="*$" rows="1"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="post-job__work-type" class="d-flex justify-content-between">
+                                <span class="label-title">Scale <span>(optional)</span></span>
+                                <span class="icon iconfont-help-outline"></span>
+                            </label>
+                            <!--selection here-->
+                            <select class="form-control selectable">
+                                <option value="">local</option>
+                                <option value="">domestic</option>
+                                <option value="">international</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <button data-toggle="collapse" data-target="#post-job__advanced-options" class="post-job__options-toggler link-underlined link-underlined--dashed link-underlined--endeavour">+ Show advanced options (location, visibility, duration)</button>
+
+                <div class="collapse mt-4" id="post-job__advanced-options">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="form-group">
+                                <label for="post-job__work-type" class="d-flex justify-content-between">Where does the candidates need to work from? <span class="icon iconfont-help-outline"></span></label>
+                                <!--selection here-->
+                                <select class="form-control selectable">
+                                    <option value="">Remotely (anywhere)</option>
+                                    <option value="">Offline (predetermined location)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="form-group">
+                                <label for="post-job__work-type" class="d-flex justify-content-between">Visibility of Contest post</label>
+                                <div>
+                                    <label class="custom-control custom-radio">
+                                        <!--input here-->
+                                        <input name="radio" type="radio" class="custom-control-input">
+                                        <span class="custom-control-indicator"></span>
+                                        <span class="custom-control-description">Public <span class="text-light">(All Candidates can view the Contest post and send proposals)</span></span>
+                                    </label>
+                                </div>
+                                <div>
+                                    <label class="custom-control custom-radio">
+                                        <!--input here-->
+                                        <input name="radio" type="radio" class="custom-control-input" checked>
+                                        <span class="custom-control-indicator"></span>
+                                        <span class="custom-control-description">Private <span class="text-light">(Only Selected Candidate that you speciffically invite can view the contest post and send proposals)</span></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="form-group">
+                                <label for="post-job__job-duration"><span class="label-title">Estimated Contest duration <span>(optional)</span></span></label>
+                                <!--selection here-->
+                                <select id="post-job__job-duration" class="form-control selectable">
+                                    <option value="">Within Week</option>
+                                    <option value="">Within Month</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button data-toggle="collapse" data-target="#post-job__advanced-options" class="link-underlined link-underlined--dashed link-underlined--endeavour">+ Hide advanced options</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <!--submit button here-->
+                            <button class="btn btn-primary btn-block post-job__submit-button">Post Contest</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <p class="post-job__useful-tips-heading">Useful Tips</p>
+
+                <ul class="list-unstyled post-job__useful-tips-items">
+                    <li class="post-job__useful-tip">
+                        <span class="point">1.</span> Describe your Contest in as much detail
+                        as you can comfortably reveal - it will increase the quality of proposals you receive and shorten the selection process.
+                    </li>
+                    <li class="post-job__useful-tip">
+                        <span class="point">2.</span> Upload as much relevant information (pictures, documents, specifications, links, etc) as possible to get a realistic response.
+                    </li>
+                    <li class="post-job__useful-tip">
+                        <span class="point">3.</span> Match the target candidates to your requirements – remember, you’re looking for the best you can afford, not the cheapest you can get.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="footer-default">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h6 class="footer-default__heading">About</h6>
+                <p>
+                    Morbi convallis bibendum urna ut viverra. Maecenas quis consequat
+                    libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet
+                    ullamcorper phasellus semper.
+                </p>
+
+                <a href="#" class="btn btn-outline-secondary btn-get-started">Get Started</a>
+            </div>
+            <div class="col-lg-2 col-md-4">
+                <h6 class="footer-default__heading footer-default__heading--sm">For Candidates</h6>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="">Join Team</a>
+                    </li>
+                    <li>
+                        <a href="">Register Contest</a>
+                    </li>
+                    <li>
+                        <a href="">Submit Resume</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-2 col-md-4">
+                <h6 class="footer-default__heading footer-default__heading--sm">For Holder</h6>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="">Browse Candidates</a>
+                    </li>
+                    <li>
+                        <a href="">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="">Add Contest</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-2 col-md-4">
+                <h6 class="footer-default__heading footer-default__heading--sm">Other</h6>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="">Other-1</a>
+                    </li>
+                    <li>
+                        <a href="">Other-2</a>
+                    </li>
+                    <li>
+                        <a href="">Other-3</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/tether.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/dropdown.animate.js"></script>
+
+<script>
+    (function () {
+        $(document).ready(function () {
+            var dropDownToggle = $('.dropdown-toggle');
+
+            $(".navbar-toggler").on("click", function () {
+                $(this).toggleClass("is-active");
+            });
+
+            dropDownToggle.click(function() {
+                var dropdownList = $(this).parent().find('.dropdown-menu');
+                var dropdownOffset = $(this).offset();
+                var offsetLeft = dropdownOffset.left;
+                var dropdownWidth = dropdownList.width() / 2;
+                var docWidth = $(window).width();
+
+                var isDropdownVisible = (offsetLeft + dropdownWidth <= docWidth);
+
+                if (!isDropdownVisible) {
+                    dropdownList.addClass('dropdown-menu-right');
+                } else {
+                    dropdownList.removeClass('dropdown-menu-right');
+                }
+            });
+        });
+    })(jQuery);
+</script>
+
+<script src="js/select2.min.js"></script>
+<script src="js/post_contest.js"></script>
+
+
+</body>
+</html>

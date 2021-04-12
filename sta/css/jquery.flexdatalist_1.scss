@@ -1,0 +1,57 @@
+@import "../../settings/variables/colors";
+@import "../../settings/variables/ui";
+
+.flexdatalist-results {
+  color: $text-color-light;
+  border-radius: 0;
+  border: none;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5);
+  border-bottom-left-radius: 3px !important;
+  border-bottom-right-radius: 3px !important;
+  margin-top: -2px;
+  border-top: 1px solid #dfdfdf !important;
+
+  li {
+    border: none;
+    font-size: 20px;
+    line-height: 40px;
+
+    &.active {
+      background: #ECECEC;
+      color: $text-color;
+    }
+
+    &.no-results {
+      color: $text-color-light;
+    }
+
+    .item-capital, .item-continent {
+      font-size: 10px;
+      font-weight: 600;
+      color: $text-color-light;
+      text-transform: uppercase;
+    }
+
+    .item {
+      + .item {
+        margin-left: 12px;
+      }
+
+      .highlight {
+        font-weight: normal;
+      }
+    }
+
+    &.group {
+      background: #fff;
+      color: $text-color;
+      padding: 0 8px;
+
+      .group-item-count {
+        font-size: 10px;
+        color: $text-color-light;
+      }
+    }
+  }
+}
+

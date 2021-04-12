@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Post</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/tether.min.css">
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <link rel="stylesheet" type="text/css" href="css/fontstyles_1.css">
+    <link rel="stylesheet" type="text/css" href="css/fontstyles_2.css">
+    <link rel="stylesheet" type="text/css" href="css//iconstyles.css">
+    <link rel="stylesheet" type="text/css" href="css/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="css/select2_1.min.css">
+    <link rel="stylesheet" type="text/css" href="css/leaflet.css">
+    <link rel="stylesheet" type="text/css" href="css/style-blue.min.css">
+
+    <script>
+        var loadFile = function(event) {
+            var image = document.getElementById('output');
+            image.src = URL.createObjectURL(event.target.files[0]);
+            image.style.display = "inline"
+            var block = document.getElementById('plusSign');
+            block.style.display = "none"
+        };
+    </script>
+</head>
+<body class="">
+
+    <div class="header-master">
+        <div class="header-default">
+            <div class="header-topbar">
+                <div class="container">
+                    <div class="header-topbar__contact-info">
+                        <div class="header-topbar__contact-info-item">
+                            <span class="value">Welcome to Add Post Page!</span>
+                        </div>
+                    </div>
+                    <ul class="nav header-topbar__nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Back to Main</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ContestSearch.html">Go to Contest</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Forum.html">Go to Forum</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">My Team</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../Login/login.html">Sign In/Personal Page</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="master-post-application">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <h5 class="master-post-application__heading">Add a New Post!</h5>
+
+                <form action="#" class="master-post-application__form">
+                    <div class="form-group">
+                        <label for="exampleTextarea">Anything you want to share?</label>
+                        <!--input here-->
+                        <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Describe what you want to share, check the details"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleTextarea">Add photo for vivid illustration</label>
+                        <div class="master-post-application__photos">
+                            <div class="master-post-application__photo">
+                                <img src="images/01.png" alt="">
+                                <span class="iconfont-close-solid-v3 master-post-application__photo-remove"></span>
+                            </div>
+                            <div class="master-post-application__photo">
+                                <!--photo upload here!-->	
+                                <input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;">
+                                <img id="output" width="120" height="120" style="display: none">
+                                <p>
+                                    <label for="file" style="cursor: pointer;">
+                                        <span id="plusSign" class="icon iconfont-plus-circle-solid"></span>
+                                    </label>
+                                </p>
+                            </div>
+                            <div class="master-post-application__photo">
+                                <span class="icon iconfont-plus-circle-solid"></span>
+                            </div>
+                            <div class="master-post-application__photo">
+                                <span class="icon iconfont-plus-circle-solid"></span>
+                            </div>
+                            <div class="master-post-application__photo">
+                                <span class="icon iconfont-plus-circle-solid"></span>
+                            </div>
+                            <div class="master-post-application__photo">
+                                <span class="icon iconfont-plus-circle-solid"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="city">Category</label>
+                                <select name="city" id="city" class="selectable">
+                                    <option value="">Business</option>
+                                    <option value="">Arts</option>
+                                    <option value="">Science</option>
+                                    <option value="">Sports</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="form-group">
+                                <label for="address">One Sentence Summary</label>
+                                <!--input here-->
+                                <input type="text" class="form-control" id="address" placeholder="One sentence to wrap up!">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="upfile">Upload File</label>
+                                <!--file upload here-->
+                                <input type="file" id="myFile" name="filename">
+                                <!--Submit button here-->
+                                <input type="submit">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="custom-control custom-checkbox">
+                            <!--input checkbox here-->
+                            <input type="checkbox" class="custom-control-input" checked="">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description">I agree with the <a href="#" class="link-underlined">rules</a></span>
+                        </label>
+                    </div>
+                    <div class="form-group mt-3">
+                        <!--final submit button here-->
+                        <button type="button" class="btn btn-primary btn-rounded btn-lg master-post-application__submit-btn">Publish</button>
+                    </div>
+
+                </form>
+            </div>
+            <div class="col-lg-3">
+                <h6 class="master-post-application__faq-heading">FAQ:</h6>
+
+                <dl class="master-post-application__faq">
+                    <dt>1. How fast will begin to receive comments?</dt>
+                    <dd>Usually, the first visotors start coming in 15-20 minutes after the publication</dd>
+                    <dt>2. How many credits do I get?</dt>
+                    <dd>On average, for each good quality post with more than 10 positive feedbacks. You can easily get x credits.</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer-default">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h6 class="footer-default__heading">About</h6>
+                <p>
+                    Morbi convallis bibendum urna ut viverra. Maecenas quis consequat
+                    libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet
+                    ullamcorper phasellus semper.
+                </p>
+
+                <a href="#" class="btn btn-outline-secondary btn-get-started">Get Started</a>
+            </div>
+            <div class="col-lg-2 col-md-4">
+                <h6 class="footer-default__heading footer-default__heading--sm">For Candidates</h6>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="">Join Team</a>
+                    </li>
+                    <li>
+                        <a href="">Register Contest</a>
+                    </li>
+                    <li>
+                        <a href="">Submit Resume</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-2 col-md-4">
+                <h6 class="footer-default__heading footer-default__heading--sm">For Holder</h6>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="">Browse Candidates</a>
+                    </li>
+                    <li>
+                        <a href="">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="">Add Contest</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-2 col-md-4">
+                <h6 class="footer-default__heading footer-default__heading--sm">Other</h6>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="">Other-1</a>
+                    </li>
+                    <li>
+                        <a href="">Other-2</a>
+                    </li>
+                    <li>
+                        <a href="">Other-3</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/tether.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/dropdown.animate.js"></script>
+
+<script>
+    (function () {
+        $(document).ready(function () {
+            $(".navbar-toggler").on("click", function () {
+                $(this).toggleClass("is-active");
+            });
+        });
+    })(jQuery);
+</script>
+
+<script src="js/leaflet.js"></script>
+<script src="js/select2.min.js"></script>
+<script src="js/master-post-application.js"></script>
+
+
+</body>
+</html>
