@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 class Contest(models.Model):
     '''竞赛类'''
@@ -12,10 +13,11 @@ class Contest(models.Model):
 
     con_id = models.IntegerField(primary_key=True)
     contest_name = models.CharField(max_length= 80)
-    regi_ddl = models.DateField()
-    startdate = models.DateField()
-    enddate = models.DateField() #注册截止日期，开始日期，结束日期
-    holder = models.CharField(max_length= 80) #主办方
+    area = models.CharField(max_length=80, choices=area, default='B')
+    regi_ddl = models.DateField(default=timezone.now)
+    startdate = models.DateField(default=timezone.now)
+    enddate = models.DateField(default=timezone.now) #注册截止日期，开始日期，结束日期
+    holder = models.CharField(max_length=80) #主办方
 
     upload = models.ImageField(upload_to='uploads/%Y/%m/%d/', null=True)
 

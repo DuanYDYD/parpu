@@ -14,8 +14,9 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse_lazy
 
-from forum.models import Contest, Column, Comment, Post
+from forum.models import Column, Comment, Post
 from user.models import User, Friend, Team
+from contest.models import Contest
 from django.shortcuts import get_object_or_404, render
 import logging
 

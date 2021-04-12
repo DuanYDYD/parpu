@@ -32,6 +32,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'contest',
+    'forum',
+    'user',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,7 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'parpu',
-]
+    'captcha',
+]# 这里进行了修改
+
+AUTH_USER_MODEL = "user.User"
+AUTHENTICATION_BACKENDS = ['utils.custom_authentication.CustomBackend', ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -60,16 +60,16 @@ class User(AbstractUser):
 
 class Friend(models.Model):
     '''friend'''
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,related_name='user')
-    to = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,related_name='to')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='user')
+    to = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='to')
 
 class Team(models.Model):
     '''队伍'''
     resultc=(
-        ('fw','first award'),
-        ('sw','second award'),
-        ('tw','third award'),
-        ('aw','award'),
+        ('fw', 'first award'),
+        ('sw', 'second award'),
+        ('tw', 'third award'),
+        ('aw', 'award'),
     )
 
     area = (

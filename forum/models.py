@@ -63,8 +63,8 @@ class Post(models.Model):  #文章
         return u'/column=%d/post=%d' % (self.column.id, self.id)
 
 
-class Contest(models.Model):
-    '''比赛'''
+'''class Contest(models.Model):
+    
 
     resultc = (
         ('fw', 'first award'),
@@ -83,7 +83,7 @@ class Contest(models.Model):
     con_c_time = models.DateTimeField(auto_now_add=True)
     conaward = models.CharField(max_length=32, choices=resultc)
     contestcat = models.CharField(max_length=128, choices=area, default='sports')
-    interested_num = models.IntegerField(default=0)
+    interested_num = models.IntegerField(default=0)'''
 
 
 

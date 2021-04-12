@@ -14,7 +14,8 @@ from django.template import loader
 from django.urls import reverse_lazy
 
 from user.models import User, Friend
-from forum.models import Contest,  Column, Comment, Friend, Post
+from forum.models import Column, Comment, Friend, Post
+from contest.models import Contest
 from django.shortcuts import get_object_or_404, render
 import logging
 
@@ -116,7 +117,7 @@ def IndexView(request):
         'column_list' : Column.objects.all()[0:5],
         'last_comments' : Comment.objects.all().order_by("-created_at")[0:10],
         'contest_list' : Contest.objects.all(),
-        'hot_contests': Contest.objects.all().order_by("interested_num")[0:5],
+        'hot_contests': Contest.objects.all().order_by("con_id")[0:5],
     }
 
     paginate_by = PAGE_NUM  #分页--每页的数目  #渲染页面
@@ -140,7 +141,7 @@ def userDetail(request, user_ID):
 
 @login_required
 def makefriends(request, friend_id):
-    if Friend.objects.filter(user=request.user,to=User.objects.get(friend_id)):
+    if Friend.objects.filter(user=request.user, to=User.objects.get(friend_id)):
         return HttpResponse("You have added the friend")
     else:
         newFriend=Friend.objects.create(user=request.user,to=User.objects.get(friend_id))
@@ -149,7 +150,7 @@ def makefriends(request, friend_id):
 
 @login_required
 def deletefriends(request, friend_id):
-    if Friend.objects.filter(user=request.user,to=User.objects.get(friend_id)):
+    if Friend.objects.filter(user=request.user, to=User.objects.get(friend_id)):
         obj = Friend.objects.get(id=friend_id)
         obj.delete()
         return HttpResponse("You delete the friend！<a href='/'>return</a>")
