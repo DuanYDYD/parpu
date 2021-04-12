@@ -39,13 +39,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'parpu',
+    'forum',
+    'captcha',
+    'user',
+    'contest',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    #'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -79,9 +83,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'csci3100',        #数据库名字
-        'USER': 'xutianliang',          #账号
-        'PASSWORD': 'xutianliang128!',      #密码
-        'HOST': 'rm-j6c2l1s6488tmniikco.mysql.rds.aliyuncs.com',    #dizhi
+        'USER': 'root',          #账号
+        'PASSWORD': '123456',      #密码
+        'HOST': '127.0.0.1',    #IP
         'PORT': '3306',                   #端口
         'TEST': {
             'CHARSET': 'utf8',
@@ -90,6 +94,22 @@ DATABASES = {
 
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'csci3100',        #数据库名字
+#         'USER': 'xutianliang',          #账号
+#         'PASSWORD': 'xutianliang128!',      #密码
+#         'HOST': 'rm-j6c2l1s6488tmniikco.mysql.rds.aliyuncs.com',    #dizhi
+#         'PORT': '3306',                   #端口
+#         'TEST': {
+#             'CHARSET': 'utf8',
+#             'COLLATION': 'utf8_general_ci'
+#         }
+#
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -123,11 +143,20 @@ USE_L10N = True
 
 USE_TZ = True
 
+AUTH_USER_MODEL = "user.User"
+
+EMAIL_USE_SSL = True
+EMAIL_HOST = 'smtp.126.com'  # 如果是 163 改成 smtp.163.com
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'xutianliang128@126.com' # 帐号
+EMAIL_HOST_PASSWORD = '128128128'  # 密码
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+#############################
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "sta"),
 ]
