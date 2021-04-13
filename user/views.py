@@ -219,7 +219,7 @@ def deletefriends(request, friend_id):
         return HttpResponse("You don't have the friend！<a href='/'>return</a>")
 
 @login_required
-def followContest(request,contest_id): #这个urls要做到contest那里
+def followContest(request, contest_id): #这个urls要做到contest那里
     thiscontest = get_object_or_404(Contest, pk=contest_id)
     user = get_object_or_404(User, pk=request.user.id)
     if user.objects.filter(interestedContest=thiscontest).exists():
@@ -230,7 +230,7 @@ def followContest(request,contest_id): #这个urls要做到contest那里
         return HttpResponse('<script>alert("Successfully add it！");window.history.back(-1);"</script>')
 
 @login_required
-def cancelFollowContest(request,contest_id):
+def cancelFollowContest(request, contest_id):
     thiscontest = get_object_or_404(Contest, pk=contest_id)
     user = get_object_or_404(User, pk=request.user.id)
     if user.objects.filter(interestedContest=thiscontest).exists():
@@ -285,7 +285,7 @@ def teamList(request, contest_id):
         Contest.objects.get(pk=contest_id)
         thiscontest = Contest.objects.get(pk=contest_id)
         team_list = Team.objects.filter(contest=thiscontest)
-        return render(request,'user/list.html',{'team_list' : team_list} )
+        return render(request,'user/list.html', {'team_list' : team_list} )
     except:
         return HttpResponse('<script>alert("We do not have the contest");window.history.back(-1);"</script>')
 
@@ -331,14 +331,13 @@ def applydetail(request,application_id):
         team.team_members.add()
         team.save()
 
-        if team.capacity <= team.team_members.all().count():
+        if team.capacity <= team.team_members.all().count()+1:
             application.delete()
             return HttpResponse('<script>alert("The team is full!");window.history.back(-2);"</script>')
 
         elif flag == 'yes':
             application.delete()
             team.team_members.add(sender)
-            application.delete()
             team.save()
             return HttpResponse('<script>alert("Successfully add in!");window.history.back(-2);"</script>')
 

@@ -1,16 +1,20 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from contest.models import Contest
+import time
 
 def index(request):
-    requested = Contest.objects.all()
-    return render(request, "cindex.html", {'contest_list': requested})
+    context = {}
+    recent_contest = Contest.objects.order_by("-id")[0:6]
+    return render(request, "ContestSearch.html", {"recent": recent_contest})
 
 def contestpage(request):
-    cid = request.GET.get('cid')
-    requested = Contest.objects.filter(con_id = cid)
-    target = requested[0]
-    return render(request, "contestpage.html", {'contest': target})
-    #如何显示存储的图片是个问题
+    contest_id = request.GET.get('contest_id')
+    requested = get_object_or_404(Contest, pk=contest_id)
+    deadline = requested.regi_ddl.strftime('%Y-%m-%d')
+    deadline = deadline.replace('-', '/')
+    return render(request, "ContestPage.html", {"contest": requested, "deadline": deadline})
 
+def addpost(request):
+    return render(request, "AddPost.html")
 
 # Create your views here.

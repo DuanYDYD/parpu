@@ -201,14 +201,15 @@
                 <h2 class="listing-recent-jobs__heading">Recent Contest</h2>
                 <div class="listing-recent-jobs__items">
                     <table class="table table-responsive">
+                        {% for row in recent %}
                         <tr class="listing-recent-jobs__item">
                             <td class="listing-recent-jobs__item-company">
-                                <img src="/static/Forum&Contest/images/portfolio-1.jpg" alt="" width="50" height="50">
+                                <img src="/static/Forum&Contest/images/portfolio-{{row.id}}.jpg" alt="" width="50" height="50">
                             </td>
                             <td>
                                 <!--For each td, the contest name and limit should be uploaded from database-->
-                                <a href="#" class="listing-recent-jobs__item-title link-underlined link-underlined--endeavour">Contest Name</a>
-                                <div class="listing-recent-jobs__item-description"><span>Limit: </span>1-2 Person</div>
+                                <a href="/contest/contestpage/?contest_id={{row.id}}" class="listing-recent-jobs__item-title link-underlined link-underlined--endeavour">{{row.name}}</a>
+                                <div class="listing-recent-jobs__item-description"><span>Holder: </span>{{row.holder}}</div>
                             </td>
                             <td class="listing-recent-jobs__item-location">
                                 <!--For each td, the contest holding location should be uploaded from database-->
@@ -217,110 +218,11 @@
                             </td>
                             <td class="listing-recent-jobs__item-info">
                                 <!--For each td, the contest category and published time should be uploaded from database-->
-                                <div class="badge badge-mountain-meadow listing-recent-jobs__item-type">Category</div>
-                                <div class="listing-recent-jobs__item-created">1 days ago</div>
+                                <div class="badge badge-mountain-meadow listing-recent-jobs__item-type">{{row.area}}</div>
+                                <div class="listing-recent-jobs__item-created">{{row.startdate}}</div>
                             </td>
                         </tr>
-                        <tr class="listing-recent-jobs__item">
-                            <td class="listing-recent-jobs__item-company">
-                                <img src="/static/Forum&Contest/images/portfolio-2.jpg" alt="" width="50" height="50">
-                            </td>
-                            <td>
-                                <!--For each td, the contest name and limit should be uploaded from database-->
-                                <a href="#" class="listing-recent-jobs__item-title link-underlined link-underlined--endeavour">Contest Name</a>
-                                <div class="listing-recent-jobs__item-description"><span>Limit: </span>1-2 Person</div>
-                            </td>
-                            <td class="listing-recent-jobs__item-location">
-                                <!--For each td, the contest holding location should be uploaded from database-->
-                                <span class="listing-recent-jobs__item-location-icon iconfont-map-outline"></span>
-                                Location
-                            </td>
-                            <td class="listing-recent-jobs__item-info">
-                                <!--For each td, the contest category and published time should be uploaded from database-->
-                                <div class="badge badge-curious-blue listing-recent-jobs__item-type">Category</div>
-                                <div class="listing-recent-jobs__item-created">2 days ago</div>
-                            </td>
-                        </tr>
-                        <tr class="listing-recent-jobs__item">
-                            <td class="listing-recent-jobs__item-company">
-                                <img src="/static/Forum&Contest/images/portfolio-3.jpg" alt="" width="50" height="50">
-                            </td>
-                            <td>
-                                <!--For each td, the contest name and limit should be uploaded from database-->
-                                <a href="#" class="listing-recent-jobs__item-title link-underlined link-underlined--endeavour">Contest Name</a>
-                                <div class="listing-recent-jobs__item-description"><span>Limit: </span>1-2 Person</div>
-                            </td>
-                            <td class="listing-recent-jobs__item-location">
-                                <!--For each td, the contest holding location should be uploaded from database-->
-                                <span class="listing-recent-jobs__item-location-icon iconfont-map-outline"></span>
-                                Location
-                            </td>
-                            <td class="listing-recent-jobs__item-info">
-                                <!--For each td, the contest category and published time should be uploaded from database-->
-                                <div class="badge badge-primary listing-recent-jobs__item-type">Category</div>
-                                <div class="listing-recent-jobs__item-created">3 days ago</div>
-                            </td>
-                        </tr>
-                        <tr class="listing-recent-jobs__item">
-                            <td class="listing-recent-jobs__item-company">
-                                <img src="/static/Forum&Contest/images/portfolio-4.jpg" alt="" width="50" height="50">
-                            </td>
-                            <td>
-                                <!--For each td, the contest name and limit should be uploaded from database-->
-                                <a href="#" class="listing-recent-jobs__item-title link-underlined link-underlined--endeavour">Contest Name</a>
-                                <div class="listing-recent-jobs__item-description"><span>Limit: </span>1-2 Person</div>
-                            </td>
-                            <td class="listing-recent-jobs__item-location">
-                                <!--For each td, the contest holding location should be uploaded from database-->
-                                <span class="listing-recent-jobs__item-location-icon iconfont-map-outline"></span>
-                                Location
-                            </td>
-                            <td class="listing-recent-jobs__item-info">
-                                <!--For each td, the contest category and published time should be uploaded from database-->
-                                <div class="badge badge-mountain-meadow listing-recent-jobs__item-type">Category</div>
-                                <div class="listing-recent-jobs__item-created">4 days ago</div>
-                            </td>
-                        </tr>
-                        <tr class="listing-recent-jobs__item">
-                            <td class="listing-recent-jobs__item-company">
-                                <img src="/static/Forum&Contest/images/portfolio-5.jpg" alt="" width="50" height="50">
-                            </td>
-                            <td>
-                                <!--For each td, the contest name and limit should be uploaded from database-->
-                                <a href="#" class="listing-recent-jobs__item-title link-underlined link-underlined--endeavour">Contest Name</a>
-                                <div class="listing-recent-jobs__item-description"><span>Limit: </span>1-2 Person, bachelor degree or above, HK permenant residents</div>
-                            </td>
-                            <td class="listing-recent-jobs__item-location">
-                                <!--For each td, the contest holding location should be uploaded from database-->
-                                <span class="listing-recent-jobs__item-location-icon iconfont-map-outline"></span>
-                                Location
-                            </td>
-                            <td class="listing-recent-jobs__item-info">
-                                <!--For each td, the contest category and published time should be uploaded from database-->
-                                <div class="badge badge-curious-blue listing-recent-jobs__item-type">Category</div>
-                                <div class="listing-recent-jobs__item-created">5 days ago</div>
-                            </td>
-                        </tr>
-                        <tr class="listing-recent-jobs__item">
-                            <td class="listing-recent-jobs__item-company">
-                                <img src="/static/Forum&Contest/images/portfolio-6.jpg" alt="" width="50" height="50">
-                            </td>
-                            <td>
-                                <!--For each td, the contest name and limit should be uploaded from database-->
-                                <a href="#" class="listing-recent-jobs__item-title link-underlined link-underlined--endeavour">Contest Name</a>
-                                <div class="listing-recent-jobs__item-description"><span>Limit: </span>1-2 Person</div>
-                            </td>
-                            <td class="listing-recent-jobs__item-location">
-                                <!--For each td, the contest holding location should be uploaded from database-->
-                                <span class="listing-recent-jobs__item-location-icon iconfont-map-outline"></span>
-                                Location
-                            </td>
-                            <td class="listing-recent-jobs__item-info">
-                                <!--For each td, the contest category and published time should be uploaded from database-->
-                                <div class="badge badge-primary listing-recent-jobs__item-type">Category</div>
-                                <div class="listing-recent-jobs__item-created">6 days ago</div>
-                            </td>
-                        </tr>
+                        {% endfor %}
                     </table>
                 </div>
             </div>
@@ -328,7 +230,7 @@
                 <h2 class="listing-recent-jobs__heading">Friends' Choices</h2>
 
                 <div class="card listing-recent-jobs__spotlight">
-                    <img class="card-img-top embed-responsive" src="images/portfolio-0.png" alt="Card image cap">
+                    <img class="card-img-top embed-responsive" src="/static/images/portfolio-0.png" alt="Card image cap">
                     <div class="listing-recent-jobs__spotlight-company-logo">
                         <img src="/static/Forum&Contest/images/dropbox-lg.png" alt="Card image cap">
                     </div>

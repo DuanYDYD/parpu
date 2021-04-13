@@ -61,10 +61,11 @@
         </div>
     </div>
 </div>
+
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex flex-column align-items-center">
-      <h1>Contest Name</h1>
-      <div class="countdown d-flex justify-content-center" data-count="2021/4/14">
+      <h1>{{contest.name}}</h1>
+      <div class="countdown d-flex justify-content-center" data-count={{deadline}}>
         <div>
           <h3>%d</h3>
           <h4>Days</h4>
@@ -102,27 +103,13 @@
       <div class="container">
         <div class="row content">
           <div class="col-lg-6">
-            <h2>Highlight of Contest</h2>
-            <!--Maybe come from the database? short description of contest-->
-            <h3>Some more description here: <br>Voluptatem dignissimos provident quasi corporis voluptates sit assum perenda sruen jonee trave</h3>
+            <h2>Highlight:</h2>
+            <h3>{{contest.highlight}}</h3>
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0">
             <p>
               <!--Maybe come from the database? detailed description of contest-->
-              Detailed description here: ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum
-            </p>
-            <ul>
-              <!--Maybe come from the database? Contest related attributes-->
-              <li><i class="bi bi-check"></i> Contest Certification: ullamco laboris nisi ut aliquip ex ea commodo consequa</li>
-              <li><i class="bi bi-check"></i> Contest Feature: duis aute irure dolor in reprehenderit in voluptate velit</li>
-              <li><i class="bi bi-check"></i> Contest Benefit: ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in</li>
-            </ul>
-            <p class="font-italic">
-              <!--Maybe come from the database? Special note for candidates-->
-              End Note for Candidate Here: lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+              {{contest.description}}
             </p>
           </div>
         </div>
@@ -133,18 +120,11 @@
     <section id="" class="contact">
       <div class="container">
         <div class="section-title">
-          <h2>Contest Limit</h2>
+          <h2>Participation Requirements</h2>
         </div>
         <div class="row justify-content-center">
             <div class="col-lg-10">
-                <p>Detailed Requirement on Candidates: <br>
-                     <ul>
-                      <!--Maybe come from the database? Contest related attributes-->
-                      <li>Requirement One: ullamco laboris nisi ut aliquip ex ea commodo consequa</li>
-                      <li>Requirement Two: duis aute irure dolor in reprehenderit in voluptate velit</li>
-                      <li>Requirement Three: ullamco laboris nisi ut ex ea commodo consequat. Duis aute irure dolor in reprehenderit in</li>
-                    </ul>
-                </p>
+                <p>{{contest.requirement}}</p>
             </div>
           <div class="col-lg-10">
             <div class="info-wrap">
@@ -153,21 +133,21 @@
                   <i class="bi bi-geo-alt"></i>
                   <!--Holder information-->
                   <h4>Registration Deadline:</h4>
-                  <p>xx year xx month xx day</p>
+                  <p>{{contest.regi_ddl}}</p>
                 </div>
 
                 <div class="col-lg-4 info mt-4 mt-lg-0">
                   <i class="bi bi-envelope"></i>
                   <!--Holder information-->
                   <h4>Start Date</h4>
-                  <p>xx year xx month xx day</p>
+                  <p>{{contest.startdate}}</p>
                 </div>
 
                 <div class="col-lg-4 info mt-4 mt-lg-0">
                   <i class="bi bi-phone"></i>
                   <!--Holder information-->
                   <h4>End Date</h4>
-                  <p>xx year xx month xx day</p>
+                  <p>{{contest.enddate}}</p>
                 </div>
               </div>
             </div>
@@ -188,22 +168,22 @@
                 <div class="col-lg-4 info">
                   <i class="bi bi-geo-alt"></i>
                   <!--Holder information-->
-                  <h4>Location:</h4>
-                  <p>ABCD EFGH Street<br>IJK LMNO, PQ 123456</p>
+                  <h4>Holder:</h4>
+                  <p>{{contest.holder}}</p>
                 </div>
 
                 <div class="col-lg-4 info mt-4 mt-lg-0">
                   <i class="bi bi-envelope"></i>
                   <!--Holder information-->
                   <h4>Email:</h4>
-                  <p>info@example.com<br>contact@example.com</p>
+                  <p>{{contest.holder_email}}</p>
                 </div>
 
                 <div class="col-lg-4 info mt-4 mt-lg-0">
                   <i class="bi bi-phone"></i>
                   <!--Holder information-->
                   <h4>Call:</h4>
-                  <p>+1 2345 67890<br>+0 9876 54321</p>
+                  <p>{{contest.holder_number}}</p>
                 </div>
               </div>
             </div>
