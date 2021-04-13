@@ -8,13 +8,14 @@ from django.shortcuts import render, redirect
 from django.views.generic import View, TemplateView, ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView
 from forum.form import  PostForm # ,MessageForm, PostForm,
-from user.form import UserForm, ForgetForm
+from user.form import UserForm, ForgetForm, TeamForm, ApplicationForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse_lazy
 
-from user.models import User, Friend
-from forum.models import Contest,  Column, Comment, Friend, Post
+from user.models import User, Friend, Team, Application
+from forum.models import  Column, Comment, Friend, Post
+from contest.models import Contest
 from django.shortcuts import get_object_or_404, render
 import logging
 
@@ -23,6 +24,7 @@ from user.utils import random_str
 logger = logging.getLogger(__name__)
 
 PAGE_NUM = 50
+
 # Create your views here.
 def index(request):
     latest_contest_list = Contest.objects.all()
@@ -104,8 +106,10 @@ def userregister(request):
         #next = reverse_lazy('index')
         return render(request, 'user/register.html', {"form" : form})
 
+code = ''
 def findPassword(request):
     errors = []
+    global code
     if request.method == 'POST':
         email = request.POST.get("email", "")
         form = ForgetForm(request.POST)
@@ -129,11 +133,13 @@ def findPassword(request):
                 return render(request, 'user/user_fail.html', {"errors": errors})
         ##########################
         backcode=request.POST.get("backcode", "")
+
         if backcode == code:
             thisuser = get_object_or_404(User,email=email)
             password = thisuser.password
             title = 'Successfully find your password.'
             message = str(password)
+            from_email = None
             try:
                 send_mail(title, message, from_email, [email])
             except Exception as e:
@@ -182,6 +188,20 @@ def userDetail(request, user_ID):
     return render(request, 'user/userpage.html', context)
 
 @login_required
+def addInteresetedContest(request, contest_id):
+    user = User.objects.get(pk=request.user.id)
+    try:
+        contest = user.interestedContest.get(pk=contest_id)
+    except:
+        contest = None
+    if contest:
+        user.interestedContest.add(contest)
+        user.save()
+        return HttpResponse('<script>alert("Successfully added it！");window.history.back(-1);"</script>')
+    else:
+        return HttpResponse('<script>alert("you have added it！");window.history.back(-1);"</script>')
+
+@login_required
 def makefriends(request, friend_id):
     if Friend.objects.filter(user=request.user,to=User.objects.get(friend_id)):
         return HttpResponse("You have added the friend")
@@ -199,4 +219,126 @@ def deletefriends(request, friend_id):
     else:
         return HttpResponse("You don't have the friend！<a href='/'>return</a>")
 
+@login_required
+def followContest(request,contest_id): #这个urls要做到contest那里
+    thiscontest = get_object_or_404(Contest, pk=contest_id)
+    user = get_object_or_404(User, pk=request.user.id)
+    if user.objects.filter(interestedContest=thiscontest).exists():
+        return HttpResponse('<script>alert("you have added it！");window.history.back(-1);"</script>')
+    else:
+        user.interestedContest.add(thiscontest)
+        user.save()
+        return HttpResponse('<script>alert("Successfully add it！");window.history.back(-1);"</script>')
+
+@login_required
+def cancelFollowContest(request,contest_id):
+    thiscontest = get_object_or_404(Contest, pk=contest_id)
+    user = get_object_or_404(User, pk=request.user.id)
+    if user.objects.filter(interestedContest=thiscontest).exists():
+        user.interestedContest.remove(thiscontest)
+        user.save()
+        return HttpResponse('<script>alert("Successfully cancel it!");window.history.back(-1);"</script>')
+    else:
+        return HttpResponse('<script>alert("you have not added it！");window.history.back(-1);"</script>')
+
+@login_required()
+def TeamCreate(request,contest_id):
+    thiscontest = get_object_or_404(Contest, pk=contest_id)
+    user = get_object_or_404(User, pk=request.user.id)
+    if request.method == 'POST':
+        form = TeamForm()
+        name = request.POST.get("name", "")
+        capacity = request.POST.get("capacity", "")
+        announce = request.POST.get("announce", "")
+        requirement = request.POST.get("requirement", "")
+
+        form = TeamForm(request.POST)
+        errors = []
+        if form.is_valid():
+            team = Team()
+            team.contest = thiscontest
+            team.leader = user
+            team.name = name
+            team.capacity = int(capacity)
+            team.requirement = requirement
+            team.announce = announce
+            team.save()
+            return HttpResponse('<script>alert("Successfully create it!");window.history.back(-1);"</script>')
+        else:
+            for k, v in form.errors.items():
+                #v.as_text() 详见django.forms.util.ErrorList 中
+                errors.append(v.as_text())
+            if errors:
+                return render(request, 'user/user_fail.html', {"errors": errors})
+    else:
+        form = TeamForm()
+        return render(request, 'user/form.html', {"form": form})
+
+@login_required
+def addTeam(request, team_id): #有一个bug，没法检测同一个contest里这个人加了很多队伍
+    if request.method == 'GET':
+        team = Team.objects.filter(pk=team_id)
+        user = User.objects.get(pk=request.user.id)
+        if team.capacity <= team.team_members.all().count():
+            return HttpResponse('<script>alert("The team is full!");window.history.back(-1);"</script>')
+        else:
+            application = Application.objects.filter(sender=request.user, team=get_object_or_404(Team, pk=team_id))
+            if len(application) != 0:
+                HttpResponse('<script>alert("You have sent the application!");window.history.back(-1);"</script>')
+            else:
+                form = ApplicationForm()
+                return render(request, 'user/form.html', {"form": form})
+    else:
+        sender = request.user
+        team = Team.objects.get(pk=team_id)
+        content = request.POST.get("content", "")
+
+        form = ApplicationForm(request.POST)
+        errors = []
+        if form.is_valid():
+            application = Application()
+            application.sender = sender
+            application.team = team
+            application.content = content
+            application.save()
+            return HttpResponse('<script>alert("Successfully apply it!");window.history.back(-1);"</script>')
+
+@login_required()
+def applyList(request):
+    user = User.objects.get(pk=request.user.id)
+    try:
+        team = Team.objects.get(leader=user)
+    except:
+        team = None
+    application_list = Application.objects.filter(team=team)
+    return render(request,'user/list.html',{'application_list':application_list})
+
+@login_required
+def applydetail(request,application_id):
+    if request.method == 'GET':
+        application = get_object_or_404(Application, pk=application_id)
+        return render(request, 'user/list.html', {'application': application})
+    else:
+        application = get_object_or_404(Application, pk=application_id)
+        flag = request.POST.get('flag', '')
+        user = User.objects.get(pk=request.user.id)
+        sender = Application.sender
+        team = Team.objects.get(leader=user)
+        team.team_members.add()
+        team.save()
+
+        if team.capacity <= team.team_members.all().count():
+            application.delete()
+            return HttpResponse('<script>alert("The team is full!");window.history.back(-2);"</script>')
+
+        elif flag == 'yes':
+            application.delete()
+            team.team_members.add(sender)
+            application.delete()
+            team.save()
+            return HttpResponse('<script>alert("Successfully add in!");window.history.back(-2);"</script>')
+
+        else:
+            application.delete()
+            return HttpResponse('<script>alert("Successfully dismiss it!");window.history.back(-2);"</script>')
 

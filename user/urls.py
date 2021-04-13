@@ -23,7 +23,7 @@ urlpatterns = [
     path('post_delete/<int:pk>/',
         login_required(fviews.PostDelete.as_view()),
         name='post_delete'),
-
+    path('friendsadd/<int:friend_id>', views.makefriends, name='makefriends')
     # path('')
     #path('contest/<int:contest_id>/', views.detail,name='detail'),
 

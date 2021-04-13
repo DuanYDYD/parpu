@@ -2,7 +2,8 @@ from django import forms
 from django.conf import settings
 from captcha.fields import CaptchaField
 from forum.models import Post #,Message,
-from user.models import User, Friend, Team
+from user.models import User, Friend, Team, Application
+
 
 class UserForm(forms.ModelForm):
     #错误信息
@@ -35,7 +36,7 @@ class UserForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ("username", "email","sex","major")
+        fields = ("username", "email","sex","major",'graduationtime','motto')
 
     def clean_username(self):
         # Since User.username is unique, this check is redundant,
@@ -76,3 +77,15 @@ class UserForm(forms.ModelForm):
 class ForgetForm(forms.Form):
     email = forms.EmailField()
     captcha = CaptchaField(error_messages={'invalid': '验证码错误'})
+
+class TeamForm(forms.ModelForm):
+    captcha = CaptchaField(error_messages={'invalid': 'wrong validation code'})
+    class Meta:
+        model = Team
+        fields = ('name', 'capacity','announce','requirement')
+
+class ApplicationForm(forms.ModelForm):
+    captcha = CaptchaField(error_messages={'invalid': 'wrong validation code'})
+    class Meta:
+        model = Application
+        fields = ('content',)

@@ -8,6 +8,7 @@ from django.utils import timezone
 from django.views.generic import ListView
 
 #from forum.models import  Column, Comment, Post#,Contest,
+from contest.models import Contest
 # Create your models here.
 
 
@@ -36,11 +37,13 @@ class User(AbstractUser):
     # friends = models.ManyToManyField(
     #     'self', blank=True, null=True, related_name='friends')
     sex = models.CharField(max_length=32, choices=gender, default='male')
-    intestedarea = models.CharField(max_length=128, choices=area, default='sports')
+    #interestedArea = models.CharField(max_length=128, choices=area, default='sports')
     major = models.CharField(max_length=128, choices=majorchoice)
     motto = models.CharField(max_length=128)
-    graduationyear = models.DateField(default=timezone.now)
+    graduationtime = models.DateField(default=timezone.now)
+    interestedContest = models.ManyToManyField('contest.Contest',blank=True, related_name='interestedContest')
     c_time = models.DateTimeField(auto_now_add=True)
+    image = models.ImageField(upload_to='profile/%Y/%m/%d/', null=True)
     #成就recording
     #对自己的评级
 
@@ -65,25 +68,25 @@ class Friend(models.Model):
 
 
 
-class Notice(models.Model):
-    sender = models.ForeignKey(
-        settings.AUTH_USER_MODEL, related_name='notice_sender',on_delete=models.CASCADE)  # 发送者
-    receiver = models.ForeignKey(
-        settings.AUTH_USER_MODEL, related_name='notice_receiver',on_delete=models.CASCADE)  # 接收者
-    #event = generic.GenericForeignKey('content_type', 'object_id')
-
-    # status = models.BooleanField(default=False)  # 是否阅读
-    type = models.IntegerField()  # 通知类型 0:评论 1:好友消息 2:好友申请
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        db_table = 'notice'
-        ordering = ['-created_at']
-        verbose_name_plural = u'通知'
-
-    def __unicode__(self):
-        return u"%s的事件: %s" % (self.sender, self.description())
+# class Notice(models.Model):
+#     sender = models.ForeignKey(
+#         settings.AUTH_USER_MODEL, related_name='notice_sender',on_delete=models.CASCADE)  # 发送者
+#     receiver = models.ForeignKey(
+#         settings.AUTH_USER_MODEL, related_name='notice_receiver',on_delete=models.CASCADE)  # 接收者
+#     #event = generic.GenericForeignKey('content_type', 'object_id')
+#
+#     # status = models.BooleanField(default=False)  # 是否阅读
+#     type = models.IntegerField()  # 通知类型 0:评论 1:好友消息 2:好友申请
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     updated_at = models.DateTimeField(auto_now=True)
+#
+#     class Meta:
+#         db_table = 'notice'
+#         ordering = ['-created_at']
+#         verbose_name_plural = u'通知'
+#
+#     def __unicode__(self):
+#         return u"%s的事件: %s" % (self.sender, self.description())
 
     # def description(self):
     #     if self.event:
@@ -94,18 +97,26 @@ class Team(models.Model):
     '''队伍'''
 
     name = models.CharField(max_length=128)
-    leader = models.ForeignKey('User', on_delete=models.CASCADE)
+    leader = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     capacity = models.PositiveIntegerField(default=1)
-    teamembers = models.ManyToManyField(
-        settings.AUTH_USER_MODEL, blank=True, null=True, related_name='teamembers')
+    team_members = models.ManyToManyField(
+        settings.AUTH_USER_MODEL, blank=True, related_name='team_members')
     announce = models.TextField()  # 验证
     # tresult = models.CharField(max_length=32, choices=resultc)
-    #column = models.ForeignKey('Contest', on_delete=models.CASCADE)
+    contest = models.ForeignKey('contest.Contest',null=True,on_delete=models.CASCADE)
     requirement = models.TextField()
 
     def __str__(self):
-        return self.tname
+        return self.name
 
     class Meta:
         verbose_name = '队伍'
         verbose_name_plural = '队伍'
+
+    # def get_members(self):
+    #     return self.team_members
+
+class Application(models.Model):
+    sender = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='sender', on_delete=models.CASCADE)
+    team = models.ForeignKey(Team, related_name='receiver', on_delete=models.CASCADE)
+    content = models.TextField()
