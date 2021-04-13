@@ -278,34 +278,39 @@ def TeamCreate(request,contest_id):
         form = TeamForm()
         return render(request, 'user/form.html', {"form": form})
 
+def teamDetail(request, team_id):
+    thisTeam = get_object_or_404(User, pk=team_id)
+    context = {
+        'team': thisTeam,
+    }
+    return render(request, 'user/teampage.html', context)
+
+def teamList(request, contest_id):
+    try:
+        Contest.objects.get(pk=contest_id)
+        thiscontest = Contest.objects.get(pk=contest_id)
+        team_list = Team.objects.filter(contest=thiscontest)
+        return render(request,'user/list.html',{'team_list' : team_list} )
+    except:
+        return HttpResponse('<script>alert("We do not have the contest");window.history.back(-1);"</script>')
+
+
 @login_required
 def addTeam(request, team_id): #有一个bug，没法检测同一个contest里这个人加了很多队伍
     if request.method == 'GET':
-        team = Team.objects.filter(pk=team_id)
+        team = Team.objects.filter(pk=team_id).first()
         user = User.objects.get(pk=request.user.id)
-        if team.capacity <= team.team_members.all().count():
-            return HttpResponse('<script>alert("The team is full!");window.history.back(-1);"</script>')
+        if team.capacity <= team.team_members.all().count()+1:
+            return HttpResponse('full')
+            #return HttpResponse('<script>alert("The team is full!");window.history.back(-2);"</script>')
         else:
             application = Application.objects.filter(sender=request.user, team=get_object_or_404(Team, pk=team_id))
             if len(application) != 0:
-                HttpResponse('<script>alert("You have sent the application!");window.history.back(-1);"</script>')
+                return HttpResponse('sented')
+                #return HttpResponse('<script>alert("You have sent the application!");window.history.back(-2);"</script>')
             else:
                 form = ApplicationForm()
                 return render(request, 'user/form.html', {"form": form})
-    else:
-        sender = request.user
-        team = Team.objects.get(pk=team_id)
-        content = request.POST.get("content", "")
-
-        form = ApplicationForm(request.POST)
-        errors = []
-        if form.is_valid():
-            application = Application()
-            application.sender = sender
-            application.team = team
-            application.content = content
-            application.save()
-            return HttpResponse('<script>alert("Successfully apply it!");window.history.back(-1);"</script>')
 
 @login_required()
 def applyList(request):

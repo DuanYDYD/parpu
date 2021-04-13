@@ -25,7 +25,7 @@ urlpatterns = [
         name='post_delete'),
     path('friendsadd/<int:friend_id>', views.makefriends, name='makefriends'),
     path('friendsdelete/<int:friend_id>', views.deletefriends, name='deletefriends'),
-    # path('')
+    path('addteam/team=<int:team_id>/',views.addTeam, name='addTeam'),
     #path('contest/<int:contest_id>/', views.detail,name='detail'),
 
     #path('vote/<int:user_ID>/', views.vote, name='vote'),
