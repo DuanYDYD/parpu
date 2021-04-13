@@ -17,6 +17,7 @@ urlpatterns = [
     path('user_ok/', views.user_ok, name='user_ok'),
     path('logout/', views.userlogout, name='user_logout'),
     path('findpw/',views.findPassword,name='findpassword'),
+
     path('post_update/<int:pk>/',
         login_required(fviews.PostUpdate.as_view()),
         name='post_update'),
@@ -25,7 +26,8 @@ urlpatterns = [
         name='post_delete'),
     path('friendsadd/<int:friend_id>', views.makefriends, name='makefriends'),
     path('friendsdelete/<int:friend_id>', views.deletefriends, name='deletefriends'),
-    # path('')
+    path('addteam/team=<int:team_id>/',views.addTeam, name='addTeam'),
+    path('applylist/', views.applyList, name='applyList'),
     #path('contest/<int:contest_id>/', views.detail,name='detail'),
 
     #path('vote/<int:user_ID>/', views.vote, name='vote'),
