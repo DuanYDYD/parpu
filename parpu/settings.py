@@ -135,7 +135,7 @@ EMAIL_USE_SSL = True
 EMAIL_HOST = 'smtp.126.com'  # 如果是 163 改成 smtp.163.com
 EMAIL_PORT = 465
 EMAIL_HOST_USER = 'xutianliang128@126.com' # 帐号
-EMAIL_HOST_PASSWORD = ''  # 密码
+EMAIL_HOST_PASSWORD = 'XOANGODDYSVUFLNI'  # 密码
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 # Static files (CSS, JavaScript, Images)

@@ -18,13 +18,15 @@
                         <h2 class="title">Registration Form</h2>
                         <form method="post" action="{% url 'user:registration' %}" />
                             <div class="row row-space">
+                                <fieldset>
                                 <div class="col-2">
                                     <div class="input-group">
                                         <label class="label">first name</label>
                                         <!--input first name here-->
-                                        <input class="input--style" type="text" name="firstname">
+                                        <div>{{form.username}}</div>>
                                     </div>
                                 </div>
+                                </fieldset>
                                 <div class="col-2">
                                     <div class="input-group">
                                         <label class="label">last name</label>
