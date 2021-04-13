@@ -14,7 +14,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="card">
-                        <form class="box" method="POST" action="/login/">
+                        <form method="post" action="{% url 'user:user_login' %}" />
                             <h1>Login</h1>
                             <p> Please enter your email address and password!</p>
                             <p>{{msg}}</p>

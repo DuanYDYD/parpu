@@ -42,20 +42,15 @@ def userlogin(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-        next = request.POST['next']
-
 
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
             #user.levels += 1  #登录一次积分加 1
             #user.save()
-        return HttpResponseRedirect(next)
+        return redirect('user:userDetail')
     else:
-        next = request.GET.get('next', None)
-        if next is None:
-            next = reverse_lazy('index')
-        return render(request, 'user/login.html', {'next': next})
+        return render(request, 'login.html', None)
 
 def userregister(request):
     if request.method == 'POST':
@@ -96,15 +91,15 @@ def userregister(request):
                 #v.as_text() 详见django.forms.util.ErrorList 中
                 errors.append(v.as_text())
             if errors:
-                return render(request, 'user/user_fail.html', {"errors": errors})
-        return redirect('user:user_ok')
-
+                return render(request, 'user_fail.html', {"errors": errors})
+        return redirect('user:userDetail')
     else:
         form = UserForm()
-        #next = request.GET.get('next',None)
-        #if next is None:
-        #next = reverse_lazy('index')
-        return render(request, 'user/register.html', {"form" : form})
+        # next = request.GET.get('next',None)
+        # if next is None:
+        # next = reverse_lazy('index')
+        return render(request, 'register.html', {"form": form})
+
 
 code = ''
 def findPassword(request):
