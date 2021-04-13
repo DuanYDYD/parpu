@@ -153,4 +153,4 @@ def likeComment(request, comment_id):
     return redirect('forum:post_detail')
 
 def test(request):
-    return render(request,'AddPost.html',None)
+    return render(request,'contestpage.html',None)
