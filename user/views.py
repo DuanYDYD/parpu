@@ -203,20 +203,24 @@ def addInteresetedContest(request, contest_id):
 
 @login_required
 def makefriends(request, friend_id):
-    if Friend.objects.filter(user=request.user,to=User.objects.get(friend_id)):
+    p = get_object_or_404(User,pk=friend_id)
+    try:
+        Friend.objects.get(user=request.user, to=p)
         return HttpResponse("You have added the friend")
-    else:
-        newFriend=Friend.objects.create(user=request.user,to=User.objects.get(friend_id))
+    except:
+        newFriend = Friend.objects.create(user=request.user, to=p)
         newFriend.save()
         return HttpResponse("Added!")
 
+
 @login_required
 def deletefriends(request, friend_id):
-    if Friend.objects.filter(user=request.user,to=User.objects.get(friend_id)):
-        obj = Friend.objects.get(id=friend_id)
-        obj.delete()
+    p = get_object_or_404(User, pk=friend_id)
+    try:
+        friend= Friend.objects.get(user=request.user,to=p)
+        friend.delete()
         return HttpResponse("You delete the friend！<a href='/'>return</a>")
-    else:
+    except:
         return HttpResponse("You don't have the friend！<a href='/'>return</a>")
 
 @login_required
