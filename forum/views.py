@@ -151,3 +151,6 @@ def likeComment(request, comment_id):
         comment.like_num += 1
         comment.save()
     return redirect('forum:post_detail')
+
+def test(request):
+    return render(request,'AddPost.html',None)

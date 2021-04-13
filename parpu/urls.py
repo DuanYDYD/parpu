@@ -28,4 +28,5 @@ urlpatterns = [
     path(r'^captcha/', include('captcha.urls')),
     path('user/', include('user.urls')),
     path('contest/', include('contest.urls')),
+    path('test/', fviews.test)
 ]
