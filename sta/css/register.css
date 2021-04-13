@@ -1,10 +1,5 @@
 body {
-    background: #76b852;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, #1f8f8f, #597bc7);
-    background: -moz-linear-gradient(to top, #1f8f8f, #597bc7);
-    background: -o-linear-gradient(to top, #1f8f8f, #597bc7);
-    background: linear-gradient(to top, #1f8f8f, #597bc7);
+    background-image: url(../images/bg.jpg);
     background-size: cover;
     background-attachment: fixed;
     margin: 0;
@@ -176,10 +171,7 @@ body {
      ========================================================================== */
   .bg-green {
     /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, #1f8f8f, #597bc7);
-    background: -moz-linear-gradient(to top, #1f8f8f, #597bc7);
-    background: -o-linear-gradient(to top, #1f8f8f, #597bc7);
-    background: linear-gradient(to top, #1f8f8f, #597bc7);
+    background-image: url(../images/bg.jpg);
     background-size: cover;
     background-attachment: fixed;
     margin: 0;
@@ -251,7 +243,7 @@ body {
   
   
   .btn--green {
-    background none;
+    background: none;
   }
   
   .btn--green:hover {
