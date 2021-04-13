@@ -8,14 +8,15 @@ from django.shortcuts import render, redirect
 from django.views.generic import View, TemplateView, ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView
 # Create your views here.
-from user.form import UserForm, ForgetForm
+from user.form import UserForm, ForgetForm, TeamForm
 from forum.form import PostForm, CommentForm  # ,MessageForm, PostForm,
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse_lazy
 
-from forum.models import Contest, Column, Comment, Post
+from forum.models import  Column, Comment, Post, PostLike, CommentLike
 from user.models import User, Friend, Team
+from contest.models import Contest
 from django.shortcuts import get_object_or_404, render
 import logging
 
@@ -56,7 +57,6 @@ def PostCreate(request, column_id):
 
             post = Post()
             post.title = title
-            logger.error(form['title'])
             post.content = content
             post.author = author
             post.column = column
@@ -83,7 +83,6 @@ class PostUpdate(UpdateView):
     form_class = PostForm
     template_name = 'user/form.html'
     success_url = reverse_lazy('index')
-
 
 #删贴
 class PostDelete(DeleteView):
@@ -130,3 +129,25 @@ def commentCreate(request, column_id, post_id):
     else:
         form = CommentForm()
         return render(request, 'user/form.html', {"form" : form})
+
+@login_required
+def likePost(request, post_id): #还没做url
+    post = get_object_or_404(Post, pk=post_id)
+    user = request.user
+    if PostLike.objects.filter(liker=user, post=post).exists():
+        return HttpResponse('<script>alert("you have already liked！");window.history.back(-1);"</script>')
+    else:
+        post.like_num += 1
+        post.save()
+    return HttpResponse('<script>alert("you like it！");window.history.back(-1);"</script>')
+
+@login_required #如何传入comment_id 还需商讨 还没做url
+def likeComment(request, comment_id):
+    comment = get_object_or_404(Post, pk=comment_id)
+    user = request.user
+    if CommentLike.objects.filter(liker=user, post=comment).exists():
+        return HttpResponse('<script>alert("you have already liked！");window.history.back(-1);"</script>')
+    else:
+        comment.like_num += 1
+        comment.save()
+    return redirect('forum:post_detail')

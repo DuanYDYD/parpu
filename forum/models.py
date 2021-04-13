@@ -42,7 +42,7 @@ class Post(models.Model):  #文章
     column = models.ForeignKey(Column,related_name='column_belong_to',on_delete=models.CASCADE,null=False)  # 所属板块
     view_times = models.IntegerField(default=0)  #浏览次数
     responce_times = models.IntegerField(default=0)  #回复次数
-    like_times = models.IntegerField(default=0) #like次数
+    like_num = models.IntegerField(default=0) #like次数
     #last_response = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)  #最后回复者
 
     created_at = models.DateTimeField(auto_now_add=True)
@@ -63,27 +63,27 @@ class Post(models.Model):  #文章
         return u'/column=%d/post=%d' % (self.column.id, self.id)
 
 
-'''class Contest(models.Model):
-    
-
-    resultc = (
-        ('fw', 'first award'),
-        ('sw', 'second award'),
-        ('tw', 'third award'),
-        ('aw', 'award'),
-    )
-
-    area = (
-        ('co', 'commercial contest'),
-        ('sp', 'sports'),
-    )
-
-    cname = models.CharField(max_length=128)
-    crequirement = models.TextField()
-    con_c_time = models.DateTimeField(auto_now_add=True)
-    conaward = models.CharField(max_length=32, choices=resultc)
-    contestcat = models.CharField(max_length=128, choices=area, default='sports')
-    interested_num = models.IntegerField(default=0)'''
+# class Contest(models.Model):
+#     '''比赛'''
+#
+#     resultc = (
+#         ('fw', 'first award'),
+#         ('sw', 'second award'),
+#         ('tw', 'third award'),
+#         ('aw', 'award'),
+#     )
+#
+#     area = (
+#         ('co', 'commercial contest'),
+#         ('sp', 'sports'),
+#     )
+#
+#     cname = models.CharField(max_length=128)
+#     crequirement = models.TextField()
+#     con_c_time = models.DateTimeField(auto_now_add=True)
+#     conaward = models.CharField(max_length=32, choices=resultc)
+#     contestcat = models.CharField(max_length=128, choices=area, default='sports')
+#     interested_num = models.IntegerField(default=0)
 
 
 
@@ -110,3 +110,10 @@ class Comment(models.Model):  #评论
         return u'%s 回复了您的帖子(%s) R:《%s》' % (self.author, self.post,
                                            self.content)
 
+class PostLike(models.Model):
+    liker = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='postliker', on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, related_name='post', on_delete=models.CASCADE)
+
+class CommentLike(models.Model):
+    liker = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='commentliker', on_delete=models.CASCADE)
+    comment = models.ForeignKey(Comment, related_name='comment', on_delete=models.CASCADE)

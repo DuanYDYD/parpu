@@ -20,7 +20,8 @@ urlpatterns = [
     path('column=<int:column_id>/post=<post_id>/commentCreate/',
         views.commentCreate,
         name='comment_create'),
-    #path('user/post_update/(?P<pk>\d+)/$',
+    # path
+    # path('user/post_update/(?P<pk>\d+)/$',
     #     login_required(PostUpdate.as_view()),
     #     name='post_update'),
     # url(r'^user/post_delete/(?P<pk>\d+)/$',
