@@ -20,7 +20,8 @@ class UserForm(forms.ModelForm):
         error_messages={
             'invalid': "Can only content digits, letters and the characters including @/./+/-/_",
             'required': "Username is need"
-        })
+        },
+        widget=forms.TextInput(attrs={'class': 'input--style'}))
     email = forms.EmailField(error_messages={
         'invalid': "wrong email format",
         'required': 'email is needed'
