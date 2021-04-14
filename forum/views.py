@@ -109,7 +109,7 @@ def postDetail(request, column_id, post_id):
         'post': post,
         'comments_list': comments_list,
     }
-    return render(request, "forum/postDetail.html", context)
+    return render(request, "PostPage.html", context)
 
 @login_required
 def commentCreate(request, column_id, post_id):
@@ -162,4 +162,4 @@ def likeComment(request, comment_id):
     return redirect('forum:post_detail')
 
 def test(request):
-    return render(request,'contestpage.html',None)
+    return render(request,'PostPage.html',None)
