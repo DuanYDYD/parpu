@@ -84,7 +84,8 @@ def PostCreate(request):
         #next = request.GET.get('next',None)
         #if next is None:
         #next = reverse_lazy('index')
-        return render(request, 'PostCreate.html', {"form" : form})
+        columns_list=Column.objects.all()
+        return render(request, 'PostCreate.html', {"form" : form, "columns_list": columns_list})
 
 #编辑贴
 class PostUpdate(UpdateView):
