@@ -377,7 +377,7 @@ def applydetail(request, application_id, res):
 
     application = get_object_or_404(Application, pk=application_id)
     user = User.objects.get(pk=request.user.id)
-    sender = Application.sender
+    sender = application.sender
     team = Team.objects.get(leader=user)
     team.team_members.add()
     team.save()
