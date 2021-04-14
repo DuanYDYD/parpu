@@ -20,6 +20,7 @@ urlpatterns = [
     path('column=<int:column_id>/post=<post_id>/commentCreate/',
         views.commentCreate,
         name='comment_create'),
+    path('column=<int:column_id>/post=<post_id>/likePost/',views.likePost,name='likePost'),
     path('test/',views.test,name='test')
     # path
     # path('user/post_update/(?P<pk>\d+)/$',
