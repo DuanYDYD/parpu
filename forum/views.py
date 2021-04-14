@@ -87,7 +87,6 @@ def PostCreate(request, column_id):
         return render(request, 'PostCreate.html', {"form" : form})
 
 #编辑贴
-@login_required
 class PostUpdate(UpdateView):
     model = Post
     form_class = PostForm
@@ -95,7 +94,6 @@ class PostUpdate(UpdateView):
     success_url = reverse_lazy('index')
 
 #删贴
-@login_required
 class PostDelete(DeleteView):
     model = Post
     form_class = PostForm
