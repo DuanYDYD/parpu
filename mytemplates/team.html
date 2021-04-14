@@ -9,20 +9,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Blog Template">
     <meta name="author" content="Xiaoying Riley at 3rd Wave Media">
-    <link rel="shortcut icon" href="favicon.ico">
-	  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/tether.min.css">
-    <link rel="stylesheet" type="text/css" href="css/animate.css">
-    <link rel="stylesheet" type="text/css" href="css/fontstyles_1.css">
-    <link rel="stylesheet" type="text/css" href="css/fontstyles_2.css">
-    <link rel="stylesheet" type="text/css" href="css/iconstyles.css">
+    <link rel="shortcut icon" href="/static/favicon.ico">
+	  <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/tether.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/fontstyles_1.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/fontstyles_2.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/iconstyles.css">
 
     <!-- FontAwesome JS-->
     <script defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
 
     <!-- Theme CSS -->
-    <link id="theme-style" rel="stylesheet" href="assets/css/theme-1.css">
-	  <link rel="stylesheet" type="text/css" href="css/style.min.css">
+    <link id="theme-style" rel="stylesheet" href="/static/assets/css/theme-1.css">
+	  <link rel="stylesheet" type="text/css" href="/static/css/style.min.css">
 
 </head>
 
@@ -72,7 +72,7 @@
 
 			<div id="navigation" class="collapse navbar-collapse flex-column">
 				<div class="profile-section pt-3 pt-lg-0">
-				    <img class="profile-image mb-3 rounded-circle mx-auto" src="assets/images/male-avatar.png" alt="image" >
+				    <img class="profile-image mb-3 rounded-circle mx-auto" src="/static/assets/images/male-avatar.png" alt="image" >
 
 					<div class="bio mb-3">brief self introduction here</a></div><!--//bio-->
 			        <hr>
@@ -90,63 +90,33 @@
 	    </section>
 	    <section class="blog-list px-3 py-5 p-md-5">
 		    <div class="container">
+				<h3>Teams in which you are leader:</h3>
+				{% for row in leading_team_list %}
 			    <div class="item mb-5">
 				    <div class="media">
-					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="assets/images/blog/blog-post-thumb-1.jpg" alt="image">
+					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="/static/assets/images/blog/blog-post-thumb-{{row.id}}.jpg" alt="image">
 					    <div class="media-body">
-						    <h3 class="title mb-1"><a href="teammates.html">Contest 1</a></h3>
-						    <div class="meta mb-1"><span class="date">Published 2 days ago</span><span class="time">5 min read</span><span class="comment"><a href="#">8 comments</a></span></div>
-						    <div class="intro">description 1</div>
-						    <a class="more-link" href="teammates.html">Enter &rarr;</a>
+						    <h3 class="title mb-1"><a href="/user/teampage/team_id={{row.id}}">{{row.name}}</a></h3>
+						    <div class="meta mb-1">{{row.contest.name}}</div>
+						    <div class="intro">leader: {{row.leader.first_name}}, {{row.leader.last_name}}</div>
 					    </div><!--//media-body-->
 				    </div><!--//media-->
 			    </div><!--//item-->
+				{% endfor %}
+				<h3>Teams in which you are member:</h3>
+				{% for row in team_list %}
 			    <div class="item mb-5">
 				    <div class="media">
-					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="assets/images/blog/blog-post-thumb-2.jpg" alt="image">
+					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="/static/assets/images/blog/blog-post-thumb-{{row.id}}.jpg" alt="image">
 					    <div class="media-body">
-						    <h3 class="title mb-1"><a href="teammates.html">Contest 2</a></h3>
-						    <div class="meta mb-1"><span class="date">Published 3 months ago</span><span class="time">3 min read</span><span class="comment"><a href="#">26 comments</a></span></div>
-						    <div class="intro">description 2</div>
-						    <a class="more-link" href="teammates.html">Enter &rarr;</a>
+						    <h3 class="title mb-1"><a href="/user/teampage/team_id={{row.id}}">{{row.name}}</a></h3>
+						    <div class="meta mb-1">{{row.contest.name}}</div>
+						    <div class="intro">leader: {{row.leader.first_name}}, {{row.leader.last_name}}</div>
 					    </div><!--//media-body-->
 				    </div><!--//media-->
 			    </div><!--//item-->
+				{% endfor %}
 
-			    <div class="item mb-5">
-				    <div class="media">
-					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="assets/images/blog/blog-post-thumb-3.jpg" alt="image">
-					    <div class="media-body">
-						    <h3 class="title mb-1"><a href="teammates.html">Contest 3</a></h3>
-						    <div class="meta mb-1"><span class="date">Published 1 month ago</span><span class="time">8 min read</span><span class="comment"><a href="#">12 comments</a></span></div>
-						    <div class="intro">description 3</div>
-						    <a class="more-link" href="teammates.html">Enter &rarr;</a>
-					    </div><!--//media-body-->
-				    </div><!--//media-->
-			    </div><!--//item-->
-			    <div class="item mb-5">
-				    <div class="media">
-					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="assets/images/blog/blog-post-thumb-4.jpg" alt="image">
-					    <div class="media-body">
-						    <h3 class="title mb-1"><a href="teammates.html">Contest 4</a></h3>
-						    <div class="meta mb-1"><span class="date">Published 2 months ago</span><span class="time">15 min read</span><span class="comment"><a href="#">3 comments</a></span></div>
-						    <div class="intro">description 4</div>
-						    <a class="more-link" href="teammates.html">Enter &rarr;</a>
-					    </div><!--//media-body-->
-				    </div><!--//media-->
-			    </div><!--//item-->
-
-			    <div class="item mb-5">
-				    <div class="media">
-					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="assets/images/blog/blog-post-thumb-5.jpg" alt="image">
-					    <div class="media-body">
-						    <h3 class="title mb-1"><a href="teammates.html">Contest 5</a></h3>
-						    <div class="meta mb-1"><span class="date">Published 2 months ago</span><span class="time">10 min read</span><span class="comment"><a href="#">23 comments</a></span></div>
-						    <div class="intro">description 5</div>
-						    <a class="more-link" href="teammates.html">Enter &rarr;</a>
-					    </div><!--//media-body-->
-				    </div><!--//media-->
-			    </div><!--//item-->
 
          <!--
 			    <nav class="blog-nav nav nav-justified my-5">
@@ -156,11 +126,7 @@
           -->
 		    </div>
 	    </section>
-
     </div><!--//main-wrapper-->
-
-
-
 
     <!-- *****CONFIGURE STYLE (REMOVE ON YOUR PRODUCTION SITE)****** -->
     <div id="config-panel" class="config-panel d-none d-lg-block">
@@ -241,13 +207,12 @@
 	</div>
 
     <!-- Javascript -->
-    <script src="assets/plugins/jquery-3.3.1.min.js"></script>
-    <script src="assets/plugins/popper.min.js"></script>
-    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/assets/plugins/jquery-3.3.1.min.js"></script>
+    <script src="/static/assets/plugins/popper.min.js"></script>
+    <script src="/static/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Style Switcher (REMOVE ON YOUR PRODUCTION SITE) -->
-    <script src="assets/js/demo/style-switcher.js"></script>
-
+    <script src="/static/assets/js/demo/style-switcher.js"></script>
 
 </body>
 </html>

@@ -284,6 +284,13 @@ def teamList(request, contest_id):
     return render(request, 'team-list.html', {'contest': thiscontest, 'team_list': team_list})
 
 @login_required
+def myTeam(request):
+    user = User.objects.get(pk=request.user.id)
+    leading_team_list = Team.objects.filter(leader=user)
+    team_list = Team.objects.filter(team_members=user)
+    return render(request, 'team.html', {'team_list': team_list, "leading_team_list": leading_team_list})
+
+@login_required
 def addTeam(request, team_id, contest_id): #有一个bug，没法检测同一个contest里这个人加了很多队伍
     if request.method == 'GET':
         team = Team.objects.filter(pk=team_id).first()
