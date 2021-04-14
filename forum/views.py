@@ -108,6 +108,7 @@ def postDetail(request, column_id, post_id):
         'column': column,
         'post': post,
         'comments_list': comments_list,
+        'comments_num': comments_list.all().count()
     }
     return render(request, "PostPage.html", context)
 
