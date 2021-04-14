@@ -16,100 +16,102 @@
                 <div class="card card-4">
                     <div class="card-body">
                         <h2 class="title">Registration Form</h2>
-                        <form method="post" action="{% url 'user:registration' %}" />
-                            <div class="row row-space">
-                                <fieldset>
-                                <div class="col-2">
-                                    <div class="input-group">
-                                        <label class="label">first name</label>
-                                        <!--input first name here-->
-                                        <div>{{form.username}}</div>>
-                                    </div>
-                                </div>
-                                </fieldset>
-                                <div class="col-2">
-                                    <div class="input-group">
-                                        <label class="label">last name</label>
-                                        <!--input last name here-->
-                                        <input class="input--style" type="text" name="lastname">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row row-space">
-                                <div class="col-2">
-                                    <div class="input-group">
-                                        <label class="label">Birthday</label>
-                                        <div class="input-group-icon">
-                                            <!--input birthday here-->
-                                            <input class="input--style js-datepicker" type="text" name="birthday">
-                                            <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-2">
-                                    <div class="input-group">
-                                        <label class="label">Gender</label>
-                                        <div class="p-t-10">
-                                            <label class="radio-container m-r-45">Male&nbsp&nbsp&nbsp&nbsp
-                                                <!--input gendery here-->
-                                                <input type="radio" value="male" checked="checked" name="gender">
-                                                <span class="checkmark"></span>
-                                            </label>
-                                            <label class="radio-container">Female
-                                                <!--or input gendery here, given that it's a choice between two button-->
-                                                <input type="radio" value="female" name="gender">
-                                                <span class="checkmark"></span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row row-space">
-                                <div class="col-2">
-                                    <div class="input-group">
-                                        <label class="label">Email</label>
-                                        <!--input email here-->
-                                        <input class="input--style" type="email" name="email">
-                                    </div>
-                                </div>
-                                <div class="col-2">
-                                    <div class="input-group">
-                                        <label class="label">Phone Number</label>
-                                        <!--input phone number here-->
-                                        <input class="input--style" type="text" name="phonenumber">
-                                    </div>
-                                </div>
-                            </div>
+                        <form method="POST" action="{% url 'user:registration' %}">
+                            {% csrf_token %}
                             <div class="row row-space">
                                 <div class="col-2">
                                     <div class="input-group">
                                         <label class="label">Username</label>
-                                        <!--input username here-->
-                                        <input class="input--style" type="text" name="username">
+                                        <!--input first name here-->
+                                        <fieldset>
+                                            <div>{{form.username}}</div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <label class="label">Email</label>
+                                        <!--input email here-->
+                                        <fieldset>
+                                            <div>{{form.email}}</div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row-space">
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <label class="label">Gender</label>
+                                        <!--input sex here-->
+                                            <fieldset>
+                                                <div class="rs-select2 js-select-simple select--no-search">
+                                                    {{form.sex}}
+                                                    <div class="select-dropdown"></div>
+                                                </div>
+                                            </fieldset>
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="input-group">
+                                        <label class="label">Major</label>
+                                        <fieldset>
+                                            <div class="rs-select2 js-select-simple select--no-search">
+                                                {{form.major}}
+                                                <div class="select-dropdown"></div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row-space">
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <label class="label">Graduate Date</label>
+                                        <!--input Graduate date here-->
+                                        <fieldset>
+                                            <div>{{form.graduationtime}}</div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <label class="label">Motto</label>
+                                        <!--input motto here-->
+                                        <fieldset>
+                                            <div>{{form.motto}}</div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row-space">
+                                <div class="col-2">
+                                    <div class="input-group">
                                         <label class="label">Password</label>
                                         <!--input password here-->
-                                        <input class="input--style" type="password" name="password">
+                                        <fieldset>
+                                            <div>{{form.password}}</div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <label class="label">Confirm Password</label>
+                                        <!--input password here-->
+                                        <fieldset>
+                                            <div>{{form.password_confirm}}</div>
+                                        </fieldset>
                                     </div>
                                 </div>
                             </div>
                             <div class="input-group">
-                                <label class="label">University</label>
-                                <div class="rs-select2 js-select-simple select--no-search">
-                                    <select name="subject">
-                                        <option disabled="disabled" selected="selected">Choose option</option>
-                                        <option>University 1</option>
-                                        <option>University 2</option>
-                                        <option>University 3</option>
-                                    </select>
-                                    <div class="select-dropdown"></div>
-                                </div>
+                                <label class="label">verification code</label>
+                                    <fieldset>
+                                            <div>{{form.captcha}}</div>
+                                    </fieldset>
                             </div>
-                            <div class="p-t-0 inputbtn">
-                                <!--input click on submit button here-->
+                            <div class="p-t-0 inputbtn" align="center" width="80%">
+                                <!--input click on submit button here--><div class="col-2"></div>
                                 <input type="submit" value="Submit" href="#">
                             </div>
                         </form>

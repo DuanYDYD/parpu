@@ -1,6 +1,7 @@
 from django import forms
 from django.conf import settings
 from captcha.fields import CaptchaField
+from captcha.fields import CaptchaTextInput
 from forum.models import Post #,Message,
 from user.models import User, Friend, Team, Application
 
@@ -27,13 +28,26 @@ class UserForm(forms.ModelForm):
         'required': 'email is needed'
     })
 
+    motto = forms.CharField(
+        widget=forms.TextInput(attrs={'class': 'input--style'})
+    )
+
+    email = forms.EmailField(
+        widget=forms.TextInput(attrs={'class': 'input--style'})
+    )
+
+    graduationtime = forms.DateField(
+        widget=forms.DateInput(attrs={'class': 'input--style'})
+    )
 
     password = forms.CharField(
-        widget=forms.PasswordInput, error_messages={'required': "password is needed"})
+        widget=forms.PasswordInput(attrs={'class': 'input--style'}), error_messages={'required': "password is needed"})
     password_confirm = forms.CharField(
-        widget=forms.PasswordInput, error_messages={'required': "confirmed password is needed"})
+        widget=forms.PasswordInput(attrs={'class': 'input--style'}), error_messages={'required': "confirmed password is needed"})
 
-    captcha = CaptchaField(error_messages={'invalid': 'wrong validation code'})
+    captcha = CaptchaField(
+        widget=CaptchaTextInput(attrs={'class': 'input--style'}),
+        error_messages={'invalid': 'wrong validation code'})
 
     class Meta:
         model = User
