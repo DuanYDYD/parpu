@@ -67,11 +67,14 @@
             <div class="col-lg-9">
                 <h5 class="master-post-application__heading">Add a New Post!</h5>
 
-                <form action="#" class="master-post-application__form">
+                <form method="POST" action="{% url 'forum:post_create' %}" class="master-post-application__form">
                     <div class="form-group">
-                        <label for="exampleTextarea">Anything you want to share?</label>
+                        <label>Anything you want to share?</label>
                         <!--input here-->
-                        <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Describe what you want to share, check the details"></textarea>
+                         <fieldset>
+                            <div>{{form.content}}</div>
+                         </fieldset>
+                        <!--textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Describe what you want to share, check the details"--><!--/textarea-->
                     </div>
 
                     <div class="form-group">
@@ -108,31 +111,32 @@
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <label for="city">Category</label>
-                                <select name="city" id="city" class="selectable">
-                                    <option value="">Business</option>
-                                    <option value="">Arts</option>
-                                    <option value="">Science</option>
-                                    <option value="">Sports</option>
+                                <label for="column">Category</label>
+                                <select name="column" id="column" class="selectable">
+                                    {% for column in columns_list %}
+                                    <option value="{{column.id}}">{{column.name}}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                         </div>
                         <div class="col-lg-8">
                             <div class="form-group">
-                                <label for="address">One Sentence Summary</label>
+                                <label for="address">Title/Summary Here</label>
                                 <!--input here-->
-                                <input type="text" class="form-control" id="address" placeholder="One sentence to wrap up!">
+                                <fieldset>
+                                    <div>{{form.title}}</div>
+                                </fieldset>
+                                <!--input type="text" class="form-control" id="address" placeholder="One sentence to wrap up!"-->
                             </div>
                         </div>
                     </div>
+                    <!--upload file here-->
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label for="myfile">Upload File</label>
-                                <!--file upload here-->
-                                <input type="file" id="myFile" name="filename">
-                                <!--Submit button here-->
-                                <input type="submit">
+                                <fieldset>
+                                    <div>{{form.captcha}}</div>
+                                </fieldset>
                             </div>
                         </div>
                     </div>
@@ -173,7 +177,7 @@
                 <p>
                     This website aims at provide platform for student to participate in the contest.
                     We hope that every candidate should have opportunities to show themselves.
-                    Designed for course CSCI3100.
+                    Designed for course CSCI3100 only.
                 </p>
 
                 <a href="#" class="btn btn-outline-secondary btn-get-started">Get Started</a>

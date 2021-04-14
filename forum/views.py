@@ -54,16 +54,16 @@ def columnIndex(request, column_id):
 
 
 @login_required
-def PostCreate(request, column_id):
-    column = Column.objects.get(id=column_id)
+def PostCreate(request):
     author = User.objects.get(pk=request.user.id)
     if request.method == 'POST':
+        column_id = request.POST.get("column", "")
+        column = get_object_or_404(Column, pk=int(column_id))
         title = request.POST.get("title", "")
         content = request.POST.get("content", "")
         form = PostForm(request.POST)
         errors = []
         if form.is_valid():
-
             post = Post()
             post.title = title
             post.content = content
@@ -71,20 +71,21 @@ def PostCreate(request, column_id):
             post.column = column
             post.save()
             #request.POST.get_absolute_url()
-            return HttpResponseRedirect(reverse_lazy('forum:columnIndex',kwargs={'column_id': column_id}))
+            return HttpResponseRedirect(reverse_lazy('forum:index'))
         else:
             #如果表单不正确,保存错误到errors列表中
             for k, v in form.errors.items():
                 #v.as_text() 详见django.forms.util.ErrorList 中
                 errors.append(v.as_text())
             if errors:
-                return render(request, 'user/user_fail.html', {"errors": errors})
+                return render(request, 'user_fail.html', {"errors": errors})
     else:
         form = PostForm()
         #next = request.GET.get('next',None)
         #if next is None:
         #next = reverse_lazy('index')
-        return render(request, 'PostCreate.html', {"form" : form})
+        columns_list=Column.objects.all()
+        return render(request, 'AddPost.html', {"form" : form, "columns_list": columns_list})
 
 #编辑贴
 class PostUpdate(UpdateView):
@@ -145,7 +146,7 @@ def likePost(request,column_id,post_id): #还没做url
     post = get_object_or_404(Post, pk=post_id)
     user = request.user
     try:
-        PostLike.objects.filter(liker=user, post=post)
+        PostLike.objects.get(liker=user, post=post)
         return HttpResponseRedirect(reverse_lazy('forum:post_detail', args=[column_id,post_id]))
     except:
         post.like_num += 1
@@ -161,7 +162,7 @@ def likeComment(request, column_id, post_id, comment_id):
     comment = get_object_or_404(Post, pk=comment_id)
     user = request.user
     try:
-        CommentLike.objects.filter(liker=user, comment=comment)
+        CommentLike.objects.get(liker=user, comment=comment)
         return HttpResponseRedirect(reverse_lazy('forum:post_detail', args=[column_id,post_id,comment_id]))
     except:
         comment.like_num += 1
@@ -173,4 +174,4 @@ def likeComment(request, column_id, post_id, comment_id):
     return HttpResponseRedirect(reverse_lazy('forum:post_detail', args=[column_id,post_id,comment_id]))
 
 def test(request):
-    return render(request,'personalpage.html',None)
+    return render(request,'AllCategories.html',None)
