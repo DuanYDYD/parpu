@@ -113,7 +113,7 @@ def userregister(request):
                 errors.append(v.as_text())
             if errors:
                 return render(request, 'user_fail.html', {"errors": errors})
-        return redirect('user:userDetail')
+        return redirect('personalpage')
     else:
         form = UserForm()
         # next = request.GET.get('next',None)
