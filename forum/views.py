@@ -146,13 +146,13 @@ def likePost(request,column_id,post_id): #还没做url
     user = request.user
     try:
         PostLike.objects.get(liker=user, post=post)
-
         return HttpResponse('you already like it')
     except:
         post.like_num += 1
         postlike = PostLike()
         postlike.post=post
         postlike.liker=user
+        postlike.save()
         post.save()
     return HttpResponse('you like it now')
 
