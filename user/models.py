@@ -31,7 +31,7 @@ class User(AbstractUser):
         ('Quantitative Finance & Risk Management', 'Quantitative Finance & Risk Management'),
         ('Math', 'Math'),
         ('Fintech', 'Fintech'),
-        ('Computer Science', 'Computer science'),
+        ('Computer Science', 'Computer Science'),
         ('Law', 'Law'),
         ('Communication', 'Communication'),
         ('Science', 'Science'),

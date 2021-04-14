@@ -175,4 +175,4 @@ def likeComment(request, column_id, post_id, comment_id):
     return HttpResponseRedirect(reverse_lazy('forum:post_detail', args=[column_id,post_id,comment_id]))
 
 def test(request):
-    return render(request,'PostPage.html',None)
+    return render(request,'personalpage.html',None)

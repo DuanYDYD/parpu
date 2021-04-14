@@ -272,6 +272,7 @@ def teamDetail(request, team_id):
     context = {
         'team': thisTeam,
         'members': members,
+        'leader': thisTeam.leader
     }
     return render(request, 'teammates.html', context)
 
