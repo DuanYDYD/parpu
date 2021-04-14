@@ -146,7 +146,7 @@ def likePost(request,column_id,post_id): #还没做url
     post = get_object_or_404(Post, pk=post_id)
     user = request.user
     try:
-        PostLike.objects.filter(liker=user, post=post)
+        PostLike.objects.get(liker=user, post=post)
         return HttpResponseRedirect(reverse_lazy('forum:post_detail', args=[column_id,post_id]))
     except:
         post.like_num += 1
@@ -162,7 +162,7 @@ def likeComment(request, column_id, post_id, comment_id):
     comment = get_object_or_404(Post, pk=comment_id)
     user = request.user
     try:
-        CommentLike.objects.filter(liker=user, comment=comment)
+        CommentLike.objects.get(liker=user, comment=comment)
         return HttpResponseRedirect(reverse_lazy('forum:post_detail', args=[column_id,post_id,comment_id]))
     except:
         comment.like_num += 1
