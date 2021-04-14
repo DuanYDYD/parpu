@@ -48,7 +48,7 @@ span {
 #sidebar {
     min-width: 230px;
     max-width: 230px;
-    background: #597bc7;
+    background: white;
     color: #fff;
     transition: all 0.3s;
     z-index: 1;
@@ -112,7 +112,7 @@ span {
 }
 
 #sidebar ul.components {
-    padding: 20px 0;
+    padding: 0px 0;
     border-bottom: 1px solid #597bc7;
 }
 
@@ -230,7 +230,7 @@ ul.CTAs a {
     z-index: 0;
     transition: all 0.5s;
     padding: 0 15px;
-    background: #597bc7;
+    background: white;
     overflow-y: auto;
   }
 
@@ -287,7 +287,7 @@ ul.CTAs a {
     margin-left: 230px;
     width: auto;
     height: 100vh;
-    background: url("../img/hero-bg.jpg") top center;
+    background: url("../images/bg.jpg") top center;
     background-size: cover;
   }
   
@@ -296,7 +296,7 @@ ul.CTAs a {
     background: rgba(5, 13, 24, 0.3);
     position: absolute;
     bottom: 0;
-    top: 0;
+    top: 50;
     left: 230px;
     right: 0;
     z-index: 1;
