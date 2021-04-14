@@ -28,6 +28,9 @@ urlpatterns = [
     path('friendsdelete/<int:friend_id>', views.deletefriends, name='deletefriends'),
     path('addteam/team=<int:team_id>/',views.addTeam, name='addTeam'),
     path('applylist/', views.applyList, name='applyList'),
+
+    # when select one contest and look for team
+    path('teamlist/contest_id=<int:contest_id>', views.teamList, name='teamList'),
     #path('contest/<int:contest_id>/', views.detail,name='detail'),
 
     #path('vote/<int:user_ID>/', views.vote, name='vote'),
