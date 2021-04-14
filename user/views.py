@@ -278,7 +278,6 @@ def teamDetail(request, team_id):
     }
     return render(request, 'teammates.html', context)
 
-@login_required
 def teamList(request, contest_id):
     Contest.objects.get(pk=contest_id)
     thiscontest = get_object_or_404(Contest, pk=contest_id)
