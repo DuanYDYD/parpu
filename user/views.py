@@ -332,34 +332,36 @@ def applyList(request):
         team = Team.objects.get(leader=user)
     except:
         team = None
-    application_list = Application.objects.filter(team=team)
-    return render(request, 'user/list.html', {'application_list': application_list})
+    context = {
+        'team': team,
+        'members': team.team_members.all(),
+        'leader': team.leader,
+        'application_list': Application.objects.filter(team=team).all()
+    }
+    return render(request, 'teammates-leader.html', context)
 
 @login_required
-def applydetail(request,application_id):
-    if request.method == 'GET':
-        application = get_object_or_404(Application, pk=application_id)
-        return render(request, 'user/list.html', {'application': application})
-    else:
-        application = get_object_or_404(Application, pk=application_id)
-        flag = request.POST.get('flag', '')
-        user = User.objects.get(pk=request.user.id)
-        sender = Application.sender
-        team = Team.objects.get(leader=user)
-        team.team_members.add()
+def applydetail(request, application_id, res):
+
+    application = get_object_or_404(Application, pk=application_id)
+    user = User.objects.get(pk=request.user.id)
+    sender = Application.sender
+    team = Team.objects.get(leader=user)
+    team.team_members.add()
+    team.save()
+
+    if team.capacity <= team.team_members.all().count()+1:
+        application.delete()
+        return HttpResponse('<script>alert("The team is full!");window.history.back(-2);"</script>')
+
+    elif res == 'yes':
+        application.delete()
+        team.team_members.add(sender.id)
         team.save()
+        return HttpResponse('Successfully add in!')
+        #return HttpResponse('<script>alert("Successfully add in!");window.history.back(-2);"</script>')
 
-        if team.capacity <= team.team_members.all().count()+1:
-            application.delete()
-            return HttpResponse('<script>alert("The team is full!");window.history.back(-2);"</script>')
-
-        elif flag == 'yes':
-            application.delete()
-            team.team_members.add(sender)
-            team.save()
-            return HttpResponse('<script>alert("Successfully add in!");window.history.back(-2);"</script>')
-
-        else:
-            application.delete()
-            return HttpResponse('<script>alert("Successfully dismiss it!");window.history.back(-2);"</script>')
+    else:
+        application.delete()
+        return HttpResponse('<script>alert("Successfully dismiss it!");window.history.back(-2);"</script>')
 
