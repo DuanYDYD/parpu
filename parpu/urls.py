@@ -25,7 +25,8 @@ def mainpage(request):
     return render(request, "index.html")
 
 urlpatterns = [
-    path('', mainpage, name='mainpage'),
+    path('', mainpage),
+    path('index/', mainpage, name='mainpage'),
     path('forum/', include('forum.urls')),
     path('admin/', admin.site.urls),
     path(r'^captcha/', include('captcha.urls')),
