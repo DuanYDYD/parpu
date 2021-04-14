@@ -64,11 +64,11 @@
 <div class="hero-job">
     <div class="container">
         <h3 class="hero-job__heading">Contest Search</h3>
-        <form class="hero-job__search-form">
+        <form class="hero-job__search-form" method="POST" action="/contest/search/">
             <div class="hero-job__search-form-title form-control-inline-icon inline-icon-right">
                 <span class="icon iconfont-clock iconfont-right"></span>
                 <!--input box here-->
-                <input type="text" class="form-control" placeholder="Contest Name?">
+                <input type="text" class="form-control" placeholder="Contest Name?" name="con_name">
             </div>
             <div class="hero-job__search-form-location form-control-inline-icon inline-icon-right">
                 <span class="icon iconfont-world iconfont-right"></span>
@@ -76,7 +76,7 @@
                 <input type="text"  class="form-control flexdatalist flexdatalist" placeholder="Contest Holder?">
             </div>
             <!--search button here-->
-            <button type="button" class="btn btn-primary hero-job__search-form-btn">
+            <button type="submit" class="btn btn-primary hero-job__search-form-btn">
                 <span class="icon iconfont-search-v2"></span>
             </button>
         </form>
@@ -95,35 +95,35 @@
         <div class="categories-default__list">
             <div class="categories-default__list-item">
                 <span class="icon iconfont-food-service"></span>
-                <a href="#" class="name">Business</a>
+                <a href="/contest/search/?area=Business" class="name">Business</a>
             </div>
             <div class="categories-default__list-item">
                 <span class="icon iconfont-construction"></span>
-                <a href="#" class="name">Investment</a>
+                <a href="/contest/search/?area=Investment" class="name">Investment</a>
             </div>
             <div class="categories-default__list-item">
                 <span class="icon iconfont-healthcare"></span>
-                <a href="#" class="name">Technology</a>
+                <a href="/contest/search/?area=Technology" class="name">Technology</a>
             </div>
             <div class="categories-default__list-item">
                 <span class="icon iconfont-automotive"></span>
-                <a href="#" class="name">Hackson</a>
+                <a href="/contest/search/?area=Hackson" class="name">Hackson</a>
             </div>
             <div class="categories-default__list-item">
                 <span class="icon iconfont-food-service"></span>
-                <a href="#" class="name">Mathematics</a>
+                <a href="/contest/search/?area=Mathematics" class="name">Mathematics</a>
             </div>
             <div class="categories-default__list-item">
                 <span class="icon iconfont-construction"></span>
-                <a href="#" class="name">Sports</a>
+                <a href="/contest/search/?area=Sports" class="name">Sports</a>
             </div>
             <div class="categories-default__list-item">
                 <span class="icon iconfont-healthcare"></span>
-                <a href="#" class="name">Debate</a>
+                <a href="/contest/search/?area=Debate" class="name">Debate</a>
             </div>
             <div class="categories-default__list-item">
                 <span class="icon iconfont-automotive"></span>
-                <a href="#" class="name">Cooking</a>
+                <a href="/contest/search/?area=Cooking" class="name">Cooking</a>
             </div>
         </div>
 
