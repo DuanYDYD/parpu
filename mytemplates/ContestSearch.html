@@ -80,12 +80,9 @@
                 <span class="icon iconfont-search-v2"></span>
             </button>
         </form>
-        <p class="hero-job__browse">
-            Or browse contest by <a href="AllCategories.html" class="hero-job__browse-category">category</a>
-        </p>
         <div class="hero-job__extra-info">
             <!--total number of contest that we have in database-->
-            We have <span class="extra-info__amount">1024</span> contests recorded
+            We have <span class="extra-info__amount">{{contest_number}}</span> contests recorded
         </div>
     </div>
 </div>
@@ -142,54 +139,21 @@
         <h2 class="news-latest-from-blog__heading">Latest News from Candidates</h2>
 
         <div class="row">
+            {% for row in post %}
             <div class="col-lg-4">
                 <div class="news-latest-from-blog__item">
                     <ol class="breadcrumb news-latest-from-blog__item-breadcrumb">
-                        <li class="breadcrumb-item">April 1, 2021</li>
-                        <li class="breadcrumb-item"><a href="#">Category</a></li>
-                        <li class="breadcrumb-item"><a href="#">10 Comments</a></li>
+                        <li class="breadcrumb-item">{{row.updated_at}}</li>
+                        <li class="breadcrumb-item"><a href="#">{{row.column.name}}</a></li>
+                        <li class="breadcrumb-item"><a href="#">{{row.responce_times}}</a></li>
                     </ol>
-                    <a href="#" class="news-latest-from-blog__item-title">Short Title Here</a>
+                    <a href="column=11/post=<post_id>/" class="news-latest-from-blog__item-title">{{row.title}}</a>
                     <div class="news-latest-from-blog__item-announce">
-                        Some content here:
-                        sdf sdfs sdfsdf sdf sfd
-                        sdfdfg s dsf awoeru sdhb 
-                        nvsdfh spuwi asdl
+                        {{ row.content |truncatewords:"25"}}
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="news-latest-from-blog__item">
-                    <ol class="breadcrumb news-latest-from-blog__item-breadcrumb">
-                        <li class="breadcrumb-item">April 2, 2021</li>
-                        <li class="breadcrumb-item"><a href="#">Category</a></li>
-                        <li class="breadcrumb-item"><a href="#">6 Comments</a></li>
-                    </ol>
-                    <a href="#" class="news-latest-from-blog__item-title">Short Title Here</a>
-                    <div class="news-latest-from-blog__item-announce">
-                        Some content here:
-                        sdf sdfs sdfsdf sdf sfd
-                        sdfdfg s dsf awoeru sdhb 
-                        nvsdfh spuwi asdl
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="news-latest-from-blog__item">
-                    <ol class="breadcrumb news-latest-from-blog__item-breadcrumb">
-                        <li class="breadcrumb-item">April 3, 2021</li>
-                        <li class="breadcrumb-item"><a href="#">Category</a></li>
-                        <li class="breadcrumb-item"><a href="#">0 Comments</a></li>
-                    </ol>
-                    <a href="#" class="news-latest-from-blog__item-title">Short Title Here</a>
-                    <div class="news-latest-from-blog__item-announce">
-                        Some content here:
-                        sdf sdfs sdfsdf sdf sfd
-                        sdfdfg s dsf awoeru sdhb 
-                        nvsdfh spuwi asdl
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </div>
