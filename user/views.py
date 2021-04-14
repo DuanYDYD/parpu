@@ -129,14 +129,14 @@ def findPassword(request):
             from_email = None
             try:
                 send_mail(title, message, from_email, [email])
+                return
             except Exception as e:
                 logger.error(
                     '[UserControl]Cannot reach the registration email:[%s]' % email)
                 return HttpResponse("Error in sending email.\nPassword finding fails!", status=500)
-        return redirect('index')
     else:
         form = ForgetForm()
-        return render(request, 'user/form.html', {"form": form})
+        return render(request, 'form.html', {"form": form})
 
 def user_ok(request):
     time.sleep(5)
