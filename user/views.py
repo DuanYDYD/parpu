@@ -289,7 +289,7 @@ def addTeam(request, team_id): #有一个bug，没法检测同一个contest里�
         team = Team.objects.filter(pk=team_id).first()
         user = User.objects.get(pk=request.user.id)
         if team.capacity <= team.team_members.all().count()+1:
-            return HttpResponse('full')
+            return HttpResponse('Sorroyfull')
             #return HttpResponse('<script>alert("The team is full!");window.history.back(-2);"</script>')
         else:
             application = Application.objects.filter(sender=request.user, team=get_object_or_404(Team, pk=team_id))
