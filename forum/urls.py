@@ -21,6 +21,7 @@ urlpatterns = [
     #     views.commentCreate,
     #     name='comment_create'),
     path('column=<int:column_id>/post=<post_id>/likePost/',views.likePost,name='likePost'),
+    path('column=<int:column_id>/post=<post_id>/comment=<int:comment_id>/likeComment/',views.likeComment,name='likeComment'),
     path('test/',views.test,name='test')
     # path
     # path('user/post_update/(?P<pk>\d+)/$',
