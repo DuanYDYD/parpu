@@ -86,14 +86,23 @@
 
       <div class="subscribe">
         <h4>Find a team to join this contest!</h4>
-        <form method="post">
+        <form method="post" action="/user/teamlist/contest_id={{contest.id}}">
           <div class="subscribe-form">
             <!--input name of team? maybe deleted-->
-            <input type="team" name="" placeholder="Guess a Name?">
+            <input type="team" name="keyword" placeholder="Keyword">
             <input type="submit" value="Search!">
           </div>
         </form>
       </div>
+
+        <div class="subscribe">
+            <h4><br>Counl not find a desired team? </h4>
+            <form>
+            <!--input name of team? maybe deleted-->
+                <input type="button" value="Just Follow >_<!" style="background: red; color: white;font-size: 16px;padding: 0 20px;border: 0;height: 60px">
+            </form>
+      </div>
+
     </div>
   </header><!-- End #header -->
 

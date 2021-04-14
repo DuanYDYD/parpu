@@ -80,10 +80,6 @@
                 <span class="icon iconfont-search-v2"></span>
             </button>
         </form>
-        <div class="hero-job__extra-info">
-            <!--total number of contest that we have in database-->
-            We have <span class="extra-info__amount">{{contest_number}}</span> contests recorded
-        </div>
     </div>
 </div>
 
@@ -126,46 +122,19 @@
                 <a href="/contest/search/?area=Cooking" class="name">Cooking</a>
             </div>
         </div>
-
-        <div class="categories-default__browse-all">
-            <a href="PostContest.html" class="btn btn-outline-gray">Publish Your Own Contest!</a>
-        </div>
     </div>
 </div>
-
 <!-- this part ralates to forum but not contest-->
-<div class="news-latest-from-blog">
-    <div class="container">
-        <h2 class="news-latest-from-blog__heading">Latest News from Candidates</h2>
-
-        <div class="row">
-            {% for row in post %}
-            <div class="col-lg-4">
-                <div class="news-latest-from-blog__item">
-                    <ol class="breadcrumb news-latest-from-blog__item-breadcrumb">
-                        <li class="breadcrumb-item">{{row.updated_at}}</li>
-                        <li class="breadcrumb-item"><a href="#">{{row.column.name}}</a></li>
-                        <li class="breadcrumb-item"><a href="#">{{row.responce_times}}</a></li>
-                    </ol>
-                    <a href="column=11/post=<post_id>/" class="news-latest-from-blog__item-title">{{row.title}}</a>
-                    <div class="news-latest-from-blog__item-announce">
-                        {{ row.content |truncatewords:"25"}}
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</div>
 
 <div class="listing-recent-jobs">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8">
-                <h2 class="listing-recent-jobs__heading">Recent Contest</h2>
+            <div class="col-lg-12">
+                <h2 class="listing-recent-jobs__heading">Contest Qualified</h2>
+                <p>{{msg}}</p>
                 <div class="listing-recent-jobs__items">
                     <table class="table table-responsive">
-                        {% for row in recent %}
+                        {% for row in contest %}
                         <tr class="listing-recent-jobs__item">
                             <td class="listing-recent-jobs__item-company">
                                 <img src="/static/Forum&Contest/images/portfolio-{{row.id}}.jpg" alt="" width="50" height="50">
@@ -188,35 +157,6 @@
                         </tr>
                         {% endfor %}
                     </table>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <h2 class="listing-recent-jobs__heading">Friends' Choices</h2>
-
-                <div class="card listing-recent-jobs__spotlight">
-                    <img class="card-img-top embed-responsive" src="/static/images/portfolio-0.png" alt="Card image cap">
-                    <div class="listing-recent-jobs__spotlight-company-logo">
-                        <img src="/static/Forum&Contest/images/dropbox-lg.png" alt="Card image cap">
-                    </div>
-                    <div class="card-block">
-                        <!--Contest joined by my friend, contest name and short description should be uploaded from database-->
-                        <a href="#" class="card-title link-underlined link-underlined--endeavour">Encryption Algorithm Design</a>
-                        <p class="card-text">
-                            Some description here:
-                            sdif wbeor udsiof sdofo weoiru sdhxzbv sdfwoeiur sdfjh zixoc wejhr
-                            sdbnfo wpoieri sndf asi fdspo nwel psdif znfl
-                            qwe wperoui zbncoias qporiu sdfnao 
-                        </p>
-                        <div class="listing-recent-jobs__spotlight-meta">
-                            <div class="listing-recent-jobs__spotlight-location">
-                                <span class="listing-recent-jobs__item-location-icon iconfont-map-outline"></span>
-                                <!--Name of friend who participate in above contest-->
-                                Name of Friend
-                            </div>
-                            <!--Category of Contest that my friend participate in-->
-                            <span class="badge badge-curious-blue listing-recent-jobs__item-type">Category</span>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

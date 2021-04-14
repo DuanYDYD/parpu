@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Find Password</title>
+        <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+        <script src="/static/js/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet" href= "/static/css/all.css">
+        <script src="/static/js/jquery.min.js"></script>
+        <link rel="stylesheet" href="/static/css/login.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card" style="display: block">
+                        <form method="post" action="{% url 'user:findpassword' %}" class="box">
+                            <h1>Retrieve Password</h1>
+                            <p> Please enter your certification code from email!</p>
+                        <input id="code" type="text" name="code">
+                        <input type="submit" name="" value="Get Password">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<ul class="colorlib-bubbles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+
+    </body>
+</html>

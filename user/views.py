@@ -277,7 +277,7 @@ def teamList(request, contest_id):
         Contest.objects.get(pk=contest_id)
         thiscontest = Contest.objects.get(pk=contest_id)
         team_list = Team.objects.filter(contest=thiscontest)
-        return render(request,'user/list.html', {'team_list' : team_list} )
+        return render(request, 'user/list.html', {'team_list' : team_list} )
     except:
         return HttpResponse('<script>alert("We do not have the contest");window.history.back(-1);"</script>')
 
