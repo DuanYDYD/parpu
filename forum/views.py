@@ -84,16 +84,18 @@ def PostCreate(request, column_id):
         #next = request.GET.get('next',None)
         #if next is None:
         #next = reverse_lazy('index')
-        return render(request, 'user/form.html', {"form" : form})
+        return render(request, 'PostCreate.html', {"form" : form})
 
 #编辑贴
+@login_required
 class PostUpdate(UpdateView):
     model = Post
     form_class = PostForm
-    template_name = 'user/form.html'
+    template_name = 'PostCreate.html'
     success_url = reverse_lazy('index')
 
 #删贴
+@login_required
 class PostDelete(DeleteView):
     model = Post
     form_class = PostForm
@@ -138,7 +140,7 @@ def commentCreate(request, column_id, post_id):
 
     else:
         form = CommentForm()
-        return render(request, 'user/form.html', {"form" : form})
+        return render(request, 'CommentCreate.html', {"form" : form})
 
 @login_required
 def likePost(request,column_id,post_id): #还没做url
