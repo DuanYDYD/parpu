@@ -58,7 +58,7 @@
                             <a class="nav-link" href="/user/login/">Sign In/Personal Page</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/user/logout/">Sign In/Personal Page</a>
+                            <a class="nav-link" href="/user/logout/">logout</a>
                         </li>
                     </ul>
                     </div>
@@ -69,7 +69,7 @@
             <div class="d-flex flex-column">
                 <div class="profile">
                     <img src="/static/images/portfolio-1.jpg" alt="" class="img-fluid rounded-circle">
-                    <h1 class="text-light"><a href="#">Kuroishi Kaeda</a></h1>
+                    <h1 class="text-light"><a href="">{{user.username}}</a></h1>
                     <div class="social-links mt-3 text-center">
                         <a id="twitter" href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
                         <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
@@ -106,7 +106,7 @@
         <!--Hero-->
         <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
             <div class="hero-container" data-aos="fade-in">
-              <h1>Kuroishi Kaeda</h1>
+              <h1>{{user.username}}</h1>
               <p>I'm <span class="typed" data-typed-items="Gamer, Developer, Freelancer, Photographer"></span></p>
             </div>
         </section><!-- End Hero -->
@@ -117,7 +117,7 @@
                 <div class="container">
                     <div class="section-title">
                         <h2>About</h2>
-                        <p>My brief description</p>
+                        <p>This is Me!</p>
                     </div>
 
                   <div class="row">
@@ -125,27 +125,27 @@
                         <img src="/static/images/portfolio-1.jpg" class="img-fluid" alt="">
                     </div>
                     <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-                      <h3>My title1 &amp; My title2</h3>
-                      <p class="font-italic">Brief introduction to my title</p>
+                      <h3>My Motto</h3>
+                      <p class="font-italic">{{user.motto}}</p>
                       <div class="row">
                         <div class="col-lg-6">
                           <ul>
-                            <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>24 April 1998</span></li>
+                            <li><i class="bi bi-chevron-right"></i> <strong>Graduation:</strong> <span>{{user.graudationtime}}</span></li>
                             <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>www.mysite.com</span></li>
                             <li><i class="bi bi-chevron-right"></i> <strong>Constellation:</strong> <span>Taurus</span></li>
-                            <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>City, Country</span></li>
+                            <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>HK, China</span></li>
                           </ul>
                         </div>
                         <div class="col-lg-6">
                           <ul>
-                            <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>23</span></li>
-                            <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Bachelor</span></li>
-                            <li><i class="bi bi-chevron-right"></i> <strong>PhEmailone:</strong> <span>myemail@example.com</span></li>
+                            <li><i class="bi bi-chevron-right"></i> <strong>Gender:</strong> <span>{{user.sex}}</span></li>
+                            <li><i class="bi bi-chevron-right"></i> <strong>Major:</strong> <span>{{user.major}}</span></li>
+                            <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>{{user.email}}</span></li>
                             <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li>
                           </ul>
                         </div>
                       </div>
-                      <p>Other things want to say</p>
+                      <p>Say hi to CSCI3100</p>
                     </div>
                   </div>
 
@@ -164,28 +164,28 @@
                             <div class="count-box">
                                 <i class="bi bi-emoji-smile"></i>
                                 <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-                                <p><strong>Contest</strong><br>Additional Explanation</p>
+                                <p><strong>Contest</strong><br>Positive Feedback</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="100">
                             <div class="count-box">
                                 <i class="bi bi-journal-richtext"></i>
                                 <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-                                <p><strong>Projects</strong><br>Additional Explanation</p>
+                                <p><strong>Projects</strong><br>Successfully Completed</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="200">
                             <div class="count-box">
                                 <i class="bi bi-headset"></i>
                                 <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1" class="purecounter"></span>
-                                <p><strong>Ratings</strong><br>Additional Explanation</p>
+                                <p><strong>Ratings</strong><br>Higher than 4</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="300">
                             <div class="count-box">
                                 <i class="bi bi-people"></i>
                                 <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" class="purecounter"></span>
-                                <p><strong>Achievements</strong><br>Additional Explanation</p>
+                                <p><strong>Achievements</strong><br>Achieved historically</p>
                             </div>
                         </div>
                     </div>
@@ -251,7 +251,7 @@
                 <div class="container">
                     <div class="section-title">
                         <h2>Project Gallery</h2>
-                        <p>Brief Introduction to projects</p>
+                        <p>Brief Introduction to my projects</p>
                     </div>
                     <div class="row" data-aos="fade-up">
                         <div class="col-lg-12 d-flex justify-content-center">
@@ -351,33 +351,33 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
                             <div class="icon"><i class="bi bi-briefcase"></i></div>
-                            <h4 class="title"><a href="">Achievement One</a></h4>
-                            <p class="description">Achievement Description</p>
+                            <h4 class="title"><a href="">Good Coder</a></h4>
+                            <p class="description">Provide good codes</p>
                         </div>
                         <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
                             <div class="icon"><i class="bi bi-card-checklist"></i></div>
-                            <h4 class="title"><a href="">Achievement Two</a></h4>
-                            <p class="description">Achievement Description</p>
+                            <h4 class="title"><a href="">Long-term User</a></h4>
+                            <p class="description">Login more than 10 days</p>
                         </div>
                         <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
                             <div class="icon"><i class="bi bi-bar-chart"></i></div>
-                            <h4 class="title"><a href="">Achievement Three</a></h4>
-                            <p class="description">Achievement Description</p>
+                            <h4 class="title"><a href="">No can No BB</a></h4>
+                            <p class="description">Commented in interested area</p>
                         </div>
                         <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
                             <div class="icon"><i class="bi bi-binoculars"></i></div>
-                            <h4 class="title"><a href="">Achievement Four</a></h4>
-                            <p class="description">Achievement Description</p>
+                            <h4 class="title"><a href="">I like sharing</a></h4>
+                            <p class="description">Added a post on forum</p>
                         </div>
                         <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
                             <div class="icon"><i class="bi bi-brightness-high"></i></div>
-                            <h4 class="title"><a href="">Achievement Five</a></h4>
-                            <p class="description">Achievement Description</p>
+                            <h4 class="title"><a href="">Fight!</a></h4>
+                            <p class="description">Joined a contest</p>
                         </div>
                         <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="500">
                             <div class="icon"><i class="bi bi-calendar4-week"></i></div>
-                            <h4 class="title"><a href="">Achievement Six</a></h4>
-                            <p class="description">Achievement Description</p>
+                            <h4 class="title"><a href="">Real Leader</a></h4>
+                            <p class="description">being a leader of a team</p>
                         </div>
                     </div>
                 </div>
@@ -396,7 +396,7 @@
                                 <div class="email">
                                     <i class="bi bi-envelope"></i>
                                     <h4>Email:</h4>
-                                    <p>info@example.com</p>
+                                    <p>{{user.email}}</p>
                                 </div>
                             </div>
                         </div>

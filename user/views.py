@@ -173,7 +173,7 @@ def user_ok(request):
 
 def userlogout(request):
     logout(request)
-    return HttpResponseRedirect(reverse_lazy('index'))
+    return HttpResponseRedirect(reverse_lazy('mainpage'))
 
 def IndexView(request):
     """通用视图"""
@@ -309,6 +309,13 @@ def teamList(request, contest_id):
     thiscontest = get_object_or_404(Contest, pk=contest_id)
     team_list = Team.objects.filter(contest=thiscontest)
     return render(request, 'team-list.html', {'contest': thiscontest, 'team_list': team_list})
+
+@login_required
+def myTeam(request):
+    user = User.objects.get(pk=request.user.id)
+    leading_team_list = Team.objects.filter(leader=user)
+    team_list = Team.objects.filter(team_members=user)
+    return render(request, 'team.html', {'team_list': team_list, "leading_team_list": leading_team_list})
 
 @login_required
 def addTeam(request, team_id, contest_id): #有一个bug，没法检测同一个contest里这个人加了很多队伍
