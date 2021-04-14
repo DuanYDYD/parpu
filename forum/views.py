@@ -33,7 +33,7 @@ def forumindex(request):
         'post_num': Post.objects.all().count(),
 
     }
-    return render(request, 'postindex.html', context)
+    return render(request, 'forumindex.html', context)
 
 def columnIndex(request, column_id):
     """Listing of posts in a topic."""
