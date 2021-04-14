@@ -17,6 +17,8 @@ from user.models import User, Friend, Team, Application
 from forum.models import  Column, Comment, Friend, Post
 from contest.models import Contest
 from django.shortcuts import get_object_or_404, render
+from django.contrib import messages
+
 import logging
 
 from user.utils import random_str
@@ -281,24 +283,47 @@ def teamList(request, contest_id):
     Contest.objects.get(pk=contest_id)
     thiscontest = get_object_or_404(Contest, pk=contest_id)
     team_list = Team.objects.filter(contest=thiscontest)
-    return render(request, 'team-list.html', {'contest_name': thiscontest.name, 'team_list': team_list})
+    return render(request, 'team-list.html', {'contest': thiscontest, 'team_list': team_list})
 
 @login_required
-def addTeam(request, team_id): #有一个bug，没法检测同一个contest里这个人加了很多队伍
+def addTeam(request, team_id, contest_id): #有一个bug，没法检测同一个contest里这个人加了很多队伍
     if request.method == 'GET':
         team = Team.objects.filter(pk=team_id).first()
         user = User.objects.get(pk=request.user.id)
         if team.capacity <= team.team_members.all().count()+1:
-            return HttpResponse('Sorroyfull')
-            #return HttpResponse('<script>alert("The team is full!");window.history.back(-2);"</script>')
+            messages.success(request, "Sorry, this team is full")
+            return redirect("/user/teamlist/contest_id="+str(contest_id))
         else:
             application = Application.objects.filter(sender=request.user, team=get_object_or_404(Team, pk=team_id))
             if len(application) != 0:
-                return HttpResponse('sented')
-                #return HttpResponse('<script>alert("You have sent the application!");window.history.back(-2);"</script>')
+                messages.success(request, "You have submitted application to this team already. Please do not submit again!")
+                return redirect("/user/teamlist/contest_id="+str(contest_id))
             else:
                 form = ApplicationForm()
-                return render(request, 'user/form.html', {"form": form})
+                return render(request, 'applicationform.html', {"form": form, "team_id": team_id, "contest_id": contest_id,
+                                                                "user_id": request.user.id})
+
+@login_required
+def sendapp(request, team_id, contest_id, user_id):
+    form = ApplicationForm(request.POST)
+    errors = []
+    # 验证表单是否正确
+    if form.is_valid():
+        print(1)
+        content = request.POST.get("content", "")
+        messages.success(request, "Application sent successfully!")
+        newapplication = Application(sender=User.objects.get(pk=user_id), team=Team.objects.get(pk=team_id), content=content)
+        newapplication.save()
+    else:
+        # 如果表单不正确,保存错误到errors列表中
+        print(2)
+        for k, v in form.errors.items():
+            # v.as_text() 详见django.forms.util.ErrorList 中
+            errors.append(v.as_text())
+        if errors:
+            messages.success(request, "Sorry, invalid application, please type again")
+            return redirect("/user/teamlist/contest_id="+str(contest_id))
+    return redirect("/user/teamlist/contest_id="+str(contest_id))
 
 @login_required()
 def applyList(request):
@@ -308,7 +333,7 @@ def applyList(request):
     except:
         team = None
     application_list = Application.objects.filter(team=team)
-    return render(request, 'user/list.html', {'application_list':application_list})
+    return render(request, 'user/list.html', {'application_list': application_list})
 
 @login_required
 def applydetail(request,application_id):
