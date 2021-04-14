@@ -59,7 +59,7 @@
                         <div class="d-flex flex-column">
                             <span class="master-profile__item-title">{{post.title}}</span>
                             <span class="master-profile__item-location"><span class="icon iconfont-map-point-v3"></span>{{post.column.name}}</span>
-                            <span class="master-profile__item-description"><span class="icon iconfont-fire"></span>{{post.like_num}}</span>
+                            <span class="master-profile__item-description"><span class="icon iconfont-fire"></span>&nbsp{{post.like_num}}</span>
                             <span class="master-profile__item-description">{{post.author}}</span>
                         </div>
                     </div>
@@ -82,7 +82,7 @@
                     <div class="master-profile__nav-tabs-wrap">
                         <ul class="nav nav-tabs master-profile__nav-tabs" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#home" role="tab">All <span>4</span></a>
+                                <a class="nav-link active" data-toggle="tab" href="#home" role="tab">All <span>{{post.comments_num}}</span></a>
                             </li>
                         </ul>
 
@@ -112,7 +112,11 @@
                                             {{comment.content}}
                                         </p>
                                     </div>
-                                    <div class="master-profile-reviews__review-meta">{{comment.author}}, {{comment.created_at}}</div>
+                                    <div class="master-profile-reviews__review-meta">
+                                        {{comment.author}}, {{comment.created_at}}
+                                        <span>&nbsp&nbsp&nbsp&nbsp</span>
+                                        <button class="btn btn-primary" onclick="">Like this comment</button>
+                                    </div>
                                 </div>
                             </div>
                             {% endfor %}
@@ -123,7 +127,7 @@
             </div>
             <div class="col-lg-3">
                 <div class="master-profile-controls">
-                    <h5>Share Post</h5>
+                    <h5>Good Post?</h5>
 
                 <div class="master-profile-controls__social">
                     <a href="#"><img src="/static/Forum&Contest/images/facebook-lg.png" width="30" height="30" alt=""></a>
@@ -132,12 +136,12 @@
                     <a href="#"><img src="/static/Forum&Contest/images/twitter-lg.png" width="30" height="30" alt=""></a>
                 </div>
 
-                <h5>You are excited to post?</h5>
+                <h5>You are excited to share?</h5>
                 <p>
-                    Leave your work for sharing with others!
+                    Don't save your word for appreciation
                 </p>
 
-                <a href="AddPost.html" class="btn btn-primary">Add a post</a>
+                <a href= "/forum/?column_id={{column_id}}/?post_id={{post_id}}/likePost/" class="btn btn-primary" onclick="">Like this post</a>
                 </div>
             </div>
         </div>

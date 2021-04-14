@@ -141,19 +141,20 @@ def commentCreate(request, column_id, post_id):
         return render(request, 'user/form.html', {"form" : form})
 
 @login_required
-def likePost(request, post_id): #还没做url
+def likePost(request, column_id, post_id): #还没做url
     post = get_object_or_404(Post, pk=post_id)
     user = request.user
     try:
         PostLike.objects.get(liker=user, post=post)
-        return HttpResponse('<script>alert("you have already liked！");window.history.back(-1);"</script>')
+
+        return HttpResponse('you already like it')
     except:
         post.like_num += 1
-        postlike = PostLike
+        postlike = PostLike()
         postlike.post=post
         postlike.liker=user
         post.save()
-    return HttpResponse('<script>alert("you like it！");window.history.back(-1);"</script>')
+    return HttpResponse('you like it now')
 
 @login_required #如何传入comment_id 还需商讨 还没做url
 def likeComment(request, comment_id):
