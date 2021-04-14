@@ -48,9 +48,13 @@ https://templatemo.com/tm-535-softy-pinko
                             <li><a href="/index/" class="active">Home</a></li>
                             <li><a href="/contest/index/">Contests</a></li>
                             <li><a href="/forum">Community</a></li>
+                            {% if not user.is_authenticated %}
+                            <li><a href="/user/login/">Login</a></li>
+                            {%else%}
                             <li><a href="/user/myteam/">My team</a></li>
-                            <li><a href="/user/login">Login</a></li>
                             <li><a href="/personalpage/">PersonalPage</a></li>
+                            <li><a href="/user/logout/">Logout</a></li>
+                            {% endif %}
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>

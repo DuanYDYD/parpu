@@ -41,20 +41,30 @@
                     </div>
                     <ul class="nav header-topbar__nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="index/">Back to Main</a>
+                            <a class="nav-link" href="/index/">Back to Main</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/contest/index/">Go to Contest</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/forum">Go to Forum</a>
+                            <a class="nav-link" href="/forum/">Go to Forum</a>
                         </li>
+                        {% if not user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/user/login/">Sign In</a>
+                        </li>
+                        {%else%}
                         <li class="nav-item">
                             <a class="nav-link" href="/user/myteam/">My Team</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/user/login">Sign In/Personal Page</a>
+                            <a class="nav-link" href="/personalpage/">Personal Page</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/user/logout/">Logout</a>
+                        </li>
+                        {% endif %}
+
                     </ul>
                 </div>
             </div>
