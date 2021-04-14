@@ -54,16 +54,16 @@ def columnIndex(request, column_id):
 
 
 @login_required
-def PostCreate(request, column_id):
-    column = Column.objects.get(id=column_id)
+def PostCreate(request):
     author = User.objects.get(pk=request.user.id)
     if request.method == 'POST':
+        column_id = request.POST.get("column", "")
+        column = get_object_or_404(Column, pk=int(column_id))
         title = request.POST.get("title", "")
         content = request.POST.get("content", "")
         form = PostForm(request.POST)
         errors = []
         if form.is_valid():
-
             post = Post()
             post.title = title
             post.content = content
