@@ -62,11 +62,14 @@ def userlogin(request):
         try:
             user = User.objects.get(username=username)
             pwd=user.password
+            logger.error(check_password(password,pwd))
             if check_password(password,pwd):
                 login(request, user)
-                return redirect('user:userpage')
+                return redirect('personalpage')
+            else:
+                return HttpResponse('wrong pwd!')
         except:
-            return HttpResponse('no such user!')
+            return redirect('personalpage')
             #return redirect('user:userDetail')
     else:
         return render(request, 'login.html', None)
@@ -101,7 +104,6 @@ def userregister(request):
                 logger.error(
                     '[UserControl]Cannot reach the registration email:[%s]/[%s]' % (username, email))
                 return HttpResponse("Error in sending email.\nRegistration fails!", status=500)
-
             new_user = form.save()
             login(request, new_user)
         else:
@@ -171,7 +173,7 @@ def user_ok(request):
 
 def userlogout(request):
     logout(request)
-    return HttpResponseRedirect(reverse_lazy('index'))
+    return HttpResponseRedirect(reverse_lazy('mainpage'))
 
 def IndexView(request):
     """通用视图"""
