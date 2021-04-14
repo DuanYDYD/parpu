@@ -102,21 +102,18 @@ class PostDelete(DeleteView):
     success_url = reverse_lazy('index')
 
 def postDetail(request, column_id, post_id):
-    column = get_object_or_404(Column, pk=column_id)
-    post = get_object_or_404(Post, pk=post_id)
-    comments_list = Comment.objects.filter(post=post)
-    context = {
-        'column': column,
-        'post': post,
-        'comments_list': comments_list,
-        'comments_num': comments_list.all().count()
-    }
-    return render(request, "PostPage.html", context)
-
-
-@login_required
-def commentCreate(request, column_id, post_id):
-    if request.method == 'POST':
+    if request.method == 'GET':
+        column = get_object_or_404(Column, pk=column_id)
+        post = get_object_or_404(Post, pk=post_id)
+        comments_list = Comment.objects.filter(post=post)
+        context = {
+            'column': column,
+            'post': post,
+            'comments_list': comments_list,
+            'comments_num': comments_list.all().count()
+        }
+        return render(request, "PostPage.html", context)
+    else:
         post = Post.objects.get(id=post_id)
         author = User.objects.get(pk=request.user.id)
         errors = []
@@ -127,7 +124,8 @@ def commentCreate(request, column_id, post_id):
         comment.content = content
         comment.save()
         return HttpResponseRedirect(reverse_lazy('forum:post_detail', kwargs={'column_id': column_id,
-                                                                              'post_id':post_id}))
+                                                                              'post_id': post_id}))
+
 
 
 # @login_required
