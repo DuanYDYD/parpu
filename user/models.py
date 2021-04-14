@@ -22,15 +22,20 @@ class User(AbstractUser):
     )
 
     area = (
-        ('co','commercial contest'),
+        ('co', 'commercial contest'),
         ('sp', 'sports'),
     )
 
     majorchoice = (
-        ('bs','business'),
-        ('math','math'),
-        ('ft','fintech'),
-        ('cs','computer science')
+        ('Business', 'Business'),
+        ('Quantitative Finance & Risk Management', 'Quantitative Finance & Risk Management'),
+        ('Math', 'Math'),
+        ('Fintech', 'Fintech'),
+        ('Computer Science', 'Computer science'),
+        ('Law', 'Law'),
+        ('Communication', 'Communication'),
+        ('Science', 'Science'),
+        ('Language', 'Language'),
     )
 
     nickname = models.CharField(max_length=128, blank=True, null=True)

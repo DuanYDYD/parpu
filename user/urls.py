@@ -26,15 +26,14 @@ urlpatterns = [
         name='post_delete'),
     path('friendsadd/<int:friend_id>', views.makefriends, name='makefriends'),
     path('friendsdelete/<int:friend_id>', views.deletefriends, name='deletefriends'),
-    path('addteam/team=<int:team_id>/',views.addTeam, name='addTeam'),
+    path('addteam/team=<int:team_id>/', views.addTeam, name='addTeam'),
     path('applylist/', views.applyList, name='applyList'),
 
     # when select one contest and look for team
     path('teamlist/contest_id=<int:contest_id>', views.teamList, name='teamList'),
-    #path('contest/<int:contest_id>/', views.detail,name='detail'),
+    path('teampage/team_id=<int:team_id>', views.teamDetail, name='teamDetail'),
+    #path('teamcreate/contest_id=<int:contest_id>', views.TeamCreate, name='teamCreate'),
 
     #path('vote/<int:user_ID>/', views.vote, name='vote'),
-
     #path('test/', views.IndexView(),name='test'),
-
 ]

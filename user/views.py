@@ -233,7 +233,7 @@ def cancelFollowContest(request, contest_id):
         return HttpResponse('<script>alert("you have not added it！");window.history.back(-1);"</script>')
 
 @login_required()
-def TeamCreate(request,contest_id):
+def TeamCreate(request, contest_id):
     thiscontest = get_object_or_404(Contest, pk=contest_id)
     user = get_object_or_404(User, pk=request.user.id)
     if request.method == 'POST':
@@ -263,24 +263,24 @@ def TeamCreate(request,contest_id):
                 return render(request, 'user/user_fail.html', {"errors": errors})
     else:
         form = TeamForm()
-        return render(request, 'user/form.html', {"form": form})
+        return render(request, 'form.html', {"form": form})
 
 def teamDetail(request, team_id):
-    thisTeam = get_object_or_404(User, pk=team_id)
+    thisTeam = get_object_or_404(Team, pk=team_id)
+    members = thisTeam.team_members.all()
+    print(members)
     context = {
         'team': thisTeam,
+        'members': members,
     }
-    return render(request, 'user/teampage.html', context)
+    return render(request, 'teammates.html', context)
 
+@login_required
 def teamList(request, contest_id):
-    try:
-        Contest.objects.get(pk=contest_id)
-        thiscontest = Contest.objects.get(pk=contest_id)
-        team_list = Team.objects.filter(contest=thiscontest)
-        return render(request, 'user/list.html', {'team_list' : team_list} )
-    except:
-        return HttpResponse('<script>alert("We do not have the contest");window.history.back(-1);"</script>')
-
+    Contest.objects.get(pk=contest_id)
+    thiscontest = get_object_or_404(Contest, pk=contest_id)
+    team_list = Team.objects.filter(contest=thiscontest)
+    return render(request, 'team-list.html', {'contest_name': thiscontest.name, 'team_list': team_list})
 
 @login_required
 def addTeam(request, team_id): #有一个bug，没法检测同一个contest里这个人加了很多队伍
@@ -307,7 +307,7 @@ def applyList(request):
     except:
         team = None
     application_list = Application.objects.filter(team=team)
-    return render(request,'user/list.html',{'application_list':application_list})
+    return render(request, 'user/list.html', {'application_list':application_list})
 
 @login_required
 def applydetail(request,application_id):
