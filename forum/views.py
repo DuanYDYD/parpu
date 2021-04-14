@@ -12,7 +12,7 @@ from user.form import UserForm, ForgetForm, TeamForm
 from forum.form import PostForm, CommentForm  # ,MessageForm, PostForm,
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 
 from forum.models import  Column, Comment, Post, PostLike, CommentLike
 from user.models import User, Friend, Team
@@ -145,8 +145,8 @@ def likePost(request,column_id,post_id): #还没做url
     post = get_object_or_404(Post, pk=post_id)
     user = request.user
     try:
-        PostLike.objects.get(liker=user, post=post)
-        return HttpResponse('<script>alert("already liked it！");window.history.back(-1);"</script>')
+        PostLike.objects.filter(liker=user, post=post)
+        return HttpResponseRedirect(reverse_lazy('forum:post_detail', args=[column_id,post_id]))
     except:
         post.like_num += 1
         postlike = PostLike()
@@ -154,15 +154,15 @@ def likePost(request,column_id,post_id): #还没做url
         postlike.liker=user
         postlike.save()
         post.save()
-    return HttpResponse('<script>alert("Successfully like it！");window.history.back(-1);"</script>')
+    return HttpResponseRedirect(reverse_lazy('forum:post_detail', args=[column_id,post_id]))
 
 @login_required #如何传入comment_id 还需商讨 还没做url
 def likeComment(request, column_id, post_id, comment_id):
     comment = get_object_or_404(Post, pk=comment_id)
     user = request.user
     try:
-        CommentLike.objects.get(liker=user, comment=comment)
-        return HttpResponse('<script>alert("already liked it！");window.history.back(-1);"</script>')
+        CommentLike.objects.filter(liker=user, comment=comment)
+        return HttpResponseRedirect(reverse_lazy('forum:post_detail', args=[column_id,post_id,comment_id]))
     except:
         comment.like_num += 1
         commentlike = CommentLike()
@@ -170,7 +170,7 @@ def likeComment(request, column_id, post_id, comment_id):
         commentlike.liker = user
         commentlike.save()
         comment.save()
-    return redirect('forum:post_detail')
+    return HttpResponseRedirect(reverse_lazy('forum:post_detail', args=[column_id,post_id,comment_id]))
 
 def test(request):
     return render(request,'PostPage.html',None)
