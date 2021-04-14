@@ -19,10 +19,20 @@ from django.urls import include, path
 from forum import views as fviews
 from user import views as uviews
 from contest import views as cviews
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
+def mainpage(request):
+    return render(request, "index.html")
+
+@login_required
+def personalpage(request):
+    return render(request, "personalpage.html")
 
 urlpatterns = [
-    path('', uviews.IndexView, name='index'),
+    path('', mainpage),
+    path('index/', mainpage, name='mainpage'),
+    path('personalpage/', personalpage, name='personalpage'),
     path('forum/', include('forum.urls')),
     path('admin/', admin.site.urls),
     path(r'^captcha/', include('captcha.urls')),
