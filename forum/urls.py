@@ -7,7 +7,7 @@ from forum import views
 app_name = 'forum'
 urlpatterns = [
 
-    path('/',views.forumindex,name='forum:index'),
+    path('',views.forumindex,name='forum:index'),
     path('column=<int:column_id>/',
         views.columnIndex,
         name='columnIndex'),
@@ -20,6 +20,7 @@ urlpatterns = [
     path('column=<int:column_id>/post=<post_id>/commentCreate/',
         views.commentCreate,
         name='comment_create'),
+    path('test/',views.test,name='test')
     # path
     # path('user/post_update/(?P<pk>\d+)/$',
     #     login_required(PostUpdate.as_view()),
