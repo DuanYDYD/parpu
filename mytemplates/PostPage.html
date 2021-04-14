@@ -115,6 +115,9 @@
                                     <div align="right">
                                             <a href="" class="btn btn-primary" onclick="">Like!</a>
                                         </div>
+                                     <div class="master-profile-reviews__review-meta">
+                                         <b>{{comment.like_num}}</b>&nbsp people like this comment!
+                                    </div>
                                     <div class="master-profile-reviews__review-meta">
                                         {{comment.author}}
 
@@ -123,6 +126,17 @@
                                 </div>
                             </div>
                             {% endfor %}
+                        </div>
+                        <div class="tab-pane active" id="home2" role="tabpanel">
+                            <div class="master-profile-reviews__review">
+                                <div>
+                                    <div class="master-profile-reviews__review-content">
+                                        <p>Contribute your comment below!</p>
+                                        <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+                                        <button type="submit" class="btn btn-primary btn-rounded btn-lg master-post-application__submit-btn">Comment!</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
