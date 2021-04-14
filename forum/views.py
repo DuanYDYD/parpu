@@ -141,7 +141,7 @@ def commentCreate(request, column_id, post_id):
         return render(request, 'user/form.html', {"form" : form})
 
 @login_required
-def likePost(request, column_id, post_id): #还没做url
+def likePost(request,column_id,post_id): #还没做url
     post = get_object_or_404(Post, pk=post_id)
     user = request.user
     try:
