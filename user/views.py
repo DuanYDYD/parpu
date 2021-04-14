@@ -171,7 +171,7 @@ def user_ok(request):
 
 def userlogout(request):
     logout(request)
-    return HttpResponseRedirect(reverse_lazy('index'))
+    return HttpResponseRedirect(reverse_lazy('mainpage'))
 
 def IndexView(request):
     """通用视图"""
