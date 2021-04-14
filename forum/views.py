@@ -173,4 +173,4 @@ def likeComment(request, column_id, post_id, comment_id):
     return redirect('forum:post_detail')
 
 def test(request):
-    return render(request,'PostPage.html',None)
+    return render(request,'personalpage.html',None)

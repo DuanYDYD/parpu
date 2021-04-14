@@ -4,13 +4,13 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Personal Page</title>
-        <link href="/static/img/favicon.png" rel="icon">
-        
+        <link href="/static/images/favicon.png" rel="icon">
+
         <!--sidebar css and js-->
         <link rel="stylesheet" href="/static/css/bootstrap.min.css">
         <script defer src="/static/js/solid.js"></script>
         <script defer src="/static/js/fontawesome.js"></script>
-        
+
         <!--Content css and js-->
         <link href="/static/css/aos.css" rel="stylesheet">
         <link href="/static/css/bootstrap.min.css" rel="stylesheet">
@@ -19,16 +19,54 @@
         <link href="/static/css/boxicons.min.css" rel="stylesheet">
         <link href="/static/css/glightbox.min.css" rel="stylesheet">
         <link href="/static/css/swiper-bundle.min.css" rel="stylesheet">
-        
-        
+
+        <link rel="stylesheet" type="text/css" href="/static/css/tether.min.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/animate.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/fontstyles_1.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/fontstyles_2.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/iconstyles.css">
+
+        <link rel="stylesheet" type="text/css" href="/static/css/style.min.css">
+
+
     </head>
     <body>
         <!--Header-->
+        <div class="header-master">
+            <div class="header-default">
+                <div class="header-topbar">
+                    <div class="container">
+                        <div class="header-topbar__contact-info">
+                            <div class="header-topbar__contact-info-item">
+                                <span class="value">Welcome to Personal Page!</span>
+                            </div>
+                        </div>
+                        <ul class="nav header-topbar__nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Back to Main</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/contest/index/">Go to Contest</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/forum/">Go to Forum</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">My Team</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/user/login/">Sign In/Personal Page</a>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
         <header id="header">
             <div class="d-flex flex-column">
                 <div class="profile">
-                    <img src="/static/img/profile-img.jpg" alt="" class="img-fluid rounded-circle">
-                    <h1 class="text-light"><a href="PersonalPage.html">Kuroishi Kaeda</a></h1>
+                    <img src="/static/images/portfolio-1.jpg" alt="" class="img-fluid rounded-circle">
+                    <h1 class="text-light"><a href="#">Kuroishi Kaeda</a></h1>
                     <div class="social-links mt-3 text-center">
                         <a id="twitter" href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
                         <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
@@ -37,7 +75,7 @@
                 </div>
             </div>
         </header><!-- End Header -->
-        
+
         <script type="text/javascript">
             $(document).ready(function () {
                 $('#sidebarcollapse').on('click', function () {
@@ -47,19 +85,18 @@
         </script>
 
         <!--navigation bar-->
-        <div class="wrapper">
+        <div class="wrapper" style="background-color: white;">
             <nav id="sidebar">
-                <ul class="list-unstyled components">
+                <ul class="list-unstyled components" style="border:none">
                     <li>
-                        <a href="/index/"><i class="fas fa-home"></i>&nbspHome</a>
-                        <a href="#about"><i class="fas fa-briefcase"></i>&nbspAbout</a>      
-                        <a href="#facts"><i class="fas fa-tasks"></i>&nbspFacts</a>
-                        <a href="#skills"><i class="fas fa-cog"></i>&nbspSkill</a>
-                        <a href="#portfolio"><i class="fas fa-copy"></i>&nbspPortfolio</a>
+                        <a href="#" style="color:#1f8f8f"><i class="fas fa-home"></i>&nbspHome</a>
+                        <a href="#about" style="color:#1f8f8f"><i class="fas fa-briefcase"></i>&nbspAbout</a>
+                        <a href="#facts" style="color:#1f8f8f"><i class="fas fa-tasks"></i>&nbspFacts</a>
+                        <a href="#skills" style="color:#1f8f8f"><i class="fas fa-cog"></i>&nbspSkill</a>
+                        <a href="#portfolio" style="color:#1f8f8f"><i class="fas fa-copy"></i>&nbspPortfolio</a>
                     </li>
-                    <li><a href="#services"><i class="fas fa-image"></i>&nbspAchievement</a></li>
-                    <li><a href="#contact"><i class="fas fa-question"></i>&nbspContact</a></li>
-                    <li><a href="/login/"><i class="fas fa-paper-plane"></i>&nbspLogout</a></li>
+                    <li><a href="#services" style="color:#1f8f8f"><i class="fas fa-image"></i>&nbspAchievement</a></li>
+                    <li><a href="#contact" style="color:#1f8f8f"><i class="fas fa-question"></i>&nbspContact</a></li>
                 </ul>
             </nav>
         </div>
@@ -79,10 +116,10 @@
                         <h2>About</h2>
                         <p>My brief description</p>
                     </div>
-          
+
                   <div class="row">
                     <div class="col-lg-4" data-aos="fade-right">
-                        <img src="/static/img/profile-img.jpg" class="img-fluid" alt="">
+                        <img src="/static/images/portfolio-1.jpg" class="img-fluid" alt="">
                     </div>
                     <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
                       <h3>My title1 &amp; My title2</h3>
@@ -108,7 +145,7 @@
                       <p>Other things want to say</p>
                     </div>
                   </div>
-          
+
                 </div>
             </section><!-- End About Section -->
 
@@ -160,7 +197,7 @@
                         <p>Brief Introduction to skills grasped</p>
                     </div>
                     <div class="row skills-content">
-                        <div class="col-lg-6" data-aos="fade-up">     
+                        <div class="col-lg-6" data-aos="fade-up">
                             <div class="progress">
                                 <span class="skill">HTML <i class="val">30%</i></span>
                                 <div class="progress-bar-wrap">
@@ -173,7 +210,7 @@
                                     <div class="progress-bar" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
-            
+
                             <div class="progress">
                                 <span class="skill">JavaScript <i class="val">50%</i></span>
                                 <div class="progress-bar-wrap">
@@ -194,7 +231,7 @@
                                     <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
-                
+
                             <div class="progress">
                                 <span class="skill">Photoshop <i class="val">40%</i></span>
                                 <div class="progress-bar-wrap">
@@ -248,7 +285,7 @@
                                 </div>
                             </div>
                         </div>
-            
+
                         <div class="col-lg-4 col-md-6 portfolio-item filter-card">
                             <div class="portfolio-wrap">
                                 <img src="/static/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
@@ -342,7 +379,7 @@
                     </div>
                 </div>
             </section><!-- End Services Section -->
-            
+
             <!-- ======= Contact Section ======= -->
             <section id="contact" class="contact">
                 <div class="container">
@@ -381,11 +418,11 @@
                             </div>
                         </div>
                     </div>
-        
+
                 </div>
             </section><!-- End Contact Section -->
         </main>
-        
+
         <script src="/static/js/jquery-3.3.1.slim.min.js"></script>
         <script src="/static/js/popper.min.js"></script>
         <script src="/static/js/bootstrap.min.js"></script>
@@ -398,5 +435,8 @@
         <script src="/static/js/typed.min.js"></script>
         <script src="/static/js/noframework.waypoints.js"></script>
         <script src="/static/js/main.js"></script>
+        <script src="/static/js/jquery.min.js"></script>
+        <script src="/static/js/bootstrap.min.js"></script>
+        <script src="/static/js/dropdown.animate.js"></script>
     </body>
 </html>
