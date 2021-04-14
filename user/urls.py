@@ -39,7 +39,7 @@ urlpatterns = [
     path('addteam/team_id=<int:team_id>&contest_id=<int:contest_id>', views.addTeam, name='addTeam'),
     path('sendapp/team_id=<int:team_id>&contest_id=<int:contest_id>&user_id=<int:user_id>', views.sendapp, name='sendApp'),
     # the leader response
-    path('applylist/', views.applyList, name='appList'),
+    path('applylist/team_id=<int:team_id>', views.applyList, name='appList'),
     path('applyResult/application_id=<int:application_id>&res=<str:res>', views.applydetail, name='appRes'),
     #path('teamcreate/contest_id=<int:contest_id>', views.TeamCreate, name='teamCreate'),
 
