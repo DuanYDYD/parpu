@@ -132,8 +132,10 @@
                                 <div>
                                     <div class="master-profile-reviews__review-content">
                                         <p>Contribute your comment below!</p>
-                                        <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
-                                        <button type="submit" class="btn btn-primary btn-rounded btn-lg master-post-application__submit-btn">Comment!</button>
+                                        <form method="POST">
+                                        <textarea class="form-control" id="content" name="content" rows="3"></textarea>
+                                        <button type="submit" action="{% url 'forum:comment_create' %} class="btn btn-primary btn-rounded btn-lg master-post-application__submit-btn">Comment!</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

@@ -116,10 +116,10 @@ def postDetail(request, column_id, post_id):
 
 @login_required
 def commentCreate(request, column_id, post_id):
-    post = Post.objects.get(id=post_id)
-    author = User.objects.get(pk=request.user.id)
-    errors = []
     if request.method == 'POST':
+        post = Post.objects.get(id=post_id)
+        author = User.objects.get(pk=request.user.id)
+        errors = []
         content = request.POST.get("content", "")
         comment = Comment()
         comment.post = post
