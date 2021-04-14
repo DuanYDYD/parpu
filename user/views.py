@@ -18,7 +18,7 @@ from forum.models import  Column, Comment, Friend, Post
 from contest.models import Contest
 from django.shortcuts import get_object_or_404, render
 from django.contrib import messages
-
+from django.contrib.auth.hashers import check_password
 import logging
 
 from user.utils import random_str
@@ -32,19 +32,45 @@ PAGE_NUM = 50
 
 
 
+# def userlogin(request):
+#     if request.method == 'POST':
+#         username = request.POST['username']
+#         password = request.POST['password']
+#
+#         logger.error(username)
+#         logger.error(password)
+#
+#
+#         user = authenticate(username=username, password=password)
+#         if user is not None:
+#             login(request, user)
+#             logger.error("1111111111111")
+#             #user.levels += 1  #登录一次积分加 1
+#             #user.save()
+#             return redirect('user:userDetail')
+#     else:
+#         return render(request, 'login.html', None)
+
+
 def userlogin(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
 
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            login(request, user)
-            #user.levels += 1  #登录一次积分加 1
-            #user.save()
-        return redirect('user:userDetail')
+        logger.error(username)
+        logger.error(password)
+        try:
+            user = User.objects.get(username=username)
+            pwd=user.password
+            if check_password(password,pwd):
+                login(request, user)
+                return redirect('user:userpage')
+        except:
+            return HttpResponse('no such user!')
+            #return redirect('user:userDetail')
     else:
         return render(request, 'login.html', None)
+
 
 def userregister(request):
     if request.method == 'POST':
@@ -77,7 +103,6 @@ def userregister(request):
                 return HttpResponse("Error in sending email.\nRegistration fails!", status=500)
 
             new_user = form.save()
-            user = authenticate(username=username, password=password)
             login(request, user)
         else:
             #如果表单不正确,保存错误到errors列表中
