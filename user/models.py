@@ -108,7 +108,7 @@ class Team(models.Model):
         settings.AUTH_USER_MODEL, blank=True, related_name='team_members')
     announce = models.TextField()  # 验证
     # tresult = models.CharField(max_length=32, choices=resultc)
-    contest = models.ForeignKey('contest.Contest',null=True,on_delete=models.CASCADE)
+    contest = models.ForeignKey('contest.Contest', null=True, on_delete=models.CASCADE)
     requirement = models.TextField()
 
     def __str__(self):

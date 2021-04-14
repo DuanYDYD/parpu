@@ -113,6 +113,7 @@ def postDetail(request, column_id, post_id):
     }
     return render(request, "PostPage.html", context)
 
+
 @login_required
 def commentCreate(request, column_id, post_id):
     post = Post.objects.get(id=post_id)
@@ -120,26 +121,42 @@ def commentCreate(request, column_id, post_id):
     errors = []
     if request.method == 'POST':
         content = request.POST.get("content", "")
-        form = CommentForm(request.POST)
-        if form.is_valid():
-            comment = Comment()
-            comment.post = post
-            comment.author = author
-            comment.content = content
-            comment.save()
-            return HttpResponseRedirect(reverse_lazy('forum:post_detail', kwargs={'column_id': column_id,
-                                                                                  'post_id':post_id}))
-        else:
-        # 如果表单不正确,保存错误到errors列表中
-            for k, v in form.errors.items():
-            # v.as_text() 详见django.forms.util.ErrorList 中
-                errors.append(v.as_text())
-            if errors:
-                return render(request, 'user/user_fail.html', {"errors": errors})
+        comment = Comment()
+        comment.post = post
+        comment.author = author
+        comment.content = content
+        comment.save()
+        return HttpResponseRedirect(reverse_lazy('forum:post_detail', kwargs={'column_id': column_id,
+                                                                              'post_id':post_id}))
 
-    else:
-        form = CommentForm()
-        return render(request, 'CommentCreate.html', {"form" : form})
+
+# @login_required
+# def commentCreate(request, column_id, post_id):
+#     post = Post.objects.get(id=post_id)
+#     author = User.objects.get(pk=request.user.id)
+#     errors = []
+#     if request.method == 'POST':
+#         content = request.POST.get("content", "")
+#         form = CommentForm(request.POST)
+#         if form.is_valid():
+#             comment = Comment()
+#             comment.post = post
+#             comment.author = author
+#             comment.content = content
+#             comment.save()
+#             return HttpResponseRedirect(reverse_lazy('forum:post_detail', kwargs={'column_id': column_id,
+#                                                                                   'post_id':post_id}))
+#         else:
+#         # 如果表单不正确,保存错误到errors列表中
+#             for k, v in form.errors.items():
+#             # v.as_text() 详见django.forms.util.ErrorList 中
+#                 errors.append(v.as_text())
+#             if errors:
+#                 return render(request, 'user/user_fail.html', {"errors": errors})
+#
+#     else:
+#         form = CommentForm()
+#         return render(request, 'CommentCreate.html', {"form" : form})
 
 @login_required
 def likePost(request,column_id,post_id): #还没做url
@@ -174,4 +191,4 @@ def likeComment(request, column_id, post_id, comment_id):
     return HttpResponseRedirect(reverse_lazy('forum:post_detail', args=[column_id,post_id,comment_id]))
 
 def test(request):
-    return render(request,'AllCategories.html',None)
+    return render(request,'index.html',None)
