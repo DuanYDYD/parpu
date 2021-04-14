@@ -11,6 +11,7 @@ app_name = 'user'
 
 
 urlpatterns = [
+
     path('login/', views.userlogin, name='user_login'),
     path('userid=<int:user_ID>/', views.userDetail, name='userDetail'),
     path('regis/', views.userregister, name='registration'),
