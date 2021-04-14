@@ -19,10 +19,13 @@ from django.urls import include, path
 from forum import views as fviews
 from user import views as uviews
 from contest import views as cviews
+from django.shortcuts import render
 
+def mainpage(request):
+    return render(request, "index.html")
 
 urlpatterns = [
-    path('', uviews.IndexView, name='index'),
+    path('', mainpage, name='mainpage'),
     path('forum/', include('forum.urls')),
     path('admin/', admin.site.urls),
     path(r'^captcha/', include('captcha.urls')),
