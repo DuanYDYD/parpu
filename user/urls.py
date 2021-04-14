@@ -29,10 +29,14 @@ urlpatterns = [
     path('friendsdelete/<int:friend_id>', views.deletefriends, name='deletefriends'),
     path('applylist/', views.applyList, name='applyList'),
 
+    # when follow a contest
+    path('followCon/contest_id=<int:contest_id>', views.followContest, name='followCon'),
+    path('cancelFol/contest_id=<int:contest_id>', views.cancelFollowContest, name='cancelFol'),
     # when select one contest and look for team
     path('teamlist/contest_id=<int:contest_id>', views.teamList, name='teamList'),
     path('teampage/team_id=<int:team_id>', views.teamDetail, name='teamDetail'),
-    path('addteam/team=<int:team_id>/', views.addTeam, name='addTeam'),
+    path('addteam/team_id=<int:team_id>&contest_id=<int:contest_id>', views.addTeam, name='addTeam'),
+    path('sendapp/team_id=<int:team_id>&contest_id=<int:contest_id>&user_id=<int:user_id>', views.sendapp, name='sendApp'),
     #path('teamcreate/contest_id=<int:contest_id>', views.TeamCreate, name='teamCreate'),
 
     #path('vote/<int:user_ID>/', views.vote, name='vote'),
