@@ -14,16 +14,16 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="card">
-                        <form method="post" action="{% url 'user:user_login' %}" />
+                        <form method="post" action="{% url 'user:user_login' %}" class="box"/>
                             <h1>Login</h1>
-                            <p> Please enter your email address and password!</p>
+                            <p> Please enter your username and password!</p>
                             <p>{{msg}}</p>
                             <!--input username and password via keyboard-->                            
-                            <input type="text" name="email" placeholder="*@link.cuhk.edu.hk">
-                            <input type="password" name="pwd" placeholder="Password">
-                            <a class="forgot" href="#">Forgot password?</a> 
+                            <input id="username" type="text" name="username" placeholder="my name is xxx">
+                            <input id="password" type="password" name="password" placeholder="Password">
+                            <a class="forgot" href="{% url 'user:findpassword' %}">Forgot password?</a>
                             <!--input should be click on the button-->
-                            <input type="submit" name="" value="Login" href="#">
+                            <input type="submit" name="" value="Login">
                             <div class="col-md-12">
                                 <ul class="social-network social-circle">
                                     <li><a href="#" class="icoFacebook" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>

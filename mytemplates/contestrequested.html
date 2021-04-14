@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="UTF-8">
+    <title>Contest Search Page</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link rel="stylesheet" type="text/css" href="/static/Forum&Contest/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/Forum&Contest/css/tether.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/Forum&Contest/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="/static/Forum&Contest/css/fontstyles_1.css">
+    <link rel="stylesheet" type="text/css" href="/static/Forum&Contest/css/fontstyles_2.css">
+    <link rel="stylesheet" type="text/css" href="/static/Forum&Contest/css/iconstyles.css">
+    <!-- END GLOBAL MANDATORY STYLES -->
+
+    <link rel="stylesheet" type="text/css" href="/static/Forum&Contest/css/aos.css">
+    <link rel="stylesheet" type="text/css" href="/static/Forum&Contest/css/leaflet.css">
+    <link rel="stylesheet" type="text/css" href="/static/Forum&Contest/css/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/Forum&Contest/css/jquery.flexdatalist.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/Forum&Contest/css/jquery.flexdatalist_1.min.css">
+
+    <!-- BEGIN THEME STYLES -->
+    <link rel="stylesheet" type="text/css" href="/static/Forum&Contest/css/style.min.css">
+    <!-- END THEME STYLES -->
+</head>
+<!-- BEGIN HEAD -->
+
+<body class="">
+    <div class="header-master">
+        <div class="header-default">
+            <div class="header-topbar">
+                <div class="container">
+                    <div class="header-topbar__contact-info">
+                        <div class="header-topbar__contact-info-item">
+                            <span class="value">Welcome to Contest Search Page!</span>
+                        </div>
+                    </div>
+                    <ul class="nav header-topbar__nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Back to Main</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ContestSearch.html">Go to Contest</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Forum.html">Go to Forum</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">My Team</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../Login/login.html">Sign In/Personal Page</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="hero-job">
+    <div class="container">
+        <h3 class="hero-job__heading">Contest Search</h3>
+        <form class="hero-job__search-form">
+            <div class="hero-job__search-form-title form-control-inline-icon inline-icon-right">
+                <span class="icon iconfont-clock iconfont-right"></span>
+                <!--input box here-->
+                <input type="text" class="form-control" placeholder="Contest Name?">
+            </div>
+            <div class="hero-job__search-form-location form-control-inline-icon inline-icon-right">
+                <span class="icon iconfont-world iconfont-right"></span>
+                <!--input box here-->
+                <input type="text"  class="form-control flexdatalist flexdatalist" placeholder="Contest Holder?">
+            </div>
+            <!--search button here-->
+            <button type="button" class="btn btn-primary hero-job__search-form-btn">
+                <span class="icon iconfont-search-v2"></span>
+            </button>
+        </form>
+    </div>
+</div>
+
+<div class="categories-default">
+    <div class="container" data-aos="fade-up">
+        <h2 class="categories-default__heading">Popular Categories</h2>
+        <h5 class="categories-default__heading-level-two">Explore some of the best tips from your partners and friends.</h5>
+        <!--list of categories from database, used for display-->
+        <div class="categories-default__list">
+            <div class="categories-default__list-item">
+                <span class="icon iconfont-food-service"></span>
+                <a href="#" class="name">Business</a>
+            </div>
+            <div class="categories-default__list-item">
+                <span class="icon iconfont-construction"></span>
+                <a href="#" class="name">Investment</a>
+            </div>
+            <div class="categories-default__list-item">
+                <span class="icon iconfont-healthcare"></span>
+                <a href="#" class="name">Technology</a>
+            </div>
+            <div class="categories-default__list-item">
+                <span class="icon iconfont-automotive"></span>
+                <a href="#" class="name">Hackson</a>
+            </div>
+            <div class="categories-default__list-item">
+                <span class="icon iconfont-food-service"></span>
+                <a href="#" class="name">Mathematics</a>
+            </div>
+            <div class="categories-default__list-item">
+                <span class="icon iconfont-construction"></span>
+                <a href="#" class="name">Sports</a>
+            </div>
+            <div class="categories-default__list-item">
+                <span class="icon iconfont-healthcare"></span>
+                <a href="#" class="name">Debate</a>
+            </div>
+            <div class="categories-default__list-item">
+                <span class="icon iconfont-automotive"></span>
+                <a href="#" class="name">Cooking</a>
+            </div>
+        </div>
+
+        <div class="categories-default__browse-all">
+            <a href="PostContest.html" class="btn btn-outline-gray">Publish Your Own Contest!</a>
+        </div>
+    </div>
+</div>
+<!-- this part ralates to forum but not contest-->
+
+<div class="listing-recent-jobs">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="listing-recent-jobs__heading">Recent Contest</h2>
+                <div class="listing-recent-jobs__items">
+                    <table class="table table-responsive">
+                        {% for row in recent %}
+                        <tr class="listing-recent-jobs__item">
+                            <td class="listing-recent-jobs__item-company">
+                                <img src="/static/Forum&Contest/images/portfolio-{{row.id}}.jpg" alt="" width="50" height="50">
+                            </td>
+                            <td>
+                                <!--For each td, the contest name and limit should be uploaded from database-->
+                                <a href="/contest/contestpage/?contest_id={{row.id}}" class="listing-recent-jobs__item-title link-underlined link-underlined--endeavour">{{row.name}}</a>
+                                <div class="listing-recent-jobs__item-description"><span>Holder: </span>{{row.holder}}</div>
+                            </td>
+                            <td class="listing-recent-jobs__item-location">
+                                <!--For each td, the contest holding location should be uploaded from database-->
+                                <span class="listing-recent-jobs__item-location-icon iconfont-map-outline"></span>
+                                Location
+                            </td>
+                            <td class="listing-recent-jobs__item-info">
+                                <!--For each td, the contest category and published time should be uploaded from database-->
+                                <div class="badge badge-mountain-meadow listing-recent-jobs__item-type">{{row.area}}</div>
+                                <div class="listing-recent-jobs__item-created">{{row.startdate}}</div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer-default">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h6 class="footer-default__heading">About</h6>
+                <p>
+                    Morbi convallis bibendum urna ut viverra. Maecenas quis consequat
+                    libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet
+                    ullamcorper phasellus semper.
+                </p>
+
+                <a href="#" class="btn btn-outline-secondary btn-get-started">Get Started</a>
+            </div>
+            <div class="col-lg-2 col-md-4">
+                <h6 class="footer-default__heading footer-default__heading--sm">For Candidates</h6>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="">Join Team</a>
+                    </li>
+                    <li>
+                        <a href="">Register Contest</a>
+                    </li>
+                    <li>
+                        <a href="">Submit Resume</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-2 col-md-4">
+                <h6 class="footer-default__heading footer-default__heading--sm">For Holder</h6>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="">Browse Candidates</a>
+                    </li>
+                    <li>
+                        <a href="">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="">Add Contest</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-2 col-md-4">
+                <h6 class="footer-default__heading footer-default__heading--sm">Other</h6>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="">Other-1</a>
+                    </li>
+                    <li>
+                        <a href="">Other-2</a>
+                    </li>
+                    <li>
+                        <a href="">Other-3</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/static/Forum&Contest/js/jquery.min.js"></script>
+<script src="/static/Forum&Contest/js/tether.min.js"></script>
+<script src="/static/Forum&Contest/js/bootstrap.min.js"></script>
+<script src="/static/Forum&Contest/js/dropdown.animate.js"></script>
+
+<script>
+    (function () {
+        $(document).ready(function () {
+            var dropDownToggle = $('.dropdown-toggle');
+
+            $(".navbar-toggler").on("click", function () {
+                $(this).toggleClass("is-active");
+            });
+
+            dropDownToggle.click(function() {
+                var dropdownList = $(this).parent().find('.dropdown-menu');
+                var dropdownOffset = $(this).offset();
+                var offsetLeft = dropdownOffset.left;
+                var dropdownWidth = dropdownList.width() / 2;
+                var docWidth = $(window).width();
+
+                var isDropdownVisible = (offsetLeft + dropdownWidth <= docWidth);
+
+                if (!isDropdownVisible) {
+                    dropdownList.addClass('dropdown-menu-right');
+                } else {
+                    dropdownList.removeClass('dropdown-menu-right');
+                }
+            });
+        });
+    })(jQuery);
+</script>
+
+<script src="/static/Forum&Contest/js/jquery.flexdatalist.min.js"></script>
+<script src="/static/Forum&Contest/js/aos.js"></script>
+<script src="/static/Forum&Contest/js/owl.carousel.min.js"></script>
+<script src="/static/Forum&Contest/js/leaflet.js"></script>
+<script src="/static/Forum&Contest/js/common.js"></script>
+
+
+</body>
+</html>
