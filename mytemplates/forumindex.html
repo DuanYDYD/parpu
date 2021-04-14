@@ -72,7 +72,7 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="listing-orders-with-filter__controls">
-                    <h4 class="listing-orders-with-filter__heading">Found 2048 active post</h4>
+                    <h4 class="listing-orders-with-filter__heading">Found <span>{{post_num}}</span> active post</h4>
                     <ul class="list-unstyled listing-orders-with-filter__sort">
                         <li class="listing-orders-with-filter__sort-item listing-orders-with-filter__sort-item--is-active">
                             <span class="icon iconfont-list"></span> List
@@ -80,122 +80,21 @@
                     </ul>
                 </div>
                 <div>
+                    {% for post in Posts_list %}
                     <div class="listing-orders-with-filter__item">
                         <div class="d-flex">
                             <span class="icon iconfont-clock-outline listing-orders-with-filter__icon"></span>
                             <div>
-                                <a href="PostPage.html" class="listing-orders-with-filter__title">Title One</a>
-                                <p class="listing-orders-with-filter__description">Summary here: sdlfk wepro znc qproi dsfk vnxk</p>
+                                <a href="PostPage.html" class="listing-orders-with-filter__title">{{post.title}}</a>
+                                <p class="listing-orders-with-filter__description">Author: <b>{{post.short}}</b></p>
                             </div>
                         </div>
                         <div class="text-lg-right text-md-right">
-                            <span class="listing-orders-with-filter__offers-amount"><b>12</b> likes</span>
-                            <span class="listing-orders-with-filter__created-at">01 Apr 2021</span>
+                            <span class="listing-orders-with-filter__offers-amount"><b>{{post.like_num}}</b> likes</span>
+                            <span class="listing-orders-with-filter__created-at">{{post.created_at}}</span>
                             <span class="listing-orders-with-filter__location">
                                 <span class="icon iconfont-map-point-v3"></span>
-                                Category
-                            </span>
-                        </div>
-                    </div>
-                    <div class="listing-orders-with-filter__item">
-                        <div class="d-flex">
-                            <span class="icon iconfont-clock-outline listing-orders-with-filter__icon"></span>
-                            <div>
-                                <a href="#" class="listing-orders-with-filter__title">Title Two</a>
-                                <p class="listing-orders-with-filter__description">Summary here: sdlfk wepro znc qproi dsfk vnxk</p>
-                            </div>
-                        </div>
-                        <div class="text-lg-right text-md-right">
-                            <span class="listing-orders-with-filter__offers-amount"><b>3</b> likes</span>
-                            <span class="listing-orders-with-filter__created-at">02 Apr 2021</span>
-                            <span class="listing-orders-with-filter__location">
-                                <span class="icon iconfont-map-point-v3"></span>
-                                Category
-                            </span>
-                        </div>
-                    </div>
-                    <div class="listing-orders-with-filter__item">
-                        <div class="d-flex">
-                            <span class="icon iconfont-clock-outline listing-orders-with-filter__icon"></span>
-                            <div>
-                                <a href="#" class="listing-orders-with-filter__title">Title Three</a>
-                                <p class="listing-orders-with-filter__description">Summary here: sdlfk wepro znc qproi dsfk vnxk</p>
-                            </div>
-                        </div>
-                        <div class="text-lg-right text-md-right">
-                            <span class="listing-orders-with-filter__offers-amount"><b>10</b> likes</span>
-                            <span class="listing-orders-with-filter__created-at">03 Apr 2021</span>
-                            <span class="listing-orders-with-filter__location">
-                                <span class="icon iconfont-map-point-v3"></span>
-                                Category
-                            </span>
-                        </div>
-                    </div>
-                    <div class="listing-orders-with-filter__item">
-                        <div class="d-flex">
-                            <span class="icon iconfont-clock-outline listing-orders-with-filter__icon"></span>
-                            <div>
-                                <a href="#" class="listing-orders-with-filter__title">Title Four</a>
-                                <p class="listing-orders-with-filter__description">Summary here: sdlfk wepro znc qproi dsfk vnxk</p>
-                            </div>
-                        </div>
-                        <div class="text-lg-right text-md-right">
-                            <span class="listing-orders-with-filter__offers-amount"><b>5</b> likes</span>
-                            <span class="listing-orders-with-filter__created-at">04 Apr 2021</span>
-                            <span class="listing-orders-with-filter__location">
-                                <span class="icon iconfont-map-point-v3"></span>
-                                Category
-                            </span>
-                        </div>
-                    </div>
-                    <div class="listing-orders-with-filter__item">
-                        <div class="d-flex">
-                            <span class="icon iconfont-clock-outline listing-orders-with-filter__icon"></span>
-                            <div>
-                                <a href="#" class="listing-orders-with-filter__title">Title Five</a>
-                                <p class="listing-orders-with-filter__description">Summary here: sdlfk wepro znc qproi dsfk vnxk</p>
-                            </div>
-                        </div>
-                        <div class="text-lg-right text-md-right">
-                            <span class="listing-orders-with-filter__offers-amount"><b>8</b> likes</span>
-                            <span class="listing-orders-with-filter__created-at">05 Apr 2021</span>
-                            <span class="listing-orders-with-filter__location">
-                                <span class="icon iconfont-map-point-v3"></span>
-                                Category
-                            </span>
-                        </div>
-                    </div>
-                    <div class="listing-orders-with-filter__item">
-                        <div class="d-flex">
-                            <span class="icon iconfont-clock-outline listing-orders-with-filter__icon"></span>
-                            <div>
-                                <a href="#" class="listing-orders-with-filter__title">Title Six</a>
-                                <p class="listing-orders-with-filter__description">Summary here: sdlfk wepro znc qproi dsfk vnxk</p>
-                            </div>
-                        </div>
-                        <div class="text-lg-right text-md-right">
-                            <span class="listing-orders-with-filter__offers-amount"><b>24</b> likes</span>
-                            <span class="listing-orders-with-filter__created-at">06 Apr 2021</span>
-                            <span class="listing-orders-with-filter__location">
-                                <span class="icon iconfont-map-point-v3"></span>
-                                Category
-                            </span>
-                        </div>
-                    </div>
-                    <div class="listing-orders-with-filter__item">
-                        <div class="d-flex">
-                            <span class="icon iconfont-clock-outline listing-orders-with-filter__icon"></span>
-                            <div>
-                                <a href="#" class="listing-orders-with-filter__title">Title Seven</a>
-                                <p class="listing-orders-with-filter__description">Summary here: sdlfk wepro znc qproi dsfk vnxk</p>
-                            </div>
-                        </div>
-                        <div class="text-lg-right text-md-right">
-                            <span class="listing-orders-with-filter__offers-amount"><b>0</b> likes</span>
-                            <span class="listing-orders-with-filter__created-at">07 Apr 2021</span>
-                            <span class="listing-orders-with-filter__location">
-                                <span class="icon iconfont-map-point-v3"></span>
-                                Category
+                                {{post.column.name}}
                             </span>
                         </div>
                     </div>
@@ -316,9 +215,7 @@
                 </div>
 
                 <div class="text-center">
-                    <button type="button" class="btn btn-primary hero-job__search-form-btn" onclick="clearBox()">
-                        Clear!
-                    </button>
+                    <button type="button" class="btn btn-primary hero-job__search-form-btn" onclick="clearBox()">Clear!</button>
                 </div>
             </div>
         </div>
