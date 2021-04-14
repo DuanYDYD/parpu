@@ -103,7 +103,7 @@ def userregister(request):
                 return HttpResponse("Error in sending email.\nRegistration fails!", status=500)
 
             new_user = form.save()
-            login(request, user)
+            login(request, new_user)
         else:
             #如果表单不正确,保存错误到errors列表中
             for k, v in form.errors.items():
@@ -375,7 +375,7 @@ def applydetail(request, application_id, res):
 
     application = get_object_or_404(Application, pk=application_id)
     user = User.objects.get(pk=request.user.id)
-    sender = Application.sender
+    sender = application.sender
     team = Team.objects.get(leader=user)
     team.team_members.add()
     team.save()

@@ -141,7 +141,7 @@
                    <tbody>
                        {% for row in application_list %}
                            <tr>
-                               <td><a href="#">{{row.sender.first_name}}, {{row.sender.last_name}}</a></td>
+                               <td><a href="#">{{row.sender.username}}</a></td>
                                <td>{{row.content}}</td>
                                <td>
                                    <a href="/user/applyResult/application_id={{row.id}}&res=yes">Accept</a>
