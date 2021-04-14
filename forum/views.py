@@ -161,7 +161,7 @@ def likeComment(request, column_id, post_id, comment_id):
     comment = get_object_or_404(Post, pk=comment_id)
     user = request.user
     try:
-        CommentLike.objects.get(liker=user, post=post)
+        CommentLike.objects.get(liker=user, comment=comment)
         return HttpResponse('<script>alert("already liked it！");window.history.back(-1);"</script>')
     except:
         comment.like_num += 1
