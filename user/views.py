@@ -26,14 +26,6 @@ logger = logging.getLogger(__name__)
 PAGE_NUM = 50
 
 # Create your views here.
-def index(request):
-    latest_contest_list = Contest.objects.all()
-
-    context = {
-        'latest_contest_list': latest_contest_list,
-
-    }
-    return render(request, 'user/index.html', context)
 
 
 

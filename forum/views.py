@@ -25,6 +25,15 @@ logger = logging.getLogger(__name__)
 PAGE_NUM = 50
 
 
+def forumindex(request):
+    Posts_list = Post.objects.all()
+
+    context = {
+        'Posts_list': Posts_list,
+        'post_num': Post.objects.all().count(),
+
+    }
+    return render(request, 'postindex.html', context)
 
 def columnIndex(request, column_id):
     """Listing of posts in a topic."""

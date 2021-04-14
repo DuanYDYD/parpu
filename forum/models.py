@@ -57,7 +57,7 @@ class Post(models.Model):  #文章
         return self.title
 
     def short(self):
-        return u"%s - %s\n%s" % (self.author, self.title, self.created_at.strftime("%Y-%m-%d %H:%M"))
+        return u"%s - %s\n%s" % (self.author, self.title, self.created_at)
 
     def get_absolute_url(self):
         return u'/column=%d/post=%d' % (self.column.id, self.id)

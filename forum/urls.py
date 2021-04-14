@@ -7,7 +7,7 @@ from forum import views
 app_name = 'forum'
 urlpatterns = [
 
-    #path('test/', views.IndexView(),name='test'),
+    path('/',views.forumindex,name='forum:index'),
     path('column=<int:column_id>/',
         views.columnIndex,
         name='columnIndex'),
