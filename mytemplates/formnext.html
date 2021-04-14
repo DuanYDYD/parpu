@@ -14,19 +14,13 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="card">
-                        <form method="post" action="{% url 'user:findpassword' %}" class="box"/>
+                        <div class="card" style="display: block">
+                        <form method="post" action="{% url 'user:findpassword' %}" class="box">
                             <h1>Retrieve Password</h1>
-                            <p> Please enter your email!</p>
-                            <p>{{msg}}</p>
-                            <!--input username and password via keyboard-->                            
-                            <input id="email" type="text" name="email" placeholder="*@link.cuhk.edu.hk">
-                            <label class="label" style="color: white">verification code</label>
-                                    <fieldset>
-                                            <div>{{form.captcha}}</div>
-                                    </fieldset>
-                            <!--input should be click on the button-->
-                            <input type="submit" name="" value="Find!">
-                        </form>
+                            <p> Please enter your certification code from email!</p>
+                        <input id="code" type="text" name="code">
+                        <input type="submit" name="" value="Get Password">
+                        </div>
                     </div>
                 </div>
             </div>
