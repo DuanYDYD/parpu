@@ -201,7 +201,6 @@ def makefriends(request, friend_id):
         newFriend.save()
         return HttpResponse("Added!")
 
-
 @login_required
 def deletefriends(request, friend_id):
     p = get_object_or_404(User, pk=friend_id)
