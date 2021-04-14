@@ -9,20 +9,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Blog Template">
     <meta name="author" content="Xiaoying Riley at 3rd Wave Media">
-    <link rel="shortcut icon" href="favicon.ico">
-	  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/tether.min.css">
-    <link rel="stylesheet" type="text/css" href="css/animate.css">
-    <link rel="stylesheet" type="text/css" href="css/fontstyles_1.css">
-    <link rel="stylesheet" type="text/css" href="css/fontstyles_2.css">
-    <link rel="stylesheet" type="text/css" href="css/iconstyles.css">
+    <link rel="shortcut icon" href="/static/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/tether.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/fontstyles_1.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/fontstyles_2.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/iconstyles.css">
 
     <!-- FontAwesome JS-->
-    <script defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
-
+	<script defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
     <!-- Theme CSS -->
-    <link id="theme-style" rel="stylesheet" href="assets/css/theme-1.css">
-	  <link rel="stylesheet" type="text/css" href="css/style.min.css">
+    <link id="theme-style" rel="stylesheet" href="/static/assets/css/theme-1.css">
+	  <link rel="stylesheet" type="text/css" href="/static/css/style.min.css">
 
 </head>
 
@@ -72,8 +71,7 @@
 
 			<div id="navigation" class="collapse navbar-collapse flex-column">
 				<div class="profile-section pt-3 pt-lg-0">
-				    <img class="profile-image mb-3 rounded-circle mx-auto" src="assets/images/male-avatar.png" alt="image" >
-
+				    <img class="profile-image mb-3 rounded-circle mx-auto" src="/static/assets/images/male-avatar.png" alt="image" >
 					<div class="bio mb-3">brief self introduction here</a></div><!--//bio-->
 			        <hr>
 				</div><!--//profile-section-->
@@ -85,72 +83,27 @@
     <div class="main-wrapper">
       <section class="cta-section theme-bg-light py-5">
 		    <div class="container text-center">
-			    <h2 class="heading">Contest Name</h2>
+			    <h2 class="heading">{{contest_name}}</h2>
 			    <div class="intro"></div>
 		    </div><!--//container-->
 	    </section>
 
 	    <section class="blog-list px-3 py-5 p-md-5">
 		    <div class="container">
-			    <div class="item mb-5">
-				    <div class="media">
-					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="assets/images/blog/blog-post-thumb-7.jpg" alt="image">
-					    <div class="media-body">
-						    <h3 class="title mb-1"><a href="teammates.html">Team A</a></h3>
-                <div class="meta mb-1"><span class="people">Current people: 2</span></div>
-						    <div class="intro">Introduction</div>
-						    <a class="more-link" href="teammates.html">Join &rarr;</a>
-					    </div><!--//media-body-->
-				    </div><!--//media-->
-			    </div><!--//item-->
 
-          <div class="item mb-5">
+			    {% for row in team_list %}
+				<div class="item mb-5">
 				    <div class="media">
-					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="assets/images/blog/blog-post-thumb-8.jpg" alt="image">
+					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="/static/assets/images/blog/blog-post-thumb-7.jpg" alt="image">
 					    <div class="media-body">
-						    <h3 class="title mb-1"><a href="teammates.html">Team B</a></h3>
-                <div class="meta mb-1"><span class="people">Current people: 2</span></div>
-						    <div class="intro">Introduction</div>
+						    <h3 class="title mb-1"><a href="/user/teampage/team_id={{row.id}}">{{row.name}}</a></h3>
+							<div class="meta mb-1"><span class="people">Capacity: {{row.team_members.count|add:1}} / {{row.capacity}}</span></div>
+						    <div class="intro">We want: {{row.requirement}} </div>
 						    <a class="more-link" href="teammates.html">Join &rarr;</a>
 					    </div><!--//media-body-->
 				    </div><!--//media-->
 			    </div><!--//item-->
-
-          <div class="item mb-5">
-				    <div class="media">
-					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="assets/images/blog/blog-post-thumb-9.jpg" alt="image">
-					    <div class="media-body">
-						    <h3 class="title mb-1"><a href="teammates.html">Team C</a></h3>
-                <div class="meta mb-1"><span class="people">Current people: 2</span></div>
-						    <div class="intro">Introduction</div>
-						    <a class="more-link" href="teammates.html">Join &rarr;</a>
-					    </div><!--//media-body-->
-				    </div><!--//media-->
-			    </div><!--//item-->
-
-          <div class="item mb-5">
-				    <div class="media">
-					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="assets/images/blog/blog-post-thumb-10.jpg" alt="image">
-					    <div class="media-body">
-						    <h3 class="title mb-1"><a href="teammates.html">Team D</a></h3>
-                <div class="meta mb-1"><span class="people">Current people: 3</span></div>
-						    <div class="intro">Introduction</div>
-						    <a class="more-link" href="teammates.html">Join &rarr;</a>
-					    </div><!--//media-body-->
-				    </div><!--//media-->
-			    </div><!--//item-->
-
-          <div class="item mb-5">
-				    <div class="media">
-					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="assets/images/blog/blog-post-thumb-11.jpg" alt="image">
-					    <div class="media-body">
-						    <h3 class="title mb-1"><a href="teammates.html">Team E</a></h3>
-                <div class="meta mb-1"><span class="people">Current people: 1</span></div>
-						    <div class="intro">Introduction</div>
-						    <a class="more-link" href="teammates.html">Join &rarr;</a>
-					    </div><!--//media-body-->
-				    </div><!--//media-->
-			    </div><!--//item-->
+				{% endfor %}
           <!--
 			    <nav class="blog-nav nav nav-justified my-5">
 				  <a class="nav-link-prev nav-item nav-link rounded-left" href="team.html">Previous<i class="arrow-prev fas fa-long-arrow-alt-left"></i></a>
@@ -160,8 +113,6 @@
 		    </div>
 	    </section>
     </div>
-
-
 
     <!--footer-->
     <div class="footer-default">
@@ -224,12 +175,12 @@
   	</div>
 
       <!-- Javascript -->
-      <script src="assets/plugins/jquery-3.3.1.min.js"></script>
-      <script src="assets/plugins/popper.min.js"></script>
-      <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+      <script src="/static/assets/plugins/jquery-3.3.1.min.js"></script>
+      <script src="/static/assets/plugins/popper.min.js"></script>
+      <script src="/static/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 
       <!-- Style Switcher (REMOVE ON YOUR PRODUCTION SITE) -->
-      <script src="assets/js/demo/style-switcher.js"></script>
+      <script src="/static/assets/js/demo/style-switcher.js"></script>
 
 
   </body>
