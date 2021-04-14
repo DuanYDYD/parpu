@@ -47,7 +47,7 @@
                             <a class="nav-link" href="#">Back to Main</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="ContestSearch.html">Go to Contest</a>
+                            <a class="nav-link" href="/contest/index/">Go to Contest</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="Forum.html">Go to Forum</a>
@@ -290,6 +290,13 @@
     <!-- Style Switcher (REMOVE ON YOUR PRODUCTION SITE) -->
     <script src="/static/assets/js/demo/style-switcher.js"></script>
 
+    {% if messages %}
+        <script>
+            {% for msg in messages %}
+                alert('{{ msg.message }}');
+            {% endfor %}
+        </script>
+    {% endif %}
 
 </body>
 </html>

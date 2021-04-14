@@ -350,16 +350,18 @@ def applydetail(request, application_id, res):
 
     if team.capacity <= team.team_members.all().count()+1:
         application.delete()
-        return HttpResponse('<script>alert("The team is full!");window.history.back(-2);"</script>')
+        messages.success(request, "The team is full, automatically delete this application")
+        return redirect('/user/applylist/')
 
     elif res == 'yes':
         application.delete()
         team.team_members.add(sender.id)
         team.save()
-        return HttpResponse('Successfully add in!')
-        #return HttpResponse('<script>alert("Successfully add in!");window.history.back(-2);"</script>')
+        messages.success(request, "New member is admitted")
+        return redirect('/user/applylist/')
 
     else:
         application.delete()
-        return HttpResponse('<script>alert("Successfully dismiss it!");window.history.back(-2);"</script>')
+        messages.success(request, "Application is rejected")
+        return redirect('/user/applylist/')
 
