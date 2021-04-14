@@ -57,9 +57,10 @@
                     <div class="d-flex">
                         <img src="/static/Forum&Contest/images/05.png" alt="" class="rounded-circle master-profile__item-image" width="50" height="50">
                         <div class="d-flex flex-column">
-                            <span class="master-profile__item-title">Name of Post</span>
-                            <span class="master-profile__item-location"><span class="icon iconfont-map-point-v3"></span>Category</span>
-                            <span class="master-profile__item-description">Author Name</span>
+                            <span class="master-profile__item-title">{{post.title}}</span>
+                            <span class="master-profile__item-location"><span class="icon iconfont-map-point-v3"></span>{{post.column.name}}</span>
+                            <span class="master-profile__item-description"><span class="icon iconfont-fire"></span>{{post.like_num}}</span>
+                            <span class="master-profile__item-description">{{post.author}}</span>
                         </div>
                     </div>
                 </div>
@@ -68,11 +69,7 @@
                         <div class="row">
                             <div class="col-lg-9">
                                 <p>
-                                    The content of post here:<br>
-                                    sdlfkj wpoer sdan apfiwe zn psdfiwpe<br>
-                                    sdfn aspoiq aso iq snd zofpisdopf fnwe zfp soifw<br> 
-                                    sdflwejr sndf zpoif wem psdfj opawe 
-                                    sdlfnwep  osidop nzfl wwpo sdf 
+                                    {{post.content}}
                                 </p>
                                 <span class="master-profile__item-description">Attached Photos below</span>
                             </div>
@@ -86,12 +83,6 @@
                         <ul class="nav nav-tabs master-profile__nav-tabs" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#home" role="tab">All <span>4</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Positive <span>3</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#messages" role="tab">Negative <span>1</span></a>
                             </li>
                         </ul>
 
@@ -113,126 +104,18 @@
 
                     <div class="tab-content">
                         <div class="tab-pane active" id="home" role="tabpanel">
+                            {% for comment in comments_list %}
                             <div class="master-profile-reviews__review">
                                 <div>
-                                    <h5 class="master-profile-reviews__review-title">Positive feedback</h5>
                                     <div class="master-profile-reviews__review-content">
                                         <p>
-                                            Thank you so much!
+                                            {{comment.content}}
                                         </p>
                                     </div>
-                                    <div class="master-profile-reviews__review-meta">Nickname1, 01.02.2021</div>
+                                    <div class="master-profile-reviews__review-meta">{{comment.author}}, {{comment.created_at}}</div>
                                 </div>
                             </div>
-                            <div class="master-profile-reviews__review">
-                                <div>
-                                    <h5 class="master-profile-reviews__review-title">Positive feedback</h5>
-                                    <div class="master-profile-reviews__review-content">
-                                        <p>
-                                            I would like to thank author for their excellent work !!
-                                        </p>
-                                    </div>
-                                    <div class="master-profile-reviews__review-meta">Nickname2, 03.04.2021</div>
-                                </div>
-                                <div class="master-profile-reviews__reply">
-                                    <div class="master-profile-reviews__reply-image">
-                                        <img src="/static/Forum&Contest/images/05.png" alt="" class="rounded-circle embed-responsive">
-                                    </div>
-                                    <div class="d-flex flex-column">
-                                        <span class="master-profile-reviews__reply-title">Post Author</span>
-                                        <span class="master-profile-reviews__reply-content">Thank you for the nice review. Always happy to help!</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="master-profile-reviews__review">
-                                <div>
-                                    <h5 class="master-profile-reviews__review-title master-profile-reviews__review-title--negative">Negative feedback</h5>
-                                    <div class="master-profile-reviews__review-content">
-                                        <p>
-                                            Terrible work! Totally a disaster!
-                                        </p>
-                                    </div>
-                                    <div class="master-profile-reviews__review-meta">Nickname3, 05.06.2021</div>
-                                </div>
-                            </div>
-                            <div class="master-profile-reviews__review">
-                                <div>
-                                    <h5 class="master-profile-reviews__review-title">Positive feedback</h5>
-                                    <div class="master-profile-reviews__review-content">
-                                        <p>
-                                            Everything is done very accurately, awesome works!
-                                        </p>
-                                    </div>
-                                    <div class="master-profile-reviews__review-meta">Nickname4, 07.08.2021</div>
-                                </div>
-                                <div class="master-profile-reviews__reply">
-                                    <div class="master-profile-reviews__reply-image">
-                                        <img src="/static/Forum&Contest/images/05.png" alt="" class="rounded-circle embed-responsive">
-                                    </div>
-                                    <div class="master-profile-reviews__reply-wrap">
-                                        <div class="form-group">
-                                            <!--Input here-->
-                                            <textarea rows="3" class="form-control" placeholder="Your reply"></textarea>
-                                        </div>
-                                        <button class="btn btn-primary btn-sm">Publish</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="profile" role="tabpanel">
-                            <div class="master-profile-reviews__review">
-                                <div>
-                                    <h5 class="master-profile-reviews__review-title">Positive feedback</h5>
-                                    <div class="master-profile-reviews__review-content">
-                                        <p>
-                                            Thank you so much!
-                                        </p>
-                                    </div>
-                                    <div class="master-profile-reviews__review-meta">Nickname1, 01.02.2021</div>
-                                </div>
-                            </div>
-                            <div class="master-profile-reviews__review">
-                                <div>
-                                    <h5 class="master-profile-reviews__review-title">Positive feedback</h5>
-                                    <div class="master-profile-reviews__review-content">
-                                        <p>
-                                            I would like to thank author for their excellent work !!
-                                        </p>
-                                    </div>
-                                    <div class="master-profile-reviews__review-meta">Nickname2, 03.04.2021</div>
-                                </div>
-                                <div class="master-profile-reviews__reply">
-                                    <div class="master-profile-reviews__reply-image">
-                                        <img src="/static/Forum&Contest/images/07.png" alt="" class="rounded-circle embed-responsive">
-                                    </div>
-                                    <div class="d-flex flex-column">
-                                        <span class="master-profile-reviews__reply-title">Andrew</span>
-                                        <span class="master-profile-reviews__reply-content">Thank you for the nice review. Always happy to help!</span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h5 class="master-profile-reviews__review-title">Positive feedback</h5>
-                                    <div class="master-profile-reviews__review-content">
-                                        <p>
-                                            Everything is done very accurately, awesome works!
-                                        </p>
-                                    </div>
-                                    <div class="master-profile-reviews__review-meta">Nickname4, 07.08.2021</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="messages" role="tabpanel">
-                            <div class="master-profile-reviews__review">
-                                <div>
-                                    <h5 class="master-profile-reviews__review-title master-profile-reviews__review-title--negative">Negative feedback</h5>
-                                    <div class="master-profile-reviews__review-content">
-                                        <p>
-                                            Terrible work! Totally a disaster!
-                                        </p>
-                                    </div>
-                                    <div class="master-profile-reviews__review-meta">Nickname3, 05.06.2021</div>
-                                </div>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
