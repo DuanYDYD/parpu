@@ -178,7 +178,7 @@ def likeComment(request, column_id, post_id, comment_id):
     user = request.user
     try:
         CommentLike.objects.get(liker=user, comment=comment)
-        return HttpResponseRedirect(reverse_lazy('forum:post_detail', args=[column_id,post_id,comment_id]))
+        return HttpResponseRedirect(reverse_lazy('forum:post_detail', args=[column_id,post_id]))
     except:
         comment.like_num += 1
         commentlike = CommentLike()
@@ -186,7 +186,7 @@ def likeComment(request, column_id, post_id, comment_id):
         commentlike.liker = user
         commentlike.save()
         comment.save()
-    return HttpResponseRedirect(reverse_lazy('forum:post_detail', args=[column_id,post_id,comment_id]))
+    return HttpResponseRedirect(reverse_lazy('forum:post_detail', args=[column_id,post_id]))
 
 def test(request):
     return render(request,'index.html',None)

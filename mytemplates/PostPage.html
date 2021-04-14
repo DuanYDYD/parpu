@@ -113,7 +113,7 @@
                                         </p>
                                     </div>
                                     <div align="right">
-                                            <a href="" class="btn btn-primary" onclick="">Like!</a>
+                                            <a href="/forum/column={{column.id}}/post={{post.id}}/comment={{comment.id}}/likeComment/" class="btn btn-primary" onclick="">Like!</a>
                                         </div>
                                      <div class="master-profile-reviews__review-meta">
                                          <b>{{comment.like_num}}</b>&nbsp people like this comment!
@@ -132,7 +132,7 @@
                                 <div>
                                     <div class="master-profile-reviews__review-content">
                                         <p>Contribute your comment below!</p>
-                                        <form method="POST">
+                                        <form method="post">
                                         <textarea class="form-control" id="content" name="content" rows="3"></textarea>
                                         <button type="submit" class="btn btn-primary btn-rounded btn-lg master-post-application__submit-btn">Comment!</button>
                                         </form>
