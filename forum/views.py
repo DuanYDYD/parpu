@@ -71,21 +71,21 @@ def PostCreate(request):
             post.column = column
             post.save()
             #request.POST.get_absolute_url()
-            return HttpResponseRedirect(reverse_lazy('forum:columnIndex',kwargs={'column_id': column_id}))
+            return HttpResponseRedirect(reverse_lazy('forum:index'))
         else:
             #如果表单不正确,保存错误到errors列表中
             for k, v in form.errors.items():
                 #v.as_text() 详见django.forms.util.ErrorList 中
                 errors.append(v.as_text())
             if errors:
-                return render(request, 'user/user_fail.html', {"errors": errors})
+                return render(request, 'user_fail.html', {"errors": errors})
     else:
         form = PostForm()
         #next = request.GET.get('next',None)
         #if next is None:
         #next = reverse_lazy('index')
         columns_list=Column.objects.all()
-        return render(request, 'PostCreate.html', {"form" : form, "columns_list": columns_list})
+        return render(request, 'AddPost.html', {"form" : form, "columns_list": columns_list})
 
 #编辑贴
 class PostUpdate(UpdateView):
@@ -174,4 +174,4 @@ def likeComment(request, column_id, post_id, comment_id):
     return HttpResponseRedirect(reverse_lazy('forum:post_detail', args=[column_id,post_id,comment_id]))
 
 def test(request):
-    return render(request,'personalpage.html',None)
+    return render(request,'AllCategories.html',None)

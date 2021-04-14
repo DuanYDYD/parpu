@@ -18,9 +18,9 @@ DJANGO_FORUM_APP_FILTER_PROFANE_WORDS = getattr(settings, 'DJANGO_FORUM_APP_FILT
 
 class PostForm(forms.ModelForm):
 
-    content = forms.CharField(
-        widget = forms.Textarea(attrs={'class': 'form-control', 'rows': '3', 'id': 'exampleTextarea'})
-    )
+    #content = forms.CharField(
+        #widget = forms.Textarea(attrs={'class': 'form-control', 'rows': '3'})
+    #)
     captcha = CaptchaField(error_messages={'invalid': 'wrong validation code'})
     class Meta:
         model = Post
