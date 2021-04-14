@@ -174,7 +174,7 @@ def likePost(request,column_id,post_id): #还没做url
 
 @login_required #如何传入comment_id 还需商讨 还没做url
 def likeComment(request, column_id, post_id, comment_id):
-    comment = get_object_or_404(Post, pk=comment_id)
+    comment = get_object_or_404(Comment, pk=comment_id)
     user = request.user
     try:
         CommentLike.objects.get(liker=user, comment=comment)
