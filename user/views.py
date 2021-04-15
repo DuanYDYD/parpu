@@ -358,12 +358,8 @@ def sendapp(request, team_id, contest_id, user_id):
     return redirect("/user/teamlist/contest_id="+str(contest_id))
 
 @login_required()
-def applyList(request):
-    user = User.objects.get(pk=request.user.id)
-    try:
-        team = Team.objects.get(leader=user)
-    except:
-        team = None
+def applyList(request, team_id):
+    team = Team.objects.get(pk=team_id)
     context = {
         'team': team,
         'members': team.team_members.all(),
