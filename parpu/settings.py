@@ -58,6 +58,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'parpu.urls'
+LOGIN_URL = '/user/login/'
 
 TEMPLATES = [
     {
