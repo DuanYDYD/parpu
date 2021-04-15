@@ -41,6 +41,7 @@ urlpatterns = [
     # the leader response
     path('applylist/team_id=<int:team_id>', views.applyList, name='appList'),
     path('applyResult/application_id=<int:application_id>&res=<str:res>', views.applydetail, name='appRes'),
+    path('editannounce/team_id=<team_id>', views.editAnn, name='editA'),
     #path('teamcreate/contest_id=<int:contest_id>', views.TeamCreate, name='teamCreate'),
 
     #path('vote/<int:user_ID>/', views.vote, name='vote'),

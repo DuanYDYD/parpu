@@ -170,6 +170,11 @@
                      <img src="/static/assets/images/teamwork.jpg" class="img-fluid" alt="teamwork">
                  </div>
                </div>
+
+               <form method="POST" action="/user/editannounce/team_id={{team.id}}">
+                   <textarea placeholder="new announcement here" name="newannounce"></textarea>
+                   <button type="submit">Edit</button>
+               </form>
            </div>
       </section>
 

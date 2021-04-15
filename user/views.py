@@ -381,17 +381,26 @@ def applydetail(request, application_id, res):
     if team.capacity <= team.team_members.all().count()+1:
         application.delete()
         messages.success(request, "The team is full, automatically delete this application")
-        return redirect('/user/applylist/')
+        return redirect('/user/applylist/team_id='+str(team.id))
 
     elif res == 'yes':
         application.delete()
         team.team_members.add(sender.id)
         team.save()
         messages.success(request, "New member is admitted")
-        return redirect('/user/applylist/')
+        return redirect('/user/applylist/team_id='+str(team.id))
 
     else:
         application.delete()
         messages.success(request, "Application is rejected")
-        return redirect('/user/applylist/')
+        return redirect('/user/applylist/team_id='+str(team.id))
+
+@login_required
+def editAnn(request, team_id):
+    newannounce = request.POST.get('newannounce')
+    thisTeam = get_object_or_404(Team, pk=team_id)
+    thisTeam.announce = newannounce
+    thisTeam.save()
+    messages.success(request, "Announcement is released")
+    return redirect('/user/applylist/team_id='+str(thisTeam.id))
 
